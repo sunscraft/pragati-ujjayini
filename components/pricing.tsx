@@ -23,8 +23,6 @@ const pricingData: PricingTier[] = [
         buttonText: "Get Started With Plan A",
         features: [
             "Google Business Profile",
-            "Complete Brand Kit & Logos",
-            "Custom Landing Pages",
             "WhatsApp Business Setup",
             "Local Keyword Research",
             "Basic Social Media Posts"
@@ -38,13 +36,9 @@ const pricingData: PricingTier[] = [
         isPopular: true,
         buttonText: "Grow with Plan B",
         features: [
-            "Google Business Profile",
             "Complete Brand Kit & Logos",
-            "Custom Landing Pages",
-            "WhatsApp Business Setup",
             "Lead Nurture Automation",
-            "Google & Meta Ads",
-            "Basic Social Media Posts",
+            "SMS/WhatsApp Campaigns",
             "Monthly Performance Reports"
         ]
     },
@@ -55,15 +49,9 @@ const pricingData: PricingTier[] = [
         price: "₹25,000+",
         buttonText: "Build Your Empire",
         features: [
-            "Google Business Profile",
-            "Complete Brand Kit & Logos",
             "Custom Landing Pages",
-            "WhatsApp Business Setup",
-            "Lead Nurture Automation",
             "Google & Meta Ads",
-            "SMS/WhatsApp Campaigns",
             "CRM Integration",
-            "Monthly Performance Reports",
             "Dedicated Account Manager"
         ]
     }
