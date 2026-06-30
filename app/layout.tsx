@@ -2,7 +2,8 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import { SiteHeader } from '@/components/site-header'
-import { SiteFooter } from '@/components/site-footer'// Imported your header component
+import { SiteFooter } from '@/components/site-footer'
+import WhatsAppButton from '@/components/whatsAppButton'
 import './globals.css'
 
 const inter = Inter({
@@ -131,6 +132,7 @@ export default function RootLayout({
 
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        <WhatsAppButton />
         <SiteFooter />
       </body>
     </html>
