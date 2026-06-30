@@ -16,48 +16,55 @@ interface PricingTier {
 
 const pricingData: PricingTier[] = [
     {
-        name: "Silver Package",
-        planName: "Starter (The 'Uday' Plan)",
-        description: "Essential digital foundation for local shops and professionals.",
+        name: "Local Hero",
+        planName: "Plan A",
+        description: "Essential visibility setup perfect for local storefronts and professionals.",
+        price: "₹5,000",
+        buttonText: "Get Started With Plan A",
+        features: [
+            "Google Business Profile",
+            "Complete Brand Kit & Logos",
+            "Custom Landing Pages",
+            "WhatsApp Business Setup",
+            "Local Keyword Research",
+            "Basic Social Media Posts"
+        ]
+    },
+    {
+        name: "Market Leader",
+        planName: "Plan B",
+        description: "Advanced systems for expanding businesses seeking dominant local reach.",
         price: "₹15,000",
-        buttonText: "Get Started With Uday",
-        features: [
-            "Profile Creation and Meta Tag Optimization",
-            "Local SEO Optimization",
-            "Basic Content Post Execution",
-            "Basic Data Reporting",
-            "Paid Advertising Setup"
-        ]
-    },
-    {
-        name: "Gold Package",
-        planName: "Standard (The 'Pragati' Plan)",
-        description: "Advanced growth systems for established regional brands.",
-        price: "₹35,000",
         isPopular: true,
-        buttonText: "Grow with Pragati",
+        buttonText: "Grow with Plan B",
         features: [
-            "Profile Creation and Advanced SEO Optimization",
-            "Core SEO Optimization",
-            "Strategic Content Management",
-            "Detailed Analytics & Monthly Strategy Review",
-            "Google Ads Campaign Execution",
-            "Priority WhatsApp Automation Setup"
+            "Google Business Profile",
+            "Complete Brand Kit & Logos",
+            "Custom Landing Pages",
+            "WhatsApp Business Setup",
+            "Lead Nurture Automation",
+            "Google & Meta Ads",
+            "Basic Social Media Posts",
+            "Monthly Performance Reports"
         ]
     },
     {
-        name: "Diamond Package",
-        planName: "Premium (The 'Shikhar' Plan)",
-        description: "Full-scale digital dominance for market leaders and manufacturers.",
-        price: "₹75,000",
-        buttonText: "Dominate with Shikhar",
+        name: "Empire Builder",
+        planName: "Plan C",
+        description: "Full-scale marketing infrastructure built to establish dominant market control.",
+        price: "₹25,000+",
+        buttonText: "Build Your Empire",
         features: [
-            "Enterprise Scale Profile Creation & SEO Mapping",
-            "Full Site SEO & Authority Building",
-            "Advanced Premium Video & Imagery Content",
-            "Advanced Custom Dashboards & Dedicated Account Strategy",
-            "Omnichannel Ad Execution (Google, Meta & Programmatic)",
-            "Dedicated Technical Integration Support"
+            "Google Business Profile",
+            "Complete Brand Kit & Logos",
+            "Custom Landing Pages",
+            "WhatsApp Business Setup",
+            "Lead Nurture Automation",
+            "Google & Meta Ads",
+            "SMS/WhatsApp Campaigns",
+            "CRM Integration",
+            "Monthly Performance Reports",
+            "Dedicated Account Manager"
         ]
     }
 ]
@@ -107,13 +114,13 @@ export function Pricing() {
                 {/* Header Section */}
                 <div className="text-center max-w-3xl mx-auto animate-pricing-item" style={{ animationDelay: '0ms' }}>
                     <span className="inline-flex items-center gap-2 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-3 py-1 text-xs font-medium text-brand-orange">
-                        Pricing Plans
+                        Investment Plans
                     </span>
                     <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-                        Scalable Investment Plans for Regional Leaders
+                        Flexible Pricing for Growth
                     </h2>
                     <p className="mt-4 text-muted-foreground text-base sm:text-lg">
-                        Whether you are fixing your local visibility or planning to dominate the Pan-India market, we have a strategic plan to get you there.
+                        Choose an investment roadmap that matches your scaling goals, tailored precisely to secure high-intent customers.
                     </p>
                 </div>
 
@@ -151,7 +158,7 @@ export function Pricing() {
                             <div className="mb-8 flex items-baseline gap-1 border-b border-muted/20 pb-6">
                                 <span className="text-4xl font-extrabold tracking-tight">{tier.price}</span>
                                 <span className={`text-sm font-medium ${tier.isPopular ? 'text-brand-navy-foreground/70' : 'text-muted-foreground'}`}>
-                                    / Per Month
+                                    /Month
                                 </span>
                             </div>
 
