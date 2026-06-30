@@ -97,7 +97,7 @@ export function SiteFooter() {
             </li>
             <li className="flex items-center gap-2">
               <Phone className="size-4 shrink-0 text-brand-blue" />
-              +91 90000 00000
+              +91 9202668977
             </li>
             <li className="flex items-center gap-2">
               <Mail className="size-4 shrink-0 text-brand-blue" />
