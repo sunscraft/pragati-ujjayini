@@ -1,8 +1,33 @@
+'use client'
+
+import { useEffect, useState, useRef } from 'react'
 import { Rocket, Eye } from 'lucide-react'
 
 export function PurposeValues() {
+  const [isIntersecting, setIsIntersecting] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true)
+          observer.unobserve(entry.target) // Trigger once
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+    <section id="purpose" ref={containerRef} className="mx-auto max-w-6xl px-4 py-20 sm:px-6 overflow-hidden">
+
       <div className="text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
           Who We Are
@@ -17,7 +42,14 @@ export function PurposeValues() {
       </div>
 
       <div className="mt-12 grid gap-6 md:grid-cols-2">
-        <article className="rounded-2xl border border-border bg-card p-8 shadow-sm">
+        {/* Left Component: Slides Left to Right */}
+        <article
+          className={`rounded-2xl border border-border bg-card p-8 shadow-sm transition-all duration-1000 ease-out transform
+            ${isIntersecting
+              ? 'opacity-100 translate-x-0'
+              : 'opacity-0 -translate-x-20'
+            }`}
+        >
           <div className="flex size-12 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange">
             <Rocket className="size-6" />
           </div>
@@ -31,11 +63,18 @@ export function PurposeValues() {
           <p className="mt-3 leading-relaxed text-muted-foreground">
             Our goal is to ensure that the small streets and lanes in Tier-2
             and Tier-3 cities have the same digital opportunity as a top brand
-            in Bengaluru.
+            in Delhi.
           </p>
         </article>
 
-        <article className="rounded-2xl border border-brand-blue bg-brand-blue p-8 text-brand-blue-foreground shadow-sm">
+        {/* Right Component: Slides Right to Left */}
+        <article
+          className={`rounded-2xl border border-brand-blue bg-brand-blue p-8 text-brand-blue-foreground shadow-sm transition-all duration-1000 ease-out transform
+            ${isIntersecting
+              ? 'opacity-100 translate-x-0'
+              : 'opacity-0 translate-x-20'
+            }`}
+        >
           <div className="flex size-12 items-center justify-center rounded-xl bg-white/15 text-brand-blue-foreground">
             <Eye className="size-6" />
           </div>

@@ -44,10 +44,47 @@ export default function ContactPage() {
         )
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log({ ...formData, servicesNeeded: selectedHelp })
-        // Insert endpoint connection action here
+
+        const payload = {
+            ...formData,
+            servicesNeeded: selectedHelp
+        }
+
+        console.log("Sending data to backend:", payload)
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+
+            const data = await response.json()
+
+            if (response.ok) {
+                alert('Enquiry saved successfully!')
+                // Optional: Reset form fields here
+                setFormData({
+                    fullName: '',
+                    businessName: '',
+                    category: '',
+                    city: '',
+                    phone: '',
+                    email: '',
+                    message: '',
+                })
+                setSelectedHelp([])
+            } else {
+                alert(`Error: ${data.message || 'Something went wrong'}`)
+            }
+        } catch (error) {
+            console.error('Network Error:', error)
+            alert('Failed to connect to the server.')
+        }
     }
 
     return (
