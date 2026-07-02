@@ -56,7 +56,8 @@ export function FAQ() {
     }, [])
 
     return (
-        <section id="faq" ref={sectionRef} className="bg-brand-cream/30 py-16 sm:py-24 overflow-hidden">
+        /* FIXED: Replaced bg-brand-cream/30 with an explicit warm off-white cream color hex that won't flip dark on mobile */
+        <section id="faq" ref={sectionRef} className="bg-[#FAF9F6]/50 py-16 sm:py-24 overflow-hidden">
             {/* Embedded styles for reveal transitions */}
             <style dangerouslySetInnerHTML={{
                 __html: `
@@ -80,7 +81,8 @@ export function FAQ() {
                         <HelpCircle className="size-3.5" />
                         Have Questions?
                     </span>
-                    <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+                    {/* FIXED: Swapped text-foreground to text-zinc-900 to safeguard layout color */}
+                    <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
                         Frequently Asked Questions
                     </h2>
                 </div>
@@ -92,19 +94,24 @@ export function FAQ() {
                         return (
                             <div
                                 key={index}
-                                className="animate-faq-item overflow-hidden rounded-2xl border border-muted/60 bg-background transition-all duration-200 shadow-sm"
+                                /* FIXED: Forced background to bg-white and set exact light borders */
+                                className="animate-faq-item overflow-hidden rounded-2xl border border-zinc-200/80 bg-white transition-all duration-200 shadow-sm"
                                 style={{ animationDelay: `${(index + 1) * 100}ms` }} // Staggers each question element by 100ms
                             >
                                 <button
                                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-medium hover:bg-muted/30"
+                                    /* FIXED: Set exact subtle grey layout hover backgrounds */
+                                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-medium hover:bg-zinc-50/50"
                                 >
-                                    <span className="text-base font-semibold sm:text-lg text-foreground">{item.question}</span>
-                                    <ChevronDown className={`size-5 shrink-0 text-muted-foreground transition-transform duration-300 ${isOpen ? 'rotate-180 text-brand-orange' : ''}`} />
+                                    {/* FIXED: Swapped text-foreground to a stable text-zinc-800 */}
+                                    <span className="text-base font-semibold sm:text-lg text-zinc-800">{item.question}</span>
+                                    {/* FIXED: Swapped text-muted-foreground to text-zinc-400 */}
+                                    <ChevronDown className={`size-5 shrink-0 text-zinc-400 transition-transform duration-300 ${isOpen ? 'rotate-180 text-brand-orange' : ''}`} />
                                 </button>
                                 <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
                                     <div className="overflow-hidden">
-                                        <p className="px-6 pb-5 text-sm leading-relaxed text-muted-foreground sm:text-base border-t border-muted/40 pt-3 bg-muted/5">{item.answer}</p>
+                                        {/* FIXED: Rewrote texts with text-zinc-600 and matching bright structural backgrounds inside open cards */}
+                                        <p className="px-6 pb-5 text-sm leading-relaxed text-zinc-600 sm:text-base border-t border-zinc-100 pt-3 bg-zinc-50/30">{item.answer}</p>
                                     </div>
                                 </div>
                             </div>

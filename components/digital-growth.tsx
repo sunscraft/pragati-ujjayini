@@ -106,87 +106,95 @@ export function DigitalGrowth() {
   }, [])
 
   return (
-    <section id="services" ref={sectionRef} className="mx-auto max-w-6xl px-4 py-20 sm:px-6 overflow-hidden">
-      {/* Custom embedded style tags for slower, smoother left-to-right view transitions */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        @keyframes growth-fade-slide-right {
-          0% { opacity: 0; transform: translateX(-40px); }
-          100% { opacity: 1; transform: translateX(0); }
-        }
-        .animate-growth-item {
-          opacity: 0;
-        }
-        .growth-visible .animate-growth-item {
-          /* Smooth out-expo easing curve matching your pricing speed */
-          animation: growth-fade-slide-right 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-      `}} />
+    /* FIXED: Wrapped section container with a hardcoded light theme wrapper */
+    <div className="w-full bg-white text-zinc-900">
+      <section id="services" ref={sectionRef} className="mx-auto max-w-6xl px-4 py-20 sm:px-6 overflow-hidden">
+        {/* Custom embedded style tags for slower, smoother left-to-right view transitions */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes growth-fade-slide-right {
+            0% { opacity: 0; transform: translateX(-40px); }
+            100% { opacity: 1; transform: translateX(0); }
+          }
+          .animate-growth-item {
+            opacity: 0;
+          }
+          .growth-visible .animate-growth-item {
+            /* Smooth out-expo easing curve matching your pricing speed */
+            animation: growth-fade-slide-right 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          }
+        `}} />
 
-      <div className={`grid items-center gap-6 lg:grid-cols-2 ${isIntersecting ? 'growth-visible' : ''}`}>
-        <div className="animate-growth-item" style={{ animationDelay: '0ms' }}>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
-            What We Do
-          </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-            Comprehensive Digital Growth
-          </h2>
-        </div>
-        <p className="leading-relaxed text-muted-foreground animate-growth-item" style={{ animationDelay: '150ms' }}>
-          A complete, hyper-local marketing toolkit designed to drive footfall
-          and revenue for businesses rooted in their neighbourhood.
-        </p>
-      </div>
-
-      {/* Photo Gallery Grid */}
-      <div className={`mt-10 grid grid-cols-2 gap-4 ${isIntersecting ? 'growth-visible' : ''}`}>
-        {photos.map((photo, index) => (
-          <div
-            key={photo.src}
-            className="animate-growth-item relative aspect-[4/3] overflow-hidden rounded-2xl"
-            style={{ animationDelay: `${(index + 1) * 150}ms` }}
-          >
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              fill
-              sizes="(max-width: 768px) 50vw, 25vw"
-              className="object-cover"
-            />
+        <div className={`grid items-center gap-6 lg:grid-cols-2 ${isIntersecting ? 'growth-visible' : ''}`}>
+          <div className="animate-growth-item" style={{ animationDelay: '0ms' }}>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
+              What We Do
+            </p>
+            {/* FIXED: Explicit deep text-zinc-900 header class lock */}
+            <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
+              Comprehensive Digital Growth
+            </h2>
           </div>
-        ))}
-      </div>
+          {/* FIXED: Changed text-muted-foreground over to steady, crisp text-zinc-600 */}
+          <p className="leading-relaxed text-zinc-600 animate-growth-item" style={{ animationDelay: '150ms' }}>
+            A complete, hyper-local marketing toolkit designed to drive footfall
+            and revenue for businesses rooted in their neighbourhood.
+          </p>
+        </div>
 
-      {/* Services Grid Matrix */}
-      <div className={`mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 ${isIntersecting ? 'growth-visible' : ''}`}>
-        {services.map((service, index) => {
-          const Icon = service.icon
-          const isOrange = service.tone === 'orange'
-          return (
-            <article
-              key={service.title}
-              className="animate-growth-item rounded-2xl border border-border bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
-              /* Staggers grid layout entry slightly by row position index */
-              style={{ animationDelay: `${(index + 1) * 100 + 400}ms` }}
+        {/* Photo Gallery Grid */}
+        <div className={`mt-10 grid grid-cols-2 gap-4 ${isIntersecting ? 'growth-visible' : ''}`}>
+          {photos.map((photo, index) => (
+            <div
+              key={photo.src}
+              className="animate-growth-item relative aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-100"
+              style={{ animationDelay: `${(index + 1) * 150}ms` }}
             >
-              <div
-                className={`flex size-11 items-center justify-center rounded-xl ${isOrange
-                  ? 'bg-brand-orange text-brand-orange-foreground'
-                  : 'bg-brand-blue text-brand-blue-foreground'
-                  }`}
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Services Grid Matrix */}
+        <div className={`mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 ${isIntersecting ? 'growth-visible' : ''}`}>
+          {services.map((service, index) => {
+            const Icon = service.icon
+            const isOrange = service.tone === 'orange'
+            return (
+              <article
+                key={service.title}
+                /* FIXED: Explicit light background card and neat concrete gray border settings built in */
+                className="animate-growth-item rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+                /* Staggers grid layout entry slightly by row position index */
+                style={{ animationDelay: `${(index + 1) * 100 + 400}ms` }}
               >
-                <Icon className="size-5" />
-              </div>
-              <h3 className="mt-4 font-heading text-base font-bold">
-                {service.title}
-              </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                {service.desc}
-              </p>
-            </article>
-          )
-        })}
-      </div>
-    </section>
+                <div
+                  className={`flex size-11 items-center justify-center rounded-xl ${isOrange
+                    ? 'bg-brand-orange text-white'
+                    : 'bg-brand-blue text-white'
+                    }`}
+                >
+                  <Icon className="size-5" />
+                </div>
+                {/* FIXED: Secure header coloring tracking layout */}
+                <h3 className="mt-4 font-heading text-base font-bold text-zinc-900">
+                  {service.title}
+                </h3>
+                {/* FIXED: Exchanged text-muted-foreground context to precise text-zinc-500 styling */}
+                <p className="mt-1.5 text-sm leading-relaxed text-zinc-500">
+                  {service.desc}
+                </p>
+              </article>
+            )
+          })}
+        </div>
+      </section>
+    </div>
   )
 }

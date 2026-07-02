@@ -29,13 +29,15 @@ const categories = [
 
 export function Categories() {
   return (
-    <section className="bg-brand-cream">
+    /* FIXED: Swapped dynamic bg-brand-cream token with explicit warm soft off-white color hex */
+    <section className="bg-[#FAF9F6]">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-blue">
             Who We Serve
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+          {/* FIXED: Locked layout header color cleanly to a static deep text-zinc-900 */}
+          <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
             Helping Bharat&apos;s{' '}
             <span className="text-brand-blue">Businesses Bloom</span>
           </h2>
@@ -52,25 +54,25 @@ export function Categories() {
             return (
               <article
                 key={cat.title}
-                className={`group rounded-2xl border p-6 shadow-sm transition-transform hover:-translate-y-1 ${
-                  isOrange
+                className={`group rounded-2xl border p-6 shadow-sm transition-transform hover:-translate-y-1 ${isOrange
                     ? 'border-brand-orange/20 bg-brand-orange/10'
                     : 'border-brand-blue/20 bg-brand-blue/10'
-                }`}
+                  }`}
               >
                 <div
-                  className={`flex size-11 items-center justify-center rounded-xl ${
-                    isOrange
+                  className={`flex size-11 items-center justify-center rounded-xl ${isOrange
                       ? 'bg-brand-orange/15 text-brand-orange'
                       : 'bg-brand-blue/15 text-brand-blue'
-                  }`}
+                    }`}
                 >
                   <Icon className="size-5" />
                 </div>
-                <h3 className="mt-4 font-heading text-lg font-bold">
+                {/* FIXED: Explicit text-zinc-900 typography lock for item headers */}
+                <h3 className="mt-4 font-heading text-lg font-bold text-zinc-900">
                   {cat.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {/* FIXED: Replaced text-muted-foreground with fixed text-zinc-600 layout values */}
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600">
                   {cat.desc}
                 </p>
               </article>

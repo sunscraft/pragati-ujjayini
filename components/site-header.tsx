@@ -17,7 +17,8 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-md">
+    /* FIXED: Swapped bg-background/90 for an explicit bg-white/90 to force light mode theme transparency on mobile layouts */
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-white/90 backdrop-blur-md">
       {/* Increased container height to h-24 to accommodate the larger inline logo row */}
       <div className="mx-auto flex h-24 items-center justify-between px-5 sm:px-8 max-w-6xl">
 
@@ -50,7 +51,7 @@ export function SiteHeader() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-brand-orange"
+              className="text-sm font-medium text-zinc-600 transition-colors hover:text-brand-orange"
             >
               {link.label}
             </Link>
@@ -69,10 +70,11 @@ export function SiteHeader() {
         </div>
 
         {/* Mobile View Toggle Controller Icon Button */}
+        {/* FIXED: Changed text color to a definitive dark grey/black slate so the menu bars are clearly visible against a crisp white background */}
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex size-9 items-center justify-center rounded-md text-foreground md:hidden transition-colors hover:bg-muted"
+          className="inline-flex size-9 items-center justify-center rounded-md text-zinc-800 md:hidden transition-colors hover:bg-zinc-100"
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
         >
@@ -84,7 +86,8 @@ export function SiteHeader() {
       {open && (
         <nav
           aria-label="Mobile"
-          className="border-t border-border/60 bg-background px-5 py-4 md:hidden animate-in fade-in slide-in-from-top-2 duration-200"
+          /* FIXED: Changed bg-background to bg-white, and updated text properties to stay dark-on-light theme layout values */
+          className="border-t border-border/60 bg-white px-5 py-4 md:hidden animate-in fade-in slide-in-from-top-2 duration-200"
         >
           <ul className="flex flex-col gap-1.5">
             {navLinks.map((link) => (
@@ -92,7 +95,7 @@ export function SiteHeader() {
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-xl px-4 py-2.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-all"
+                  className="block rounded-xl px-4 py-2.5 text-sm font-medium text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition-all"
                 >
                   {link.label}
                 </Link>

@@ -80,7 +80,8 @@ export function Pricing() {
     }, [])
 
     return (
-        <section id="pricing" ref={containerRef} className="bg-background py-16 sm:py-24 overflow-hidden">
+        /* FIXED: Swapped bg-background with explicit bg-white to protect light theme mode on physical smartphones */
+        <section id="pricing" ref={containerRef} className="bg-white py-16 sm:py-24 overflow-hidden">
             {/* Custom embedded style tags for slower, smoother view transitions */}
             <style dangerouslySetInnerHTML={{
                 __html: `
@@ -104,10 +105,12 @@ export function Pricing() {
                     <span className="inline-flex items-center gap-2 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-3 py-1 text-xs font-medium text-brand-orange">
                         Investment Plans
                     </span>
-                    <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+                    {/* FIXED: Shifted typography from text-foreground to a permanent text-zinc-900 */}
+                    <h2 className="mt-4 font-heading text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
                         Flexible Pricing for Growth
                     </h2>
-                    <p className="mt-4 text-muted-foreground text-base sm:text-lg">
+                    {/* FIXED: Changed text-muted-foreground to safe text-zinc-600 */}
+                    <p className="mt-4 text-zinc-600 text-base sm:text-lg">
                         Choose an investment roadmap that matches your scaling goals, tailored precisely to secure high-intent customers.
                     </p>
                 </div>
@@ -117,9 +120,10 @@ export function Pricing() {
                     {pricingData.map((tier, index) => (
                         <div
                             key={index}
+                            /* FIXED: Replaced arbitrary background variables inside standard non-popular cards with concrete light background color hexes and clear border properties */
                             className={`animate-pricing-item relative flex flex-col rounded-3xl p-8 transition-all duration-300 ${tier.isPopular
                                 ? 'bg-brand-navy text-brand-navy-foreground border-2 border-brand-orange shadow-xl lg:-translate-y-2'
-                                : 'bg-brand-cream/40 border border-muted/60 text-foreground'
+                                : 'bg-[#FAF9F6]/60 border border-zinc-200/80 text-zinc-900'
                                 }`}
                             /* Deliberate 200ms stagger offset between each individual column layout card */
                             style={{ animationDelay: `${(index + 1) * 200}ms` }}
@@ -137,15 +141,17 @@ export function Pricing() {
                                     {tier.name}
                                 </span>
                                 <h3 className="mt-2 text-xl font-bold tracking-tight">{tier.planName}</h3>
-                                <p className={`mt-3 text-sm leading-relaxed ${tier.isPopular ? 'text-brand-navy-foreground/80' : 'text-muted-foreground'}`}>
+                                {/* FIXED: Explicit text configurations for description lines */}
+                                <p className={`mt-3 text-sm leading-relaxed ${tier.isPopular ? 'text-brand-navy-foreground/80' : 'text-zinc-500'}`}>
                                     {tier.description}
                                 </p>
                             </div>
 
                             {/* Financial Breakdown */}
-                            <div className="mb-8 flex items-baseline gap-1 border-b border-muted/20 pb-6">
+                            <div className="mb-8 flex items-baseline gap-1 border-b border-zinc-200/40 pb-6">
                                 <span className="text-4xl font-extrabold tracking-tight">{tier.price}</span>
-                                <span className={`text-sm font-medium ${tier.isPopular ? 'text-brand-navy-foreground/70' : 'text-muted-foreground'}`}>
+                                {/* FIXED: Replaced text-muted-foreground variant dependency */}
+                                <span className={`text-sm font-medium ${tier.isPopular ? 'text-brand-navy-foreground/70' : 'text-zinc-500'}`}>
                                     /Month
                                 </span>
                             </div>
@@ -153,7 +159,8 @@ export function Pricing() {
                             {/* Deliverables / Matrix Rows */}
                             <ul className="space-y-4 mb-8 flex-1">
                                 {tier.features.map((feature, featureIndex) => (
-                                    <li key={featureIndex} className="flex items-start gap-3 text-sm leading-snug">
+                                    /* FIXED: Assured base list texts fallback seamlessly into a neat slate value */
+                                    <li key={featureIndex} className={`flex items-start gap-3 text-sm leading-snug ${tier.isPopular ? 'text-brand-navy-foreground' : 'text-zinc-700'}`}>
                                         <Check className={`size-4 mt-0.5 shrink-0 ${tier.isPopular ? 'text-brand-orange' : 'text-brand-blue'}`} />
                                         <span>{feature}</span>
                                     </li>

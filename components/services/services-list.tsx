@@ -159,7 +159,6 @@ const services: Service[] = [
   },
 ]
 
-// Lightweight Reusable Scroll Animation Wrapper
 function ScrollReveal({ children }: { children: React.ReactNode }) {
   const [isVisible, setIsVisible] = useState(false)
   const elementRef = useRef<HTMLDivElement>(null)
@@ -169,11 +168,11 @@ function ScrollReveal({ children }: { children: React.ReactNode }) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
-          observer.unobserve(entry.target) // Animate once and stop observing
+          observer.unobserve(entry.target)
         }
       },
       {
-        rootMargin: '-40px 0px', // Triggers slightly before element enters view
+        rootMargin: '-40px 0px',
         threshold: 0.05,
       }
     )
@@ -189,8 +188,8 @@ function ScrollReveal({ children }: { children: React.ReactNode }) {
     <div
       ref={elementRef}
       className={`transition-all duration-700 ease-out ${isVisible
-          ? 'opacity-100 translate-y-0'
-          : 'opacity-0 translate-y-12'
+        ? 'opacity-100 translate-y-0'
+        : 'opacity-0 translate-y-12'
         }`}
     >
       {children}
@@ -200,9 +199,10 @@ function ScrollReveal({ children }: { children: React.ReactNode }) {
 
 export function ServicesList() {
   return (
+    /* FIXED: Forced absolute white background for the whole section wrapper */
     <section
       id="services-list"
-      className="mx-auto max-w-6xl px-5 sm:px-8 py-20 w-full overflow-hidden select-none touch-pan-y"
+      className="bg-white mx-auto max-w-6xl px-5 sm:px-8 py-20 w-full overflow-hidden select-none touch-pan-y"
     >
       {/* Animated Header Section */}
       <ScrollReveal>
@@ -210,10 +210,12 @@ export function ServicesList() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
             What We Offer
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl text-brand-navy">
+          {/* FIXED: Swapped dynamic header text variable to explicit dark zinc text color */}
+          <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl text-zinc-900">
             Eight services, one growth engine
           </h2>
-          <p className="mt-4 leading-relaxed text-muted-foreground text-sm sm:text-base">
+          {/* FIXED: Changed text-muted-foreground to safe text-zinc-500 */}
+          <p className="mt-4 leading-relaxed text-zinc-500 text-sm sm:text-base">
             Pick what you need today, or let us build a complete local marketing
             system around your business.
           </p>
@@ -228,7 +230,8 @@ export function ServicesList() {
           return (
             <ScrollReveal key={service.title}>
               <article
-                className="group relative grid gap-6 overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md sm:p-8 lg:grid-cols-[1fr_1.3fr_1fr] items-center w-full"
+                /* FIXED: Replaced border-border and bg-card variables with pure bg-white and static zinc border classes */
+                className="group relative grid gap-6 overflow-hidden rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md sm:p-8 lg:grid-cols-[1fr_1.3fr_1fr] items-center w-full"
               >
                 <div
                   aria-hidden="true"
@@ -237,7 +240,8 @@ export function ServicesList() {
                 />
 
                 {/* Column 1: Graphic Showcase Preview */}
-                <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-square overflow-hidden rounded-2xl bg-muted border border-border/40 pointer-events-none select-none">
+                {/* FIXED: Replaced bg-muted with concrete gray border/bg */}
+                <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-square overflow-hidden rounded-2xl bg-zinc-50 border border-zinc-100 pointer-events-none select-none">
                   <Image
                     src={service.image}
                     alt={service.alt}
@@ -253,8 +257,8 @@ export function ServicesList() {
                   <div className="flex items-center gap-4">
                     <span
                       className={`flex size-12 shrink-0 items-center justify-center rounded-2xl ${isOrange
-                          ? 'bg-brand-orange text-brand-orange-foreground shadow-sm shadow-brand-orange/10'
-                          : 'bg-brand-blue text-brand-blue-foreground shadow-sm shadow-brand-blue/10'
+                        ? 'bg-brand-orange text-white shadow-sm shadow-brand-orange/10'
+                        : 'bg-brand-blue text-white shadow-sm shadow-brand-blue/10'
                         }`}
                     >
                       <Icon className="size-6 stroke-[2.25]" />
@@ -266,12 +270,14 @@ export function ServicesList() {
                       >
                         Service {String(index + 1).padStart(2, '0')}
                       </p>
-                      <h3 className="mt-1 text-balance font-heading text-lg font-bold leading-snug text-brand-navy">
+                      {/* FIXED: Swapped variable out for a hard-coded deep zinc font color */}
+                      <h3 className="mt-1 text-balance font-heading text-lg font-bold leading-snug text-zinc-900">
                         {service.title}
                       </h3>
                     </div>
                   </div>
-                  <p className="mt-5 text-xs sm:text-sm leading-relaxed text-muted-foreground text-pretty">
+                  {/* FIXED: Swapped text-muted-foreground with fixed text-zinc-600 */}
+                  <p className="mt-5 text-xs sm:text-sm leading-relaxed text-zinc-600 text-pretty">
                     {service.description}
                   </p>
                 </div>
@@ -281,7 +287,8 @@ export function ServicesList() {
                   className={`rounded-2xl p-5 self-stretch flex flex-col justify-center ${isOrange ? 'bg-brand-orange/5' : 'bg-brand-blue/5'
                     }`}
                 >
-                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                  {/* FIXED: Avoided system text adjustments here */}
+                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-500">
                     Includes
                   </p>
                   <ul className="mt-3 flex flex-col gap-2.5">
@@ -291,7 +298,8 @@ export function ServicesList() {
                           className={`mt-0.5 size-4 shrink-0 ${isOrange ? 'text-brand-orange' : 'text-brand-blue'
                             }`}
                         />
-                        <span className="leading-normal text-foreground/90">
+                        {/* FIXED: Replaced dynamic text-foreground property with firm dark zinc text */}
+                        <span className="leading-normal text-zinc-800 font-medium">
                           {item}
                         </span>
                       </li>
