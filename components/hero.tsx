@@ -40,8 +40,8 @@ export function Hero() {
             draggable={false}
             className="object-cover object-right lg:object-center opacity-85 pointer-events-none select-none"
           />
-          {/* UPDATED: Changed mobile layout gradient from dark bottom tint to a crisp, uniform clean light blend matching the PC view */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background/20 md:bg-gradient-to-r md:from-background md:via-background/85 md:to-transparent z-10" />
+          {/* FIXED: Removed mobile vertical layout gradient for a unified horizontal clean blend matching PC view */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent z-10" />
         </div>
 
         {/* Content Container */}

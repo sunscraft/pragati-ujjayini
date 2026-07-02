@@ -16,13 +16,14 @@ const reasons = [
 
 export function WhyTrust() {
   return (
-    <section id="process" className="bg-brand-cream">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2">
+    <section id="process" className="bg-brand-cream text-foreground">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 w-full">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
             The Pragati Edge
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+          {/* FIXED: Explicitly set text-brand-navy to lock heading to your dark brand color across mobile viewports */}
+          <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl text-brand-navy">
             Why Bharat Trusts{' '}
             <span className="text-brand-orange">Pragati Ujjayini</span>
           </h2>
@@ -36,7 +37,8 @@ export function WhyTrust() {
                     <Icon className="size-5" />
                   </div>
                   <div>
-                    <h3 className="font-heading text-lg font-bold">
+                    {/* FIXED: Explicitly added text-brand-navy here as well to force the item titles dark */}
+                    <h3 className="font-heading text-lg font-bold text-brand-navy">
                       {reason.title}
                     </h3>
                     <p className="mt-1 leading-relaxed text-muted-foreground">
@@ -50,7 +52,7 @@ export function WhyTrust() {
         </div>
 
         <div className="relative">
-          <div className="overflow-hidden rounded-3xl border border-border bg-card p-4 shadow-sm">
+          <div className="overflow-hidden rounded-3xl border border-border bg-white p-4 shadow-sm">
             <Image
               src="/images/hero-dashboard.png"
               alt="Analytics dashboard illustrating local business growth"
@@ -61,14 +63,14 @@ export function WhyTrust() {
           </div>
           <div className="mt-4 grid grid-cols-2 gap-4">
             <div className="rounded-2xl bg-brand-orange p-5 text-center text-brand-orange-foreground">
-              <p className="font-heading text-3xl font-extrabold">500+</p>
-              <p className="mt-1 text-xs font-medium opacity-90">
+              <p className="font-heading text-3xl font-extrabold text-white">500+</p>
+              <p className="mt-1 text-xs font-medium opacity-90 text-white">
                 Businesses transformed
               </p>
             </div>
             <div className="rounded-2xl bg-brand-blue p-5 text-center text-brand-blue-foreground">
-              <p className="font-heading text-3xl font-extrabold">10X</p>
-              <p className="mt-1 text-xs font-medium opacity-90">
+              <p className="font-heading text-3xl font-extrabold text-white">10X</p>
+              <p className="mt-1 text-xs font-medium opacity-90 text-white">
                 Average reach growth
               </p>
             </div>

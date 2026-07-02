@@ -67,7 +67,6 @@ export default function ContactPage() {
 
             if (response.ok) {
                 alert('Enquiry saved successfully!')
-                // Optional: Reset form fields here
                 setFormData({
                     fullName: '',
                     businessName: '',
@@ -88,7 +87,7 @@ export default function ContactPage() {
     }
 
     return (
-        <main className="mx-auto max-w-6xl px-5 sm:px-8 py-20 lg:py-28 w-full overflow-hidden select-none touch-pan-y">
+        <main className="mx-auto max-w-6xl px-5 sm:px-8 py-20 lg:py-28 w-full overflow-hidden select-none touch-pan-y bg-background text-foreground">
             {/* Header Info Block */}
             <div className="max-w-3xl mb-16">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
@@ -111,7 +110,8 @@ export default function ContactPage() {
                             <label className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Full Name</label>
                             <input
                                 type="text" required
-                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange text-foreground"
+                                value={formData.fullName}
                                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                             />
                         </div>
@@ -119,7 +119,8 @@ export default function ContactPage() {
                             <label className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Business Name</label>
                             <input
                                 type="text" required
-                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange text-foreground"
+                                value={formData.businessName}
                                 onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                             />
                         </div>
@@ -130,7 +131,8 @@ export default function ContactPage() {
                             <label className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Business Category</label>
                             <select
                                 required
-                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange text-foreground"
+                                value={formData.category}
                                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                             >
                                 <option value="">Select a category</option>
@@ -143,7 +145,8 @@ export default function ContactPage() {
                             <label className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">City</label>
                             <input
                                 type="text" required
-                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange text-foreground"
+                                value={formData.city}
                                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                             />
                         </div>
@@ -154,7 +157,8 @@ export default function ContactPage() {
                             <label className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Phone Number</label>
                             <input
                                 type="tel" required
-                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange text-foreground"
+                                value={formData.phone}
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             />
                         </div>
@@ -162,7 +166,8 @@ export default function ContactPage() {
                             <label className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Email Address</label>
                             <input
                                 type="email" required
-                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange"
+                                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange text-foreground"
+                                value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
                         </div>
@@ -199,7 +204,8 @@ export default function ContactPage() {
                         <label className="block text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Message (optional)</label>
                         <textarea
                             rows={4}
-                            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange resize-none"
+                            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:border-brand-orange resize-none text-foreground"
+                            value={formData.message}
                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         />
                     </div>
@@ -214,11 +220,12 @@ export default function ContactPage() {
 
                 {/* Right Info Presentation Column Panel */}
                 <div className="lg:col-span-5 space-y-6 lg:pl-4">
-                    <div className="bg-muted/40 border border-border/60 rounded-3xl p-6 sm:p-8 space-y-6">
+                    {/* FIXED: Changed bg-muted/40 to clean absolute solid bg-card & border layout matching PC paneling */}
+                    <div className="bg-card border border-border rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
                         <h3 className="font-heading text-lg font-bold text-brand-navy">Other Ways To Reach Us</h3>
 
                         <div className="space-y-4">
-                            <a href="tel:+919202668977" className="flex items-center gap-4 p-3 rounded-2xl border border-border bg-card shadow-sm group transition-all hover:border-brand-orange/40">
+                            <a href="tel:+919202668977" className="flex items-center gap-4 p-3 rounded-2xl border border-border bg-background shadow-sm group transition-all hover:border-brand-orange/40">
                                 <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange">
                                     <Phone className="size-4" />
                                 </div>
@@ -228,7 +235,7 @@ export default function ContactPage() {
                                 </div>
                             </a>
 
-                            <a href="mailto:pragatiujjayini@gmail.com" className="flex items-center gap-4 p-3 rounded-2xl border border-border bg-card shadow-sm group transition-all hover:border-brand-blue/40">
+                            <a href="mailto:pragatiujjayini@gmail.com" className="flex items-center gap-4 p-3 rounded-2xl border border-border bg-background shadow-sm group transition-all hover:border-brand-blue/40">
                                 <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
                                     <Mail className="size-4" />
                                 </div>
@@ -238,7 +245,7 @@ export default function ContactPage() {
                                 </div>
                             </a>
 
-                            <a href="https://wa.me/9202668977" target="_blank" rel="noreferrer" className="flex items-center gap-4 p-3 rounded-2xl border border-border bg-card shadow-sm group transition-all hover:border-green-500/40">
+                            <a href="https://wa.me/9202668977" target="_blank" rel="noreferrer" className="flex items-center gap-4 p-3 rounded-2xl border border-border bg-background shadow-sm group transition-all hover:border-green-500/40">
                                 <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-green-500/10 text-green-600">
                                     <MessageSquare className="size-4" />
                                 </div>
@@ -248,7 +255,8 @@ export default function ContactPage() {
                                 </div>
                             </a>
 
-                            <div className="flex items-center gap-4 p-3 img-card">
+                            {/* FIXED: Standardized card formatting to match parent items instead of unstyled img-card class */}
+                            <div className="flex items-center gap-4 p-3 rounded-2xl border border-border bg-background shadow-sm">
                                 <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-navy/5 text-brand-navy">
                                     <MapPin className="size-4" />
                                 </div>

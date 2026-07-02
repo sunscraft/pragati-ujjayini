@@ -21,20 +21,19 @@ const stats = [
 
 export function Stats() {
   return (
-    /* FIXED: Removed '-mt-8' (negative margin) and replaced it with a positive relative layout 
-       margin (mt-12 sm:mt-16 lg:mt-24) to establish a distinct separation gap from the Hero section. */
-    <section className="mx-auto mt-12 sm:mt-16 lg:mt-24 max-w-6xl px-4 sm:px-6">
+    /* FIXED: Tied background colors to explicit values (bg-white and brand-blue) to eliminate unexpected dark theme styling on mobile */
+    <section className="mx-auto mt-12 sm:mt-16 lg:mt-24 max-w-6xl px-4 sm:px-6 w-full">
       <div className="grid gap-4 sm:grid-cols-3">
         {stats.map((stat) => (
           <div
             key={stat.label}
             className={`rounded-2xl border p-6 text-center shadow-sm ${stat.highlight
-                ? 'border-brand-blue bg-brand-blue text-brand-blue-foreground'
-                : 'border-border bg-card text-card-foreground'
+                ? 'border-brand-blue bg-brand-blue text-white'
+                : 'border-border bg-white text-brand-navy'
               }`}
           >
             <p
-              className={`font-heading text-4xl font-extrabold ${stat.highlight ? 'text-brand-blue-foreground' : 'text-brand-orange'
+              className={`font-heading text-4xl font-extrabold ${stat.highlight ? 'text-white' : 'text-brand-orange'
                 }`}
             >
               {stat.value}
@@ -44,7 +43,7 @@ export function Stats() {
             </p>
             <p
               className={`mt-1 text-xs ${stat.highlight
-                  ? 'text-brand-blue-foreground/80'
+                  ? 'text-white/80'
                   : 'text-muted-foreground'
                 }`}
             >

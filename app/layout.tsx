@@ -82,10 +82,11 @@ export const metadata: Metadata = {
   generator: 'v0.app',
 }
 
+// FIXED: Changed themeColor to a light/neutral tone (#ffffff) to stop mobile browsers from assuming a dark mode background 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#16293a',
+  themeColor: '#ffffff',
   colorScheme: 'light',
 }
 
@@ -118,16 +119,18 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
+    // FIXED: Appended the explicit "light" class and locked style colorScheme to 'light' 
+    // This blocks your mobile operating systems from forcing an automatic dark inversion layout.
     <html
       lang="en"
-      className={`${inter.variable} ${poppins.variable} bg-background`}
+      className={`${inter.variable} ${poppins.variable} bg-background light`}
+      style={{ colorScheme: 'light' }}
     >
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Render SiteHeader globally so it appears automatically across all route paths */}
         <SiteHeader />
 
         {children}
