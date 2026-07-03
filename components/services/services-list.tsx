@@ -40,7 +40,7 @@ const services: Service[] = [
       'Performance tracking',
     ],
     tone: 'orange',
-    image: '/images/services/gmb-optimization.jpg',
+    image: '/images/google-buisness-profile-image.png',
     alt: 'Local business map pin location showing top ranking on a mobile screen',
   },
   {
@@ -57,7 +57,7 @@ const services: Service[] = [
       'Monthly ranking reports',
     ],
     tone: 'blue',
-    image: '/images/services/local-seo.jpg',
+    image: '/images/local-seo.png',
     alt: 'Organic search query showing local business results near the user location',
   },
   {
@@ -73,8 +73,8 @@ const services: Service[] = [
       'Basic on-site SEO setup',
     ],
     tone: 'orange',
-    image: '/images/services/website-design.jpg',
-    alt: 'Clean responsive storefront website layout displaying perfectly on an Indian retail phone mockup',
+    image: '/images/website-and-development.png',
+    alt: 'Clean responsive storefront website layout displaying perfectly on a phone mockup',
   },
   {
     icon: Share2,
@@ -89,7 +89,7 @@ const services: Service[] = [
       'Performance reporting',
     ],
     tone: 'blue',
-    image: '/images/services/social-marketing.jpg',
+    image: '/images/social-media-marketing.png',
     alt: 'Local community engagement interface on Instagram with target demographics',
   },
   {
@@ -105,7 +105,7 @@ const services: Service[] = [
       'Print-ready materials for in-store use',
     ],
     tone: 'orange',
-    image: '/images/services/graphic-design.jpg',
+    image: '/images/graphic-designing.png',
     alt: 'Premium local promotional festival offer banner and graphic assets layout',
   },
   {
@@ -121,7 +121,7 @@ const services: Service[] = [
       'Performance tracking & optimization',
     ],
     tone: 'blue',
-    image: '/images/services/local-ads.jpg',
+    image: '/images/Local-Google-Meta-Ads.png',
     alt: 'Sponsored target advertisements layout tracking high physical shop footfall clicks',
   },
   {
@@ -138,8 +138,8 @@ const services: Service[] = [
       'Order/enquiry tracking',
     ],
     tone: 'orange',
-    image: '/images/services/whatsapp-marketing.jpg',
-    alt: 'Interactive customer conversation utilizing a business custom automation catalog catalog setup',
+    image: '/images/whatsapp-marketing.png',
+    alt: 'Interactive customer conversation utilizing a business custom automation catalog setup',
   },
   {
     icon: ListChecks,
@@ -154,7 +154,7 @@ const services: Service[] = [
       'Periodic listing audits',
     ],
     tone: 'blue',
-    image: '/images/services/business-listings.jpg',
+    image: '/images/local-listings.png',
     alt: 'Verified marketplace business catalog listings exhibiting precise contact details data profiles',
   },
 ]
@@ -187,9 +187,7 @@ function ScrollReveal({ children }: { children: React.ReactNode }) {
   return (
     <div
       ref={elementRef}
-      className={`transition-all duration-700 ease-out ${isVisible
-        ? 'opacity-100 translate-y-0'
-        : 'opacity-0 translate-y-12'
+      className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}
     >
       {children}
@@ -199,112 +197,104 @@ function ScrollReveal({ children }: { children: React.ReactNode }) {
 
 export function ServicesList() {
   return (
-    /* FIXED: Forced absolute white background for the whole section wrapper */
     <section
       id="services-list"
-      className="bg-white mx-auto max-w-6xl px-5 sm:px-8 py-20 w-full overflow-hidden select-none touch-pan-y"
+      className="bg-white mx-auto max-w-6xl px-4 sm:px-6 py-14 sm:py-20 w-full overflow-hidden select-none touch-pan-y"
     >
       {/* Animated Header Section */}
       <ScrollReveal>
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
+        <div className="mx-auto max-w-2xl text-center px-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-600">
             What We Offer
           </p>
-          {/* FIXED: Swapped dynamic header text variable to explicit dark zinc text color */}
-          <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl text-zinc-900">
+          <h2 className="mt-3 text-2xl sm:text-4xl font-bold tracking-tight text-zinc-900">
             Eight services, one growth engine
           </h2>
-          {/* FIXED: Changed text-muted-foreground to safe text-zinc-500 */}
-          <p className="mt-4 leading-relaxed text-zinc-500 text-sm sm:text-base">
-            Pick what you need today, or let us build a complete local marketing
-            system around your business.
+          <p className="mt-3 leading-relaxed text-zinc-500 text-xs sm:text-base">
+            Pick what you need today, or let us build a complete local marketing system around your business.
           </p>
         </div>
       </ScrollReveal>
 
-      {/* Cards Stream Container */}
-      <div className="mt-14 flex flex-col gap-8 w-full">
+      {/* Cards Container */}
+      <div className="mt-10 sm:mt-14 flex flex-col gap-8 w-full">
         {services.map((service, index) => {
           const Icon = service.icon
           const isOrange = service.tone === 'orange'
           return (
             <ScrollReveal key={service.title}>
-              <article
-                /* FIXED: Replaced border-border and bg-card variables with pure bg-white and static zinc border classes */
-                className="group relative grid gap-6 overflow-hidden rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md sm:p-8 lg:grid-cols-[1fr_1.3fr_1fr] items-center w-full"
-              >
+              <article className="group relative flex flex-col lg:flex-row items-stretch overflow-hidden rounded-3xl border border-zinc-200 bg-white p-5 sm:p-6 lg:p-8 shadow-sm transition-all duration-300 hover:shadow-md w-full gap-6 lg:gap-8 h-auto lg:h-[460px]">
                 <div
                   aria-hidden="true"
-                  className={`absolute left-0 top-0 h-full w-1.5 ${isOrange ? 'bg-brand-orange' : 'bg-brand-blue'
+                  className={`absolute left-0 top-0 h-full w-1.5 z-20 ${isOrange ? 'bg-orange-500' : 'bg-blue-500'
                     }`}
                 />
 
-                {/* Column 1: Graphic Showcase Preview */}
-                {/* FIXED: Replaced bg-muted with concrete gray border/bg */}
-                <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-square overflow-hidden rounded-2xl bg-zinc-50 border border-zinc-100 pointer-events-none select-none">
+                {/* Left Side Image Container - IMPROVED MOBILE SIZE PARAMETERS */}
+                <div className="relative w-full lg:w-1/2 aspect-[4/3] sm:aspect-video lg:aspect-auto h-auto lg:h-full overflow-hidden rounded-2xl bg-zinc-50 border border-zinc-100 shrink-0 pointer-events-none select-none flex items-center justify-center">
                   <Image
                     src={service.image}
                     alt={service.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 30vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
                     draggable={false}
-                    className="object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none select-none"
+                    priority={index < 2}
+                    className="object-contain p-1.5 sm:p-4 transition-transform duration-500 group-hover:scale-102"
                   />
                 </div>
 
-                {/* Column 2: Text Title and Descriptions */}
-                <div className="h-full flex flex-col justify-start">
-                  <div className="flex items-center gap-4">
-                    <span
-                      className={`flex size-12 shrink-0 items-center justify-center rounded-2xl ${isOrange
-                        ? 'bg-brand-orange text-white shadow-sm shadow-brand-orange/10'
-                        : 'bg-brand-blue text-white shadow-sm shadow-brand-blue/10'
-                        }`}
-                    >
-                      <Icon className="size-6 stroke-[2.25]" />
-                    </span>
-                    <div>
-                      <p
-                        className={`text-xs font-bold uppercase tracking-[0.2em] ${isOrange ? 'text-brand-orange' : 'text-brand-blue'
+                {/* Right Side Details Content Area */}
+                <div className="flex flex-col justify-between flex-1 min-w-0 gap-5">
+                  {/* Text Details Description block */}
+                  <div className="flex flex-col justify-start">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <span
+                        className={`flex size-10 sm:size-12 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl text-white ${isOrange
+                            ? 'bg-orange-500 shadow-sm shadow-orange-500/10'
+                            : 'bg-blue-500 shadow-sm shadow-blue-500/10'
                           }`}
                       >
-                        Service {String(index + 1).padStart(2, '0')}
-                      </p>
-                      {/* FIXED: Swapped variable out for a hard-coded deep zinc font color */}
-                      <h3 className="mt-1 text-balance font-heading text-lg font-bold leading-snug text-zinc-900">
-                        {service.title}
-                      </h3>
-                    </div>
-                  </div>
-                  {/* FIXED: Swapped text-muted-foreground with fixed text-zinc-600 */}
-                  <p className="mt-5 text-xs sm:text-sm leading-relaxed text-zinc-600 text-pretty">
-                    {service.description}
-                  </p>
-                </div>
-
-                {/* Column 3: Feature Checklist */}
-                <div
-                  className={`rounded-2xl p-5 self-stretch flex flex-col justify-center ${isOrange ? 'bg-brand-orange/5' : 'bg-brand-blue/5'
-                    }`}
-                >
-                  {/* FIXED: Avoided system text adjustments here */}
-                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-500">
-                    Includes
-                  </p>
-                  <ul className="mt-3 flex flex-col gap-2.5">
-                    {service.includes.map((item) => (
-                      <li key={item} className="flex items-start gap-2.5 text-xs sm:text-sm">
-                        <Check
-                          className={`mt-0.5 size-4 shrink-0 ${isOrange ? 'text-brand-orange' : 'text-brand-blue'
+                        <Icon className="size-5 sm:size-6 stroke-[2.25]" />
+                      </span>
+                      <div className="min-w-0">
+                        <p
+                          className={`text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] ${isOrange ? 'text-orange-500' : 'text-blue-500'
                             }`}
-                        />
-                        {/* FIXED: Replaced dynamic text-foreground property with firm dark zinc text */}
-                        <span className="leading-normal text-zinc-800 font-medium">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                        >
+                          Service {String(index + 1).padStart(2, '0')}
+                        </p>
+                        <h3 className="mt-0.5 text-zinc-900 text-sm sm:text-base lg:text-lg font-bold leading-snug lg:truncate text-balance">
+                          {service.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="mt-3 text-xs sm:text-sm leading-relaxed text-zinc-600 lg:line-clamp-4">
+                      {service.description}
+                    </p>
+                  </div>
+
+                  {/* Feature Checklist container block */}
+                  <div
+                    className={`rounded-2xl p-4 sm:p-5 w-full ${isOrange ? 'bg-orange-500/5' : 'bg-blue-500/5'
+                      }`}
+                  >
+                    <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.15em] text-zinc-500">
+                      Includes
+                    </p>
+                    <ul className="mt-2.5 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+                      {service.includes.slice(0, 6).map((item) => (
+                        <li key={item} className="flex items-start gap-2 text-xs sm:text-sm">
+                          <Check
+                            className={`mt-0.5 size-3.5 sm:size-4 shrink-0 ${isOrange ? 'text-orange-500' : 'text-blue-500'
+                              }`}
+                          />
+                          <span className="leading-normal text-zinc-800 font-medium lg:truncate">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </article>
             </ScrollReveal>
