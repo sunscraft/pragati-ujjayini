@@ -29,6 +29,18 @@ export const metadata: Metadata = {
   },
   description:
     "Pragati Ujjayini empowers local shop owners, doctors, and restaurants across Bharat's cities with high-end digital growth strategies — Google Business, Local SEO, WhatsApp marketing, paid ads, and websites.",
+
+  // FIXED: Added Google Site Verification string from your HTML token snippet
+  verification: {
+    google: 'google5e97253ae38c5c62',
+  },
+
+  // FIXED: Added absolute link declarations to replace the fallback WordPress logo asset
+  icons: {
+    icon: '/pragatiiujjayini-logo.png',       // This displays your logo in standard browser tabs
+    apple: '/pragatiiujjayini-logo.png',      // This displays your logo when saved on iPhones/iPads
+  },
+
   keywords: [
     'digital marketing India',
     'local business marketing',
