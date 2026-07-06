@@ -7,6 +7,7 @@ import { WhyTrust } from '@/components/why-trust'
 import { Pricing } from '@/components/pricing'
 import { FAQ } from '@/components/faq'
 import { CtaBanner } from '@/components/cta-banner'
+import { Carousel } from '@/components/carousel'
 
 export default function Page() {
   return (
@@ -18,6 +19,7 @@ export default function Page() {
         <Categories />
         <DigitalGrowth />
         <WhyTrust />
+        <Carousel />
         <Pricing />
         <FAQ />
         <CtaBanner />

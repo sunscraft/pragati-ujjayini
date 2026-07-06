@@ -37,8 +37,8 @@ export const metadata: Metadata = {
 
   // FIXED: Added absolute link declarations to replace the fallback WordPress logo asset
   icons: {
-    icon: '/pragatiiujjayini-logo.png',       // This displays your logo in standard browser tabs
-    apple: '/pragatiiujjayini-logo.png',      // This displays your logo when saved on iPhones/iPads
+    icon: '/pragati-ujjayini-logo.png',       // This displays your logo in standard browser tabs
+    apple: '/pragati-ujjayini-logo.png',      // This displays your logo when saved on iPhones/iPads
   },
 
   keywords: [
