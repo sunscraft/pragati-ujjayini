@@ -19,7 +19,8 @@ const poppins = Poppins({
   display: 'swap',
 })
 
-const siteUrl = 'https://pragati-ujjayini.example.com'
+// UPDATED: Using your real production URL instead of the placeholder domain
+const siteUrl = 'https://www.pragatiujjayini.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -30,15 +31,13 @@ export const metadata: Metadata = {
   description:
     "Pragati Ujjayini empowers local shop owners, doctors, and restaurants across Bharat's cities with high-end digital growth strategies — Google Business, Local SEO, WhatsApp marketing, paid ads, and websites.",
 
-  // FIXED: Added Google Site Verification string from your HTML token snippet
   verification: {
     google: 'google5e97253ae38c5c62',
   },
 
-  // FIXED: Added absolute link declarations to replace the fallback WordPress logo asset
   icons: {
-    icon: '/pragati-ujjayini-logo.png',       // This displays your logo in standard browser tabs
-    apple: '/pragati-ujjayini-logo.png',      // This displays your logo when saved on iPhones/iPads
+    icon: '/pragati-ujjayini-logo.png',
+    apple: '/pragati-ujjayini-logo.png',
   },
 
   keywords: [
@@ -94,7 +93,6 @@ export const metadata: Metadata = {
   generator: 'v0.app',
 }
 
-// FIXED: Changed themeColor to a light/neutral tone (#ffffff) to stop mobile browsers from assuming a dark mode background 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -102,6 +100,7 @@ export const viewport: Viewport = {
   colorScheme: 'light',
 }
 
+// Existing Professional Service Schema
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
@@ -125,24 +124,43 @@ const jsonLd = {
   },
 }
 
+// NEW STRUCTURAL DATA: Sitelinks Searchbox Schema
+const sitelinksJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Pragati Ujjayini',
+  url: siteUrl,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${siteUrl}/?s={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    // FIXED: Appended the explicit "light" class and locked style colorScheme to 'light' 
-    // This blocks your mobile operating systems from forcing an automatic dark inversion layout.
     <html
       lang="en"
       className={`${inter.variable} ${poppins.variable} bg-background light`}
       style={{ colorScheme: 'light' }}
     >
       <body className="font-sans antialiased">
+        {/* Professional Service Mapping */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+
+        {/* Sitelinks Box Mapping */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(sitelinksJsonLd) }}
+        />
+
         <SiteHeader />
 
         {children}
