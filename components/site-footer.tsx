@@ -134,7 +134,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm text-brand-navy-foreground/70">
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 size-4 shrink-0 text-brand-blue" />
-              1st Floor, Mahakal Vanijya Kendra, Nanakheda, Ujjain.
+              Ujjain India.
             </li>
             <li className="flex items-center gap-2">
               <Phone className="size-4 shrink-0 text-brand-blue" />

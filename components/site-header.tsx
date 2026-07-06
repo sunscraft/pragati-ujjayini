@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 const navLinks = [
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
-  { label: 'Process', href: '/#process' },
+  { label: 'Process', href: '/process' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -65,7 +65,7 @@ export function SiteHeader() {
             render={<Link href="/contact" />}
             className="rounded-full bg-brand-orange px-5 font-semibold text-brand-orange-foreground [a]:hover:bg-brand-orange/90"
           >
-            Free Demo
+            Free Audit
           </Button>
         </div>
 

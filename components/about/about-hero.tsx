@@ -28,13 +28,7 @@ export function AboutHero() {
             visibility that large brands take for granted.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button
-              nativeButton={false}
-              render={<a href="#work-with-us" />}
-              className="h-11 rounded-full bg-brand-orange px-6 text-sm font-semibold text-brand-orange-foreground [a]:hover:bg-brand-orange/90"
-            >
-              Work With Us
-            </Button>
+
             <Button
               nativeButton={false}
               render={<a href="/services" />}
