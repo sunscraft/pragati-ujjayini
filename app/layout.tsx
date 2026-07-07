@@ -66,7 +66,7 @@ export const metadata: Metadata = {
       'High-end digital growth strategies for local businesses across Bharat — built for shop owners, doctors, and restaurants.',
     images: [
       {
-        url: '/images/hero-dashboard.png',
+        url: 'https://www.pragatiujjayini.com/pragati-ujjayini-logo.png',
         width: 1200,
         height: 630,
         alt: 'Pragati Ujjayini digital growth dashboards',
