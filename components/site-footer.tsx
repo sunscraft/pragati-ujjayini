@@ -136,13 +136,23 @@ export function SiteFooter() {
               <MapPin className="mt-0.5 size-4 shrink-0 text-brand-blue" />
               Ujjain India.
             </li>
-            <li className="flex items-center gap-2">
-              <Phone className="size-4 shrink-0 text-brand-blue" />
-              +91 9202668977
+            <li>
+              <a
+                href="tel:+919202668977"
+                className="flex items-center gap-2 transition-colors hover:text-brand-navy-foreground"
+              >
+                <Phone className="size-4 shrink-0 text-brand-blue" />
+                +91 9202668977
+              </a>
             </li>
-            <li className="flex items-center gap-2">
-              <Mail className="size-4 shrink-0 text-brand-blue" />
-              pragatiujjayini@gmail.com
+            <li>
+              <a
+                href="mailto:pragatiujjayini@gmail.com"
+                className="flex items-center gap-2 transition-colors hover:text-brand-navy-foreground"
+              >
+                <Mail className="size-4 shrink-0 text-brand-blue" />
+                pragatiujjayini@gmail.com
+              </a>
             </li>
           </ul>
 

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link' // Import Next.js Link
 import { Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -26,11 +27,9 @@ export function Hero() {
 
       <section
         id="about"
-        /* FIXED: Changed overflow-x-hidden to a strict overflow-hidden to eliminate all horizontal dragging/swaying */
         className="relative min-h-[auto] md:min-h-screen flex items-center justify-center bg-background pt-24 pb-16 md:pt-32 md:pb-40 w-full overflow-hidden select-none touch-pan-y"
       >
         {/* Background Image Container */}
-        {/* FIXED: Explicitly pinned left-0 top-0 and used w-full h-full to guarantee it never stretches the layout viewport */}
         <div className="absolute left-0 top-0 w-full h-full z-0 pointer-events-none select-none touch-none overflow-hidden">
           <Image
             src="/images/hero-bg.jpg"
@@ -40,7 +39,6 @@ export function Hero() {
             draggable={false}
             className="object-cover object-right lg:object-center opacity-85 pointer-events-none select-none"
           />
-          {/* FIXED: Removed mobile vertical layout gradient for a unified horizontal clean blend matching PC view */}
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-transparent z-10" />
         </div>
 
@@ -73,17 +71,18 @@ export function Hero() {
               streets.
             </p>
 
+            {/* FIXED: Links updated to match your required routes */}
             <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-4 justify-center lg:justify-start">
               <Button
                 nativeButton={false}
-                render={<a href="#contact" />}
+                render={<Link href="/contact" />}
                 className="h-12 w-full sm:w-auto justify-center rounded-full bg-brand-orange px-7 text-sm font-semibold text-brand-orange-foreground shadow-lg shadow-brand-orange/20 transition-all hover:bg-brand-orange/90 hover:shadow-xl hover:shadow-brand-orange/35"
               >
                 Get a Free Audit
               </Button>
               <Button
                 nativeButton={false}
-                render={<a href="#services" />}
+                render={<Link href="/services" />}
                 className="h-12 w-full sm:w-auto justify-center rounded-full bg-brand-blue px-7 text-sm font-semibold text-brand-blue-foreground shadow-lg shadow-brand-blue/20 transition-all hover:bg-brand-blue/90 hover:shadow-xl hover:shadow-brand-blue/35"
               >
                 View Services
@@ -91,7 +90,7 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Cards hidden completely on mobile layouts */}
+          {/* Right Column: Cards */}
           <div className="relative h-[350px] md:h-[450px] w-full hidden sm:block animate-fade-up opacity-0" style={{ animationDelay: '200ms' }}>
             <div className="absolute top-[15%] left-[5%] md:left-[10%] z-20 flex items-center gap-3.5 rounded-2xl border border-white/50 bg-white/70 p-4 shadow-xl backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-white/85 hover:shadow-2xl animate-float-slow">
               <div className="flex size-11 items-center justify-center rounded-xl bg-brand-orange/15 text-brand-orange">

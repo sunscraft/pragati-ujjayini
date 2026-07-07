@@ -5,7 +5,7 @@ import React from "react";
 // Lucide import removed to fix the compilation export error
 export default function WhatsAppButton() {
     // Replace this with your actual phone number (include country code, no spaces or +)
-    const phoneNumber = "1234567890";
+    const phoneNumber = "+919202668977";
     const defaultMessage = encodeURIComponent("Hello! I would like to inquire about your services.");
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
 
