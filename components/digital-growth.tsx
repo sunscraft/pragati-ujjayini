@@ -13,21 +13,22 @@ import {
   Globe,
 } from 'lucide-react'
 
+// 1. Updated photos array to use absolute paths pointing directly to your public folder
 const photos = [
   {
-    src: '/images/retail-shop.png',
+    src: '/images/Corporate Image 1 (1).png',
     alt: 'Smiling local shop owner in front of his open kirana store',
   },
   {
-    src: '/images/customer-phone.png',
+    src: '/images/Corporate Image 2 (3).png',
     alt: 'Customer using a smartphone to pay at a retail store counter',
   },
   {
-    src: '/images/team-laptops.png',
+    src: '/images/Shop 3.png',
     alt: 'Digital marketing team collaborating on laptops in an office',
   },
   {
-    src: '/images/business-meeting.png',
+    src: '/images/Shop owner Image 1 (2).png',
     alt: 'Marketing consultant meeting with a local business owner',
   },
 ]
@@ -92,10 +93,10 @@ export function DigitalGrowth() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsIntersecting(true)
-          observer.unobserve(entry.target) // Stop observing once it runs
+          observer.unobserve(entry.target)
         }
       },
-      { threshold: 0.1 } // Triggers when 10% of the section is visible
+      { threshold: 0.1 }
     )
 
     if (sectionRef.current) {
@@ -106,10 +107,8 @@ export function DigitalGrowth() {
   }, [])
 
   return (
-    /* FIXED: Wrapped section container with a hardcoded light theme wrapper */
     <div className="w-full bg-white text-zinc-900">
       <section id="services" ref={sectionRef} className="mx-auto max-w-6xl px-4 py-20 sm:px-6 overflow-hidden">
-        {/* Custom embedded style tags for slower, smoother left-to-right view transitions */}
         <style dangerouslySetInnerHTML={{
           __html: `
           @keyframes growth-fade-slide-right {
@@ -120,7 +119,6 @@ export function DigitalGrowth() {
             opacity: 0;
           }
           .growth-visible .animate-growth-item {
-            /* Smooth out-expo easing curve matching your pricing speed */
             animation: growth-fade-slide-right 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           }
         `}} />
@@ -130,12 +128,10 @@ export function DigitalGrowth() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
               What We Do
             </p>
-            {/* FIXED: Explicit deep text-zinc-900 header class lock */}
             <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
               Comprehensive Digital Growth
             </h2>
           </div>
-          {/* FIXED: Changed text-muted-foreground over to steady, crisp text-zinc-600 */}
           <p className="leading-relaxed text-zinc-600 animate-growth-item" style={{ animationDelay: '150ms' }}>
             A complete, hyper-local marketing toolkit designed to drive footfall
             and revenue for businesses rooted in their neighbourhood.
@@ -146,7 +142,7 @@ export function DigitalGrowth() {
         <div className={`mt-10 grid grid-cols-2 gap-4 ${isIntersecting ? 'growth-visible' : ''}`}>
           {photos.map((photo, index) => (
             <div
-              key={photo.src}
+              key={index}
               className="animate-growth-item relative aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-100"
               style={{ animationDelay: `${(index + 1) * 150}ms` }}
             >
@@ -169,9 +165,7 @@ export function DigitalGrowth() {
             return (
               <article
                 key={service.title}
-                /* FIXED: Explicit light background card and neat concrete gray border settings built in */
                 className="animate-growth-item rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
-                /* Staggers grid layout entry slightly by row position index */
                 style={{ animationDelay: `${(index + 1) * 100 + 400}ms` }}
               >
                 <div
@@ -182,11 +176,9 @@ export function DigitalGrowth() {
                 >
                   <Icon className="size-5" />
                 </div>
-                {/* FIXED: Secure header coloring tracking layout */}
                 <h3 className="mt-4 font-heading text-base font-bold text-zinc-900">
                   {service.title}
                 </h3>
-                {/* FIXED: Exchanged text-muted-foreground context to precise text-zinc-500 styling */}
                 <p className="mt-1.5 text-sm leading-relaxed text-zinc-500">
                   {service.desc}
                 </p>
