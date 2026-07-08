@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     "Pragati Ujjayini empowers local shop owners, doctors, and restaurants across Bharat's cities with high-end digital growth strategies — Google Business, Local SEO, WhatsApp marketing, paid ads, and websites.",
 
   verification: {
-    google: 'google5e97253ae38c5c62',
+    google: 'XU-CFWbCfgysHtLxEvpvI56G6ysmemgWBQ-E1WxKkUc2',
   },
 
   icons: {
