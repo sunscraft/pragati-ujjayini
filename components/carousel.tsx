@@ -5,13 +5,13 @@ import Image from 'next/image'
 
 const carouselImages = [
     { src: '/images/google-buisness-profile-image.png', alt: 'Google Business Profile Optimization' },
-    { src: '/images/local-seo.png', alt: 'Local SEO Services' },
-    { src: '/images/website-and-development.png', alt: 'Website Design and Development' },
-    { src: '/images/social-media-marketing.png', alt: 'Social Media Marketing' },
-    { src: '/images/graphic-designing.png', alt: 'Professional Graphic Designing' },
-    { src: '/images/Local-Google-Meta-Ads.png', alt: 'Local Google & Meta Ads Management' },
-    { src: '/images/whatsapp-marketing.png', alt: 'WhatsApp Marketing Campaigns' },
-    { src: '/images/local-business-directories.png', alt: 'Local Business Directories Listing' },
+    { src: '/images/local-seo.webp', alt: 'Local SEO Services' },
+    { src: '/images/website-and-development.webp', alt: 'Website Design and Development' },
+    { src: '/images/social-media-marketing.webp', alt: 'Social Media Marketing' },
+    { src: '/images/graphic-designing.webp', alt: 'Professional Graphic Designing' },
+    { src: '/images/Local-Google-Meta-Ads.webp', alt: 'Local Google & Meta Ads Management' },
+    { src: '/images/whatsapp-marketing.webp', alt: 'WhatsApp Marketing Campaigns' },
+    { src: '/images/local-business-directories.webp', alt: 'Local Business Directories Listing' },
 ]
 
 export function Carousel() {
