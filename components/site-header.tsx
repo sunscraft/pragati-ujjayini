@@ -11,6 +11,7 @@ const navLinks = [
   { label: 'Services', href: '/services' },
   { label: 'Process', href: '/process' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Blog', href: '/blog' },
 ]
 
 export function SiteHeader() {
