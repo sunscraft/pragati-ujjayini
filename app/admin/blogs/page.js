@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Blog from "@/models/Blog";
-import connectDB from "@/utils/db";
+import connectDB from "@/lib/db";
 
 export const revalidate = 0; // Disable static caching so new posts show up immediately
 
