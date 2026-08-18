@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import {
   MapPin,
   Search,
@@ -12,6 +13,7 @@ import {
   MessageCircle,
   ListChecks,
   Check,
+  ArrowRight,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
@@ -23,6 +25,7 @@ type Service = {
   tone: 'orange' | 'blue'
   image: string
   alt: string
+  href?: string
 }
 
 const services: Service[] = [
@@ -223,14 +226,14 @@ export function ServicesList() {
           const isOrange = service.tone === 'orange'
           return (
             <ScrollReveal key={service.title}>
-              <article className="group relative flex flex-col lg:flex-row items-stretch overflow-hidden rounded-3xl border border-zinc-200 bg-white p-5 sm:p-6 lg:p-8 shadow-sm transition-all duration-300 hover:shadow-md w-full gap-6 lg:gap-8 h-auto lg:h-[460px]">
+              <article className="group relative flex flex-col lg:flex-row items-stretch overflow-hidden rounded-3xl border border-zinc-200 bg-white p-5 sm:p-6 lg:p-8 shadow-sm transition-all duration-300 hover:shadow-md w-full gap-6 lg:gap-8 h-auto lg:h-[480px]">
                 <div
                   aria-hidden="true"
                   className={`absolute left-0 top-0 h-full w-1.5 z-20 ${isOrange ? 'bg-orange-500' : 'bg-blue-500'
                     }`}
                 />
 
-                {/* Left Side Image Container - IMPROVED MOBILE SIZE PARAMETERS */}
+                {/* Left Side Image Container */}
                 <div className="relative w-full lg:w-1/2 aspect-[4/3] sm:aspect-video lg:aspect-auto h-auto lg:h-full overflow-hidden rounded-2xl bg-zinc-50 border border-zinc-100 shrink-0 pointer-events-none select-none flex items-center justify-center">
                   <Image
                     src={service.image}
@@ -268,7 +271,7 @@ export function ServicesList() {
                         </h3>
                       </div>
                     </div>
-                    <p className="mt-3 text-xs sm:text-sm leading-relaxed text-zinc-600 lg:line-clamp-4">
+                    <p className="mt-3 text-xs sm:text-sm leading-relaxed text-zinc-600 lg:line-clamp-3">
                       {service.description}
                     </p>
                   </div>
@@ -294,6 +297,20 @@ export function ServicesList() {
                         </li>
                       ))}
                     </ul>
+                  </div>
+
+                  {/* CTA Button Block */}
+                  <div className="flex justify-end pt-1">
+                    <Link
+                      href={service.href || '#contact'}
+                      className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all duration-200 shadow-sm ${isOrange
+                          ? 'bg-orange-500 hover:bg-orange-600 shadow-orange-500/20'
+                          : 'bg-blue-500 hover:bg-blue-600 shadow-blue-500/20'
+                        }`}
+                    >
+                      <span>Explore this service</span>
+                      <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+                    </Link>
                   </div>
                 </div>
               </article>
