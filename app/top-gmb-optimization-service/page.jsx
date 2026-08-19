@@ -1,5 +1,20 @@
 import Script from "next/script";
-import { MessageCircle, CheckCircle, MapPin, Search, Star, ArrowRight, PhoneCall } from "lucide-react";
+import {
+    MessageCircle,
+    Check,
+    MapPin,
+    Search,
+    Star,
+    Eye,
+    Phone,
+    CheckCircle2,
+    TrendingUp,
+    Briefcase,
+    Activity,
+    Utensils,
+    ShoppingBag,
+    ArrowRight
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
@@ -209,7 +224,7 @@ const serviceInclusions = [
     },
     {
         title: "5. Local SEO & Visibility Support",
-        desc: "We connect your Google Business Profile to your wider local SEO. This includes local citations and keyword tracking in the map pack (the local search results box on Google).",
+        desc: "We connect your Google Business Profile to your wider local SEO. This includes local citations and keyword tracking in the map pack.",
         bullets: [
             "Local citation building and cleanup",
             "Local keyword tracking",
@@ -238,25 +253,6 @@ const processSteps = [
     {
         title: "5. Monitor",
         desc: "We track your rankings and profile activity, adjusting the plan as needed.",
-    },
-];
-
-const targetAudiences = [
-    {
-        title: "Local Service Businesses",
-        desc: "Clinics, salons, repair shops, and field services looking to capture nearby local intent.",
-    },
-    {
-        title: "Restaurants & Hospitality",
-        desc: "Businesses where high-quality photos, updated hours, and customer reviews drive decisions.",
-    },
-    {
-        title: "Retail Shops",
-        desc: "Physical store locations competing directly for nearby footfall and localized buyer searches.",
-    },
-    {
-        title: "Multi-Location Brands",
-        desc: "Businesses operating multiple branches that require centralized profile management and consistency.",
     },
 ];
 
@@ -295,49 +291,141 @@ export default function GMBOptimizationPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
 
-            <div className="bg-slate-50 text-slate-800 min-h-screen">
-                {/* Black Hero Section */}
-                <header className="bg-slate-100 text-slate-900 py-16 md:py-24 px-6 border-b border-slate-200 relative overflow-hidden">
-                    {/* Subtle Orange Glow Accent */}
-                    <div className="absolute top-0 right-0 size-96 bg-brand-orange/15 blur-3xl rounded-full pointer-events-none" />
+            <div className="bg-[#FAF6F0] text-slate-800 min-h-screen font-sans selection:bg-orange-200">
 
-                    <div className="max-w-5xl mx-auto space-y-6 relative z-10">
-                        <span className="inline-block bg-brand-orange/10 text-brand-orange border border-brand-orange/30 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
-                            Google Business Profile & Map Ranking
-                        </span>
-                        <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-slate-900">
-                            Rank #1 on Google Maps: Top{" "}
-                            <span className="text-brand-orange">GMB Optimization Service</span>
-                        </h1>
-                        <p className="text-lg md:text-xl text-slate-700 max-w-3xl leading-relaxed">
-                            We help local businesses get found on Google Search and Google Maps. Our GMB optimization service fixes your Google Business Profile, keeps it active, and helps more local customers find and call you.
-                        </p>
-                        <p className="text-slate-600 max-w-3xl leading-relaxed">
-                            If your shop, clinic, or restaurant is not showing up when people search nearby, your profile needs work. That's what we do.
-                        </p>
-                        <div className="pt-4 flex flex-wrap gap-4">
-                            <Button
-                                nativeButton={false}
-                                render={<a href="/contact" />}
-                                className="h-11 rounded-full bg-brand-orange px-6 text-sm font-semibold text-brand-orange-foreground hover:bg-brand-orange/90 shadow-md shadow-brand-orange/20"
-                            >
-                                Get a Free Profile Audit →
-                            </Button>
-                            <Button
-                                nativeButton={false}
-                                render={<a href="https://wa.me/919202668977" target="_blank" rel="noopener noreferrer" />}
-                                className="h-11 rounded-full border border-slate-300 bg-white text-slate-800 px-6 text-sm font-semibold hover:bg-slate-50 shadow-sm"
-                            >
-                                <MessageCircle className="mr-2 h-4 w-4 text-emerald-600" /> Quick WhatsApp Inquiry
-                            </Button>
+                {/* HERO SECTION */}
+                <header className="pt-12 pb-16 md:py-20 px-6 max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                        {/* Left Content */}
+                        <div className="lg:col-span-7 space-y-6">
+                            <div className="inline-block bg-[#FEF0E6] text-[#D9531E] border border-orange-200/60 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-md">
+                                GMB SERVICE • UJJAIN & INDORE
+                            </div>
+
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-[1.15]">
+                                Rank <span className="text-[#D9531E]">#1 on Google Maps:</span> Top GMB Optimization Service
+                            </h1>
+
+                            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+                                We help local businesses get found on Google Search and Google Maps. Our GMB service fixes your Google Business Profile, keeps it active, and helps more local customers find and call you.
+                            </p>
+
+                            <p className="text-slate-600 leading-relaxed font-normal">
+                                If your shop, clinic, or restaurant is not showing up when people search nearby, your profile needs work. That's what we do.
+                            </p>
+
+                            <div className="pt-2 flex flex-wrap gap-4 items-center">
+                                <a
+                                    href="/contact"
+                                    className="inline-flex items-center justify-center h-12 px-7 rounded-lg bg-[#D9531E] text-white font-semibold text-sm hover:bg-[#c44718] transition-colors shadow-sm"
+                                >
+                                    Get a Free GMB Audit
+                                </a>
+                                <a
+                                    href="#includes"
+                                    className="inline-flex items-center justify-center h-12 px-7 rounded-lg border border-slate-900 text-slate-900 bg-transparent font-semibold text-sm hover:bg-slate-900/5 transition-colors"
+                                >
+                                    See What's Included
+                                </a>
+                            </div>
+
+                            {/* Trust Indicators */}
+                            <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-medium text-slate-600">
+                                <span className="flex items-center gap-1.5">
+                                    <Check className="size-4 text-[#D9531E]" /> 500+ Businesses Helped
+                                </span>
+                                <span className="flex items-center gap-1.5">
+                                    <Check className="size-4 text-[#D9531E]" /> 10+ Cities Served
+                                </span>
+                                <span className="flex items-center gap-1.5">
+                                    <Check className="size-4 text-[#D9531E]" /> Trusted Since 2021
+                                </span>
+                            </div>
                         </div>
+
+                        {/* Right Interactive Mockup Card */}
+                        <div className="lg:col-span-5 relative">
+                            <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xl p-5 sm:p-6 relative">
+                                {/* #1 Badge */}
+                                <div className="absolute -top-3 -right-3 bg-[#0F172A] text-white font-extrabold text-lg px-3 py-1 rounded-md shadow-md">
+                                    #1
+                                </div>
+
+                                {/* Mock Search Bar */}
+                                <div className="bg-[#FAF6F0] rounded-lg px-4 py-3 flex items-center gap-3 border border-orange-100 mb-5">
+                                    <Search className="size-4 text-slate-400" />
+                                    <span className="text-xs sm:text-sm text-slate-700 font-medium truncate">
+                                        "gmb optimization near me" — Ujjain
+                                    </span>
+                                </div>
+
+                                {/* Listing Items */}
+                                <div className="space-y-3">
+                                    {/* Item A - Highlighted */}
+                                    <div className="bg-[#FFF5EE] border border-orange-200/80 rounded-xl p-4 flex items-start gap-3 shadow-xs">
+                                        <div className="size-8 rounded-lg bg-[#D9531E] text-white font-bold flex items-center justify-center shrink-0 text-sm">
+                                            A
+                                        </div>
+                                        <div className="space-y-1">
+                                            <h4 className="font-bold text-slate-900 text-base leading-tight">Your Business</h4>
+                                            <div className="flex items-center gap-1 text-xs">
+                                                <div className="flex text-amber-500">
+                                                    {"★".repeat(5)}
+                                                </div>
+                                                <span className="font-semibold text-slate-800">4.9</span>
+                                                <span className="text-slate-500">(210)</span>
+                                            </div>
+                                            <p className="text-xs text-slate-500">Open · 1.2 km · Mahakal Road</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Item B */}
+                                    <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-start gap-3">
+                                        <div className="size-8 rounded-lg bg-slate-200 text-slate-600 font-bold flex items-center justify-center shrink-0 text-sm">
+                                            B
+                                        </div>
+                                        <div className="space-y-1">
+                                            <h4 className="font-semibold text-slate-700 text-base leading-tight">Competitor Clinic</h4>
+                                            <div className="flex items-center gap-1 text-xs">
+                                                <div className="flex text-amber-400">
+                                                    {"★".repeat(3)}<span className="text-slate-300">★★</span>
+                                                </div>
+                                                <span className="font-semibold text-slate-700">3.8</span>
+                                                <span className="text-slate-400">(64)</span>
+                                            </div>
+                                            <p className="text-xs text-slate-400">Open · 2.4 km</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Item C */}
+                                    <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-start gap-3">
+                                        <div className="size-8 rounded-lg bg-slate-200 text-slate-600 font-bold flex items-center justify-center shrink-0 text-sm">
+                                            C
+                                        </div>
+                                        <div className="space-y-1">
+                                            <h4 className="font-semibold text-slate-700 text-base leading-tight">Another Local Shop</h4>
+                                            <div className="flex items-center gap-1 text-xs">
+                                                <div className="flex text-amber-400">
+                                                    {"★".repeat(3)}<span className="text-slate-300">★★</span>
+                                                </div>
+                                                <span className="font-semibold text-slate-700">3.2</span>
+                                                <span className="text-slate-400">(31)</span>
+                                            </div>
+                                            <p className="text-xs text-slate-400">Open · 3.1 km</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </header>
 
-                <div className="max-w-5xl mx-auto px-6 py-12 space-y-16">
-                    {/* Definition Section */}
-                    <section className="bg-white p-8 rounded-xl shadow-sm border border-slate-200/80 space-y-4">
-                        <h2 className="text-2xl font-bold text-brand-navy">
+                {/* SECTION 1: WHAT IS GMB OPTIMIZATION */}
+                <section className="max-w-7xl mx-auto px-6 py-8">
+                    <div className="bg-white p-8 rounded-2xl border border-slate-200/70 shadow-xs space-y-4">
+                        <h2 className="text-2xl font-bold text-[#0F172A]">
                             What Is a GMB Optimization Service?
                         </h2>
                         <p className="text-slate-600 leading-relaxed">
@@ -346,74 +434,90 @@ export default function GMBOptimizationPage() {
                         <p className="text-slate-600 leading-relaxed">
                             We check your business details, fix errors, add the right categories, and keep your profile active with posts, photos, and reviews. This is part of local SEO, and it works closely with your website and Google listings.
                         </p>
-                        <div className="pt-2 text-sm text-slate-500">
-                            <strong>Related terms:</strong> Google Business Profile optimization, Google My Business optimization, GMB management service, Google Maps optimization service.
+                        <div className="pt-2 text-xs text-slate-500 border-t border-slate-100 mt-4">
+                            <strong className="text-slate-700">Related terms:</strong> Google Business Profile optimization, Google My Business optimization, GMB management service, Google Maps optimization service.
                         </div>
-                    </section>
+                    </div>
+                </section>
 
-                    {/* Why Your Business Needs This Service */}
-                    <section className="space-y-6">
+                {/* SECTION 2: BENEFITS OF GMB OPTIMIZATION */}
+                <section className="max-w-7xl mx-auto px-6 py-12">
+                    <div className="space-y-6">
                         <div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
-                                Why Your Business Needs This Service
+                            <span className="inline-block bg-[#FEF0E6] text-[#D9531E] border border-orange-200/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-2">
+                                BENEFITS
+                            </span>
+                            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
+                                Benefits of GMB Optimization
                             </h2>
-                            <p className="text-slate-600 mt-2 leading-relaxed">
-                                Just having a Google Business Profile is not enough. Google looks at many key signals before showing your business to nearby customers:
-                            </p>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-2 border-t-4 border-t-brand-orange">
-                                <h3 className="font-bold text-brand-navy text-lg">Accurate Category & Details</h3>
-                                <p className="text-slate-600 text-sm leading-relaxed">
-                                    Your primary categories and specific operational details must be exact so Google maps your profile to relevant intent.
-                                </p>
-                            </div>
-                            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-2 border-t-4 border-t-brand-orange">
-                                <h3 className="font-bold text-brand-navy text-lg">Regular Photos & Updates</h3>
-                                <p className="text-slate-600 text-sm leading-relaxed">
-                                    Your profile needs fresh visual media and weekly post updates to demonstrate active business operations.
-                                </p>
-                            </div>
-                            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-2 border-t-4 border-t-brand-orange">
-                                <h3 className="font-bold text-brand-navy text-lg">Real, Recent Reviews</h3>
-                                <p className="text-slate-600 text-sm leading-relaxed">
-                                    Continuous incoming authentic reviews accompanied by prompt owner responses build trust and ranking strength.
-                                </p>
-                            </div>
-                            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-2 border-t-4 border-t-brand-orange">
-                                <h3 className="font-bold text-brand-navy text-lg">NAP Consistency</h3>
-                                <p className="text-slate-600 text-sm leading-relaxed">
-                                    Your Name, Address, and Phone number (NAP) must match identically across all local search directories and website pages.
-                                </p>
-                            </div>
-                        </div>
-                        <p className="text-slate-600 leading-relaxed text-sm">
-                            If any of these are missing or outdated, competitors in Ujjain or Indore will rank above you. This directly affects your Google Maps ranking and local search visibility.
-                        </p>
-                    </section>
 
-                    {/* What Our Service Includes */}
-                    <section className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-3 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs divide-y md:divide-y-0 md:divide-x border-slate-200">
+                            {/* Row 1 */}
+                            <div className="p-6 space-y-2 border-b border-slate-200">
+                                <Eye className="size-5 text-[#D9531E]" />
+                                <h3 className="font-bold text-slate-900 text-base">More Visibility</h3>
+                                <p className="text-xs text-slate-500">On Google Search and Google Maps</p>
+                            </div>
+
+                            <div className="p-6 space-y-2 border-b border-slate-200">
+                                <Phone className="size-5 text-[#D9531E]" />
+                                <h3 className="font-bold text-slate-900 text-base">More Calls</h3>
+                                <p className="text-xs text-slate-500">And direction requests from local customers</p>
+                            </div>
+
+                            <div className="p-6 space-y-2 border-b border-slate-200">
+                                <CheckCircle2 className="size-5 text-[#D9531E]" />
+                                <h3 className="font-bold text-slate-900 text-base">Stronger Reviews</h3>
+                                <p className="text-xs text-slate-500">A more trustworthy review profile</p>
+                            </div>
+
+                            {/* Row 2 */}
+                            <div className="p-6 space-y-2">
+                                <TrendingUp className="size-5 text-[#D9531E]" />
+                                <h3 className="font-bold text-slate-900 text-base">Better Rankings</h3>
+                                <p className="text-xs text-slate-500">In the local map pack</p>
+                            </div>
+
+                            <div className="p-6 space-y-2">
+                                <Briefcase className="size-5 text-[#D9531E]" />
+                                <h3 className="font-bold text-slate-900 text-base">One Identity</h3>
+                                <p className="text-xs text-slate-500">Consistent business identity across the internet</p>
+                            </div>
+
+                            {/* Empty visual tile accent */}
+                            <div className="hidden md:block bg-[#EFECE6]/50 p-6"></div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* SECTION 3: WHAT OUR SERVICE INCLUDES */}
+                <section id="includes" className="max-w-7xl mx-auto px-6 py-12">
+                    <div className="space-y-6">
                         <div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
+                            <span className="inline-block bg-[#FEF0E6] text-[#D9531E] border border-orange-200/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-2">
+                                OUR SERVICES
+                            </span>
+                            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
                                 What Our GMB Optimization Service Includes
                             </h2>
-                            <p className="text-slate-600 mt-2">
+                            <p className="text-slate-600 mt-1">
                                 We break your profile work into five structured parts:
                             </p>
                         </div>
-                        <div className="grid grid-cols-1 gap-6">
+
+                        <div className="grid grid-cols-1 gap-5">
                             {serviceInclusions.map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3"
+                                    className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs space-y-3"
                                 >
-                                    <h3 className="text-xl font-bold text-brand-navy">{item.title}</h3>
+                                    <h3 className="text-lg font-bold text-[#0F172A]">{item.title}</h3>
                                     <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
-                                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-700 pt-2">
+                                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-slate-700 pt-1">
                                         {item.bullets.map((b, bIdx) => (
                                             <li key={bIdx} className="flex items-center gap-2">
-                                                <span className="text-brand-orange font-bold">•</span>
+                                                <span className="size-1.5 rounded-full bg-[#D9531E]"></span>
                                                 <span>{b}</span>
                                             </li>
                                         ))}
@@ -421,199 +525,251 @@ export default function GMBOptimizationPage() {
                                 </div>
                             ))}
                         </div>
-                    </section>
+                    </div>
+                </section>
 
-                    {/* Working Process */}
-                    <section className="space-y-6">
+                {/* SECTION 4: HOW OUR PROCESS WORKS */}
+                <section className="max-w-7xl mx-auto px-6 py-12">
+                    <div className="space-y-6">
                         <div>
-                            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
+                            <span className="inline-block bg-[#FEF0E6] text-[#D9531E] border border-orange-200/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-2">
+                                OUR PROCESS
+                            </span>
+                            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
                                 How Our Process Works
                             </h2>
-                            <p className="text-slate-600 mt-2">
-                                We follow a clear, repeatable process since Google Business Profile optimization is ongoing work, not a one-time task.
+                            <p className="text-slate-600 mt-1">
+                                We follow a clear, repeatable process since Google Business Profile optimization is ongoing work.
                             </p>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                             {processSteps.map((step, idx) => (
                                 <div
                                     key={idx}
-                                    className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-2"
+                                    className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs space-y-2"
                                 >
-                                    <h3 className="text-lg font-bold text-brand-navy">{step.title}</h3>
-                                    <p className="text-sm text-slate-600 leading-relaxed">{step.desc}</p>
+                                    <h3 className="text-base font-bold text-[#0F172A]">{step.title}</h3>
+                                    <p className="text-xs text-slate-600 leading-relaxed">{step.desc}</p>
                                 </div>
                             ))}
                         </div>
-                    </section>
+                    </div>
+                </section>
 
-                    {/* Benefits Section */}
-                    <section className="bg-brand-navy text-brand-navy-foreground p-8 rounded-2xl space-y-6">
-                        <h2 className="text-2xl font-bold">
-                            Benefits of GMB Optimization
-                        </h2>
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-brand-navy-foreground/80 text-sm">
-                            <li className="flex items-start gap-3">
-                                <span className="text-brand-orange font-bold">•</span>
-                                <span>More visibility on Google Search and Google Maps</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <span className="text-brand-orange font-bold">•</span>
-                                <span>More calls and direction requests from local customers</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <span className="text-brand-orange font-bold">•</span>
-                                <span>A stronger, more trustworthy review profile</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <span className="text-brand-orange font-bold">•</span>
-                                <span>Better rankings in the local map pack</span>
-                            </li>
-                            <li className="flex items-start gap-3 md:col-span-2">
-                                <span className="text-brand-orange font-bold">•</span>
-                                <span>One consistent business identity across the internet</span>
-                            </li>
-                        </ul>
-                    </section>
-
-                    {/* Who We Help */}
-                    <section className="space-y-6">
-                        <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
-                            Who We Help
-                        </h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            {targetAudiences.map((aud, idx) => (
-                                <div
-                                    key={idx}
-                                    className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-2"
-                                >
-                                    <h3 className="text-lg font-bold text-brand-navy">{aud.title}</h3>
-                                    <p className="text-sm text-slate-600 leading-relaxed">{aud.desc}</p>
-                                </div>
-                            ))}
+                {/* SECTION 5: WHO WE HELP / WORKS WELL FOR */}
+                <section className="max-w-7xl mx-auto px-6 py-12">
+                    <div className="space-y-6">
+                        <div>
+                            <span className="inline-block bg-[#FEF0E6] text-[#D9531E] border border-orange-200/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-2">
+                                WHO WE HELP
+                            </span>
+                            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
+                                Our GMB Optimization Service Works Well For
+                            </h2>
                         </div>
-                    </section>
 
-                    {/* Regional Service Areas: Ujjain & Indore */}
-                    <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                            <h3 className="text-xl font-bold text-brand-navy">
-                                GMB Optimization Service in Ujjain
-                            </h3>
-                            <p className="text-slate-600 text-sm leading-relaxed">
-                                We provide GMB optimization services for local businesses in Ujjain. We understand how customers in Ujjain search for services, and we build your profile to match that.
-                            </p>
-                            <p className="text-slate-600 text-sm leading-relaxed">
-                                If your Ujjain business isn't showing up for local searches, we can audit your profile and show you exactly what's missing.
-                            </p>
-                        </div>
-                        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                            <h3 className="text-xl font-bold text-brand-navy">
-                                GMB Optimization Service in Indore
-                            </h3>
-                            <p className="text-slate-600 text-sm leading-relaxed">
-                                We also help businesses in Indore improve their Google Business Profile and local search presence. Whether you run one location or manage a branch alongside another city, we keep your profile active and accurate.
-                            </p>
-                            <p className="text-slate-600 text-sm leading-relaxed">
-                                Our team manages listings for Indore businesses across clinics, restaurants, retail, and service industries.
-                            </p>
-                        </div>
-                    </section>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
+                            <div className="p-6 text-center space-y-2">
+                                <Activity className="size-6 text-[#D9531E] mx-auto" />
+                                <h3 className="font-bold text-slate-900 text-sm sm:text-base">Local Service Businesses</h3>
+                                <p className="text-xs text-slate-500">Clinics, salons, and repair shops</p>
+                            </div>
 
-                    {/* Why Choose Us & Results Expectations */}
-                    <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                            <h3 className="text-xl font-bold text-brand-navy">
+                            <div className="p-6 text-center space-y-2">
+                                <Utensils className="size-6 text-[#D9531E] mx-auto" />
+                                <h3 className="font-bold text-slate-900 text-sm sm:text-base">Restaurants & Hospitality</h3>
+                                <p className="text-xs text-slate-500">Where photos and reviews matter most</p>
+                            </div>
+
+                            <div className="p-6 text-center space-y-2">
+                                <ShoppingBag className="size-6 text-[#D9531E] mx-auto" />
+                                <h3 className="font-bold text-slate-900 text-sm sm:text-base">Retail Shops</h3>
+                                <p className="text-xs text-slate-500">Competing for local customers</p>
+                            </div>
+
+                            <div className="p-6 text-center space-y-2">
+                                <MapPin className="size-6 text-[#D9531E] mx-auto" />
+                                <h3 className="font-bold text-slate-900 text-sm sm:text-base">Multi-Location Businesses</h3>
+                                <p className="text-xs text-slate-500">Needing profiles managed together</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* SECTION 6: CITY-SPECIFIC STRATEGY & THE PRAGATI EDGE */}
+                <section className="max-w-7xl mx-auto px-6 py-12 space-y-12">
+
+                    {/* City Specific */}
+                    <div className="space-y-6">
+                        <div>
+                            <span className="inline-block bg-[#FEF0E6] text-[#D9531E] border border-orange-200/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-2">
+                                CITY-SPECIFIC STRATEGY
+                            </span>
+                            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
+                                GMB Optimization Service in Ujjain and Indore
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {/* Ujjain */}
+                            <div className="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs space-y-3">
+                                <span className="inline-block bg-[#FEF0E6] text-[#D9531E] text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded">
+                                    UJJAIN
+                                </span>
+                                <h3 className="text-xl font-bold text-[#0F172A]">
+                                    GMB Optimization for Businesses in Ujjain
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed">
+                                    We provide GMB optimization services to help local businesses in Ujjain build profiles that match how customers search, complete with full audits to fix what is missing.
+                                </p>
+                            </div>
+
+                            {/* Indore */}
+                            <div className="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs space-y-3">
+                                <span className="inline-block bg-[#FEF0E6] text-[#D9531E] text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded">
+                                    INDORE
+                                </span>
+                                <h3 className="text-xl font-bold text-[#0F172A]">
+                                    GMB Optimization for Businesses in Indore
+                                </h3>
+                                <p className="text-slate-600 text-sm leading-relaxed">
+                                    We also help businesses in Indore improve their Google Business Profile and local presence, keeping listings active and accurate across clinics, restaurants, retail, and service industries.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Pragati Edge */}
+                    <div className="space-y-6 pt-4">
+                        <div>
+                            <span className="inline-block bg-[#FEF0E6] text-[#D9531E] border border-orange-200/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-2">
+                                THE PRAGATI EDGE
+                            </span>
+                            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
                                 Why Choose Pragati Ujjayini
-                            </h3>
-                            <ul className="space-y-2 text-sm text-slate-600">
-                                <li className="flex items-start gap-2">
-                                    <span className="text-brand-orange font-bold">•</span>
-                                    <span>Focus on local businesses in Ujjain and Indore, not generic national strategies</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-brand-orange font-bold">•</span>
-                                    <span>Clear process explained in plain language, month by month</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-brand-orange font-bold">•</span>
-                                    <span>Access to real performance reporting, not just summary emails</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-brand-orange font-bold">•</span>
-                                    <span>Flexible plans instead of long, locked-in contracts</span>
-                                </li>
-                            </ul>
+                            </h2>
                         </div>
-                        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
-                            <h3 className="text-xl font-bold text-brand-navy">
-                                What Results You Can Expect
-                            </h3>
-                            <p className="text-slate-600 text-sm leading-relaxed">
-                                We don't promise fixed numbers or guaranteed rankings—no honest agency can since Google's system updates continuously.
-                            </p>
-                            <p className="text-slate-600 text-sm leading-relaxed">
-                                With consistent GMB optimization, expect gradual increases in profile views, searches, direction requests, website clicks, and a stronger review profile. These changes typically build up over the first 30 to 60 days.
-                            </p>
-                        </div>
-                    </section>
 
-                    {/* FAQ Section */}
-                    <section className="space-y-6">
-                        <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm font-medium text-slate-700">
+                            <div className="flex items-start gap-2.5">
+                                <Check className="size-5 text-[#D9531E] shrink-0 mt-0.5" />
+                                <span>We focus on local businesses in Ujjain and Indore, not generic national strategies</span>
+                            </div>
+                            <div className="flex items-start gap-2.5">
+                                <Check className="size-5 text-[#D9531E] shrink-0 mt-0.5" />
+                                <span>We explain our process in plain language, month by month</span>
+                            </div>
+                            <div className="flex items-start gap-2.5">
+                                <Check className="size-5 text-[#D9531E] shrink-0 mt-0.5" />
+                                <span>We give you access to real reporting, not just summary emails</span>
+                            </div>
+                            <div className="flex items-start gap-2.5">
+                                <Check className="size-5 text-[#D9531E] shrink-0 mt-0.5" />
+                                <span>We offer flexible plans instead of long, locked-in contracts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                {/* SECTION 7: HONEST EXPECTATIONS */}
+                <section className="max-w-7xl mx-auto px-6 py-12">
+                    <div className="space-y-6">
+                        <div>
+                            <span className="inline-block bg-[#FEF0E6] text-[#D9531E] border border-orange-200/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-2">
+                                HONEST EXPECTATIONS
+                            </span>
+                            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
+                                What Results You Can Expect
+                            </h2>
+                        </div>
+
+                        <div className="bg-[#FAF6F0] p-6 sm:p-8 rounded-2xl border border-orange-200/70 space-y-6">
+                            <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200/60 text-slate-600 text-sm leading-relaxed">
+                                We don't promise fixed numbers or guaranteed rankings. No honest agency can, since Google's system keeps changing.
+                            </div>
+
+                            <div className="space-y-4">
+                                <h3 className="font-bold text-[#0F172A] text-base">
+                                    What you can expect with consistent GMB optimization:
+                                </h3>
+
+                                <div className="space-y-3 text-sm text-slate-700 font-medium">
+                                    <div className="flex items-center gap-2.5">
+                                        <Check className="size-4 text-[#D9531E]" />
+                                        <span>Gradual increase in profile views and searches</span>
+                                    </div>
+                                    <div className="flex items-center gap-2.5">
+                                        <Check className="size-4 text-[#D9531E]" />
+                                        <span>More website clicks and direction requests</span>
+                                    </div>
+                                    <div className="flex items-center gap-2.5">
+                                        <Check className="size-4 text-[#D9531E]" />
+                                        <span>Better visibility in the local map pack over time</span>
+                                    </div>
+                                    <div className="flex items-center gap-2.5">
+                                        <Check className="size-4 text-[#D9531E]" />
+                                        <span>A stronger review profile that builds trust</span>
+                                    </div>
+                                </div>
+
+                                <p className="text-xs text-slate-500 pt-2">
+                                    These changes usually build up over the first 30 to 60 days and continue as your profile stays active.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* SECTION 8: FAQ */}
+                <section className="max-w-7xl mx-auto px-6 py-12">
+                    <div className="space-y-6">
+                        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
                             Frequently Asked Questions
                         </h2>
-                        <div className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {faqs.map((faq, idx) => (
                                 <div
                                     key={idx}
-                                    className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-2"
+                                    className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs space-y-2"
                                 >
-                                    <h3 className="font-bold text-brand-navy text-lg">{faq.q}</h3>
+                                    <h3 className="font-bold text-[#0F172A] text-base">{faq.q}</h3>
                                     <p className="text-slate-600 text-sm leading-relaxed">{faq.a}</p>
                                 </div>
                             ))}
                         </div>
-                    </section>
+                    </div>
+                </section>
 
-                    {/* Bottom CTA Banner */}
-                    <section id="contact" className="mx-auto max-w-6xl py-4">
-                        <div className="rounded-3xl bg-brand-navy px-6 py-14 text-center text-white sm:px-12 shadow-xl">
-                            <h2 className="mx-auto max-w-2xl text-balance font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
-                                Ready to Scale Your{" "}
-                                <span className="text-brand-orange">Local Business?</span>
-                            </h2>
-                            <p className="mx-auto mt-4 max-w-xl text-pretty leading-relaxed text-slate-200">
-                                Join 500+ local businesses that have already transformed their trade into a modern digital brand.
-                            </p>
-                            <div className="mt-8 flex flex-wrap justify-center gap-3">
-                                <Button
-                                    nativeButton={false}
-                                    render={<a href="/contact" />}
-                                    className="h-11 rounded-full bg-brand-orange px-6 text-sm font-semibold text-brand-orange-foreground [a]:hover:bg-brand-orange/90 shadow-md"
-                                >
-                                    Book Free Consultation
-                                </Button>
-
-                                <Button
-                                    nativeButton={false}
-                                    render={<a href="/contact" />}
-                                    className="h-11 rounded-full border border-white/20 bg-transparent px-6 text-sm font-semibold text-white [a]:hover:bg-white/10"
-                                >
-                                    <MessageCircle className="size-4" />
-                                    WhatsApp Us
-                                </Button>
-                            </div>
-
-                            <div className="bg-white/10 p-6 rounded-2xl max-w-lg mx-auto text-sm text-slate-200 space-y-1 border border-white/10 mt-8">
-                                <p className="font-semibold text-white">Pragati Ujjayini</p>
-                                <p>
-                                    Address: C - 1/2 1st Floor, Mahakal Vanijya Kendra, Nanakheda, Ujjain, MP 456010
-                                </p>
-                                <p className="text-brand-orange font-bold">Phone: +91-9202668977</p>
-                            </div>
+                {/* BOTTOM CTA BANNER */}
+                <section id="contact" className="max-w-7xl mx-auto px-6 py-12">
+                    <div className="rounded-3xl bg-[#0F172A] px-6 py-12 text-center text-white sm:px-12 shadow-xl space-y-6">
+                        <h2 className="text-2xl sm:text-4xl font-extrabold max-w-2xl mx-auto leading-tight">
+                            Ready to Get More Local Calls from Google Maps?
+                        </h2>
+                        <p className="text-slate-300 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+                            Let us audit your Google Business Profile and create an actionable optimization plan tailored to your business in Ujjain or Indore.
+                        </p>
+                        <div className="pt-2 flex flex-wrap justify-center gap-4">
+                            <a
+                                href="https://wa.me/919202668977"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center h-12 px-7 rounded-lg bg-[#D9531E] text-white font-semibold text-sm hover:bg-[#c44718] transition-colors"
+                            >
+                                <MessageCircle className="mr-2 size-4" /> WhatsApp Us Now
+                            </a>
+                            <a
+                                href="/contact"
+                                className="inline-flex items-center justify-center h-12 px-7 rounded-lg border border-slate-700 text-white bg-slate-800/80 font-semibold text-sm hover:bg-slate-800 transition-colors"
+                            >
+                                Get a Free Audit →
+                            </a>
                         </div>
-                    </section>
-                </div>
+                    </div>
+                </section>
+
             </div>
         </>
     );
