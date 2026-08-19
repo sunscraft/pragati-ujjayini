@@ -576,30 +576,40 @@ export default function GMBOptimizationPage() {
                     </section>
 
                     {/* Bottom CTA Banner */}
-                    <section id="contact" className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-                        <div className="rounded-3xl bg-brand-navy px-6 py-14 text-center text-brand-navy-foreground sm:px-12">
+                    <section id="contact" className="mx-auto max-w-6xl py-4">
+                        <div className="rounded-3xl bg-brand-navy px-6 py-14 text-center text-white sm:px-12 shadow-xl">
                             <h2 className="mx-auto max-w-2xl text-balance font-heading text-3xl font-extrabold tracking-tight sm:text-4xl">
                                 Ready to Scale Your{" "}
                                 <span className="text-brand-orange">Local Business?</span>
                             </h2>
-                            <p className="mx-auto mt-4 max-w-xl text-pretty leading-relaxed text-brand-navy-foreground/75">
-                                Join local businesses across Ujjain and Indore that have transformed their Google presence into daily phone calls and walk-ins.
+                            <p className="mx-auto mt-4 max-w-xl text-pretty leading-relaxed text-slate-200">
+                                Join 500+ local businesses that have already transformed their trade into a modern digital brand.
                             </p>
                             <div className="mt-8 flex flex-wrap justify-center gap-3">
                                 <Button
                                     nativeButton={false}
                                     render={<a href="/contact" />}
-                                    className="h-11 rounded-full bg-brand-orange px-6 text-sm font-semibold text-brand-orange-foreground hover:bg-brand-orange/90"
+                                    className="h-11 rounded-full bg-brand-orange px-6 text-sm font-semibold text-brand-orange-foreground [a]:hover:bg-brand-orange/90 shadow-md"
                                 >
-                                    Get Free Profile Audit →
+                                    Book Free Consultation
                                 </Button>
+
                                 <Button
                                     nativeButton={false}
-                                    render={<a href="https://wa.me/919202668977" target="_blank" rel="noopener noreferrer" />}
-                                    className="h-11 rounded-full border border-white/20 bg-white/10 px-6 text-sm font-semibold text-white hover:bg-white/20"
+                                    render={<a href="/contact" />}
+                                    className="h-11 rounded-full border border-white/20 bg-transparent px-6 text-sm font-semibold text-white [a]:hover:bg-white/10"
                                 >
-                                    <MessageCircle className="mr-2 h-4 w-4 text-emerald-400" /> Chat on WhatsApp
+                                    <MessageCircle className="size-4" />
+                                    WhatsApp Us
                                 </Button>
+                            </div>
+
+                            <div className="bg-white/10 p-6 rounded-2xl max-w-lg mx-auto text-sm text-slate-200 space-y-1 border border-white/10 mt-8">
+                                <p className="font-semibold text-white">Pragati Ujjayini</p>
+                                <p>
+                                    Address: C - 1/2 1st Floor, Mahakal Vanijya Kendra, Nanakheda, Ujjain, MP 456010
+                                </p>
+                                <p className="text-brand-orange font-bold">Phone: +91-9202668977</p>
                             </div>
                         </div>
                     </section>
