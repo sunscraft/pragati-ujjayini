@@ -9,35 +9,35 @@ import { Button } from '@/components/ui/button'
 const services = [
   {
     label: 'Google Business Profile & Management',
-    href: '/gmb-optimization-service',
+    href: '/services',
   },
   {
     label: 'Local SEO',
-    href: '/services/local-seo',
+    href: '/services',
   },
   {
     label: 'Website Design & Development',
-    href: '/services/website-design-development',
+    href: '/services',
   },
   {
     label: 'Social Media Marketing',
-    href: '/services/social-media-marketing',
+    href: '/services',
   },
   {
     label: 'Graphic Designing',
-    href: '/services/graphic-designing',
+    href: '/services',
   },
   {
     label: 'Local Google & Meta Ads',
-    href: '/services/local-google-meta-ads',
+    href: '/services',
   },
   {
     label: 'WhatsApp Business Marketing',
-    href: '/services/whatsapp-business-marketing',
+    href: '/services',
   },
   {
     label: 'Local Business Listings & Directories',
-    href: '/services/local-business-listings',
+    href: '/services',
   },
 ]
 

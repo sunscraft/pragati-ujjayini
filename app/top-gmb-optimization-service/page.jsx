@@ -13,7 +13,8 @@ import {
     Activity,
     Utensils,
     ShoppingBag,
-    ArrowRight
+    ArrowRight,
+    ChevronDown
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -347,12 +348,10 @@ export default function GMBOptimizationPage() {
                         {/* Right Interactive Mockup Card */}
                         <div className="lg:col-span-5 relative">
                             <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xl p-5 sm:p-6 relative">
-                                {/* #1 Badge */}
                                 <div className="absolute -top-3 -right-3 bg-[#0F172A] text-white font-extrabold text-lg px-3 py-1 rounded-md shadow-md">
                                     #1
                                 </div>
 
-                                {/* Mock Search Bar */}
                                 <div className="bg-[#FAF6F0] rounded-lg px-4 py-3 flex items-center gap-3 border border-orange-100 mb-5">
                                     <Search className="size-4 text-slate-400" />
                                     <span className="text-xs sm:text-sm text-slate-700 font-medium truncate">
@@ -360,9 +359,7 @@ export default function GMBOptimizationPage() {
                                     </span>
                                 </div>
 
-                                {/* Listing Items */}
                                 <div className="space-y-3">
-                                    {/* Item A - Highlighted */}
                                     <div className="bg-[#FFF5EE] border border-orange-200/80 rounded-xl p-4 flex items-start gap-3 shadow-xs">
                                         <div className="size-8 rounded-lg bg-[#D9531E] text-white font-bold flex items-center justify-center shrink-0 text-sm">
                                             A
@@ -380,7 +377,6 @@ export default function GMBOptimizationPage() {
                                         </div>
                                     </div>
 
-                                    {/* Item B */}
                                     <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-start gap-3">
                                         <div className="size-8 rounded-lg bg-slate-200 text-slate-600 font-bold flex items-center justify-center shrink-0 text-sm">
                                             B
@@ -398,7 +394,6 @@ export default function GMBOptimizationPage() {
                                         </div>
                                     </div>
 
-                                    {/* Item C */}
                                     <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-start gap-3">
                                         <div className="size-8 rounded-lg bg-slate-200 text-slate-600 font-bold flex items-center justify-center shrink-0 text-sm">
                                             C
@@ -453,7 +448,6 @@ export default function GMBOptimizationPage() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs divide-y md:divide-y-0 md:divide-x border-slate-200">
-                            {/* Row 1 */}
                             <div className="p-6 space-y-2 border-b border-slate-200">
                                 <Eye className="size-5 text-[#D9531E]" />
                                 <h3 className="font-bold text-slate-900 text-base">More Visibility</h3>
@@ -472,7 +466,6 @@ export default function GMBOptimizationPage() {
                                 <p className="text-xs text-slate-500">A more trustworthy review profile</p>
                             </div>
 
-                            {/* Row 2 */}
                             <div className="p-6 space-y-2">
                                 <TrendingUp className="size-5 text-[#D9531E]" />
                                 <h3 className="font-bold text-slate-900 text-base">Better Rankings</h3>
@@ -485,7 +478,6 @@ export default function GMBOptimizationPage() {
                                 <p className="text-xs text-slate-500">Consistent business identity across the internet</p>
                             </div>
 
-                            {/* Empty visual tile accent */}
                             <div className="hidden md:block bg-[#EFECE6]/50 p-6"></div>
                         </div>
                     </div>
@@ -597,176 +589,62 @@ export default function GMBOptimizationPage() {
                     </div>
                 </section>
 
-                {/* SECTION 6: CITY-SPECIFIC STRATEGY & THE PRAGATI EDGE */}
-                <section className="max-w-7xl mx-auto px-6 py-12 space-y-12">
-
-                    {/* City Specific */}
-                    <div className="space-y-6">
-                        <div>
-                            <span className="inline-block bg-[#FEF0E6] text-[#D9531E] border border-orange-200/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-2">
-                                CITY-SPECIFIC STRATEGY
-                            </span>
-                            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
-                                GMB Optimization Service in Ujjain and Indore
-                            </h2>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* Ujjain */}
-                            <div className="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs space-y-3">
-                                <span className="inline-block bg-[#FEF0E6] text-[#D9531E] text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded">
-                                    UJJAIN
-                                </span>
-                                <h3 className="text-xl font-bold text-[#0F172A]">
-                                    GMB Optimization for Businesses in Ujjain
-                                </h3>
-                                <p className="text-slate-600 text-sm leading-relaxed">
-                                    We provide GMB optimization services to help local businesses in Ujjain build profiles that match how customers search, complete with full audits to fix what is missing.
-                                </p>
-                            </div>
-
-                            {/* Indore */}
-                            <div className="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-xs space-y-3">
-                                <span className="inline-block bg-[#FEF0E6] text-[#D9531E] text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded">
-                                    INDORE
-                                </span>
-                                <h3 className="text-xl font-bold text-[#0F172A]">
-                                    GMB Optimization for Businesses in Indore
-                                </h3>
-                                <p className="text-slate-600 text-sm leading-relaxed">
-                                    We also help businesses in Indore improve their Google Business Profile and local presence, keeping listings active and accurate across clinics, restaurants, retail, and service industries.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Pragati Edge */}
-                    <div className="space-y-6 pt-4">
-                        <div>
-                            <span className="inline-block bg-[#FEF0E6] text-[#D9531E] border border-orange-200/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-2">
-                                THE PRAGATI EDGE
-                            </span>
-                            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
-                                Why Choose Pragati Ujjayini
-                            </h2>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm font-medium text-slate-700">
-                            <div className="flex items-start gap-2.5">
-                                <Check className="size-5 text-[#D9531E] shrink-0 mt-0.5" />
-                                <span>We focus on local businesses in Ujjain and Indore, not generic national strategies</span>
-                            </div>
-                            <div className="flex items-start gap-2.5">
-                                <Check className="size-5 text-[#D9531E] shrink-0 mt-0.5" />
-                                <span>We explain our process in plain language, month by month</span>
-                            </div>
-                            <div className="flex items-start gap-2.5">
-                                <Check className="size-5 text-[#D9531E] shrink-0 mt-0.5" />
-                                <span>We give you access to real reporting, not just summary emails</span>
-                            </div>
-                            <div className="flex items-start gap-2.5">
-                                <Check className="size-5 text-[#D9531E] shrink-0 mt-0.5" />
-                                <span>We offer flexible plans instead of long, locked-in contracts</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </section>
-
-                {/* SECTION 7: HONEST EXPECTATIONS */}
+                {/* SECTION 6: FAQ ACCORDION DROPDOWN */}
                 <section className="max-w-7xl mx-auto px-6 py-12">
                     <div className="space-y-6">
                         <div>
                             <span className="inline-block bg-[#FEF0E6] text-[#D9531E] border border-orange-200/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md mb-2">
-                                HONEST EXPECTATIONS
+                                FREQUENTLY ASKED QUESTIONS
                             </span>
                             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
-                                What Results You Can Expect
+                                Got Questions? We Have Answers.
                             </h2>
                         </div>
 
-                        <div className="bg-[#FAF6F0] p-6 sm:p-8 rounded-2xl border border-orange-200/70 space-y-6">
-                            <div className="bg-white p-4 sm:p-5 rounded-xl border border-slate-200/60 text-slate-600 text-sm leading-relaxed">
-                                We don't promise fixed numbers or guaranteed rankings. No honest agency can, since Google's system keeps changing.
-                            </div>
-
-                            <div className="space-y-4">
-                                <h3 className="font-bold text-[#0F172A] text-base">
-                                    What you can expect with consistent GMB optimization:
-                                </h3>
-
-                                <div className="space-y-3 text-sm text-slate-700 font-medium">
-                                    <div className="flex items-center gap-2.5">
-                                        <Check className="size-4 text-[#D9531E]" />
-                                        <span>Gradual increase in profile views and searches</span>
-                                    </div>
-                                    <div className="flex items-center gap-2.5">
-                                        <Check className="size-4 text-[#D9531E]" />
-                                        <span>More website clicks and direction requests</span>
-                                    </div>
-                                    <div className="flex items-center gap-2.5">
-                                        <Check className="size-4 text-[#D9531E]" />
-                                        <span>Better visibility in the local map pack over time</span>
-                                    </div>
-                                    <div className="flex items-center gap-2.5">
-                                        <Check className="size-4 text-[#D9531E]" />
-                                        <span>A stronger review profile that builds trust</span>
-                                    </div>
-                                </div>
-
-                                <p className="text-xs text-slate-500 pt-2">
-                                    These changes usually build up over the first 30 to 60 days and continue as your profile stays active.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* SECTION 8: FAQ */}
-                <section className="max-w-7xl mx-auto px-6 py-12">
-                    <div className="space-y-6">
-                        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
-                            Frequently Asked Questions
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-3">
                             {faqs.map((faq, idx) => (
-                                <div
+                                <details
                                     key={idx}
-                                    className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs space-y-2"
+                                    className="group bg-white rounded-xl border border-slate-200/80 shadow-xs transition-all duration-200"
                                 >
-                                    <h3 className="font-bold text-[#0F172A] text-base">{faq.q}</h3>
-                                    <p className="text-slate-600 text-sm leading-relaxed">{faq.a}</p>
-                                </div>
+                                    <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-bold text-[#0F172A] text-base select-none">
+                                        <span>{faq.q}</span>
+                                        <ChevronDown className="size-5 text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0 ml-4" />
+                                    </summary>
+                                    <div className="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3">
+                                        {faq.a}
+                                    </div>
+                                </details>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                {/* BOTTOM CTA BANNER */}
-                <section id="contact" className="max-w-7xl mx-auto px-6 py-12">
-                    <div className="rounded-3xl bg-[#0F172A] px-6 py-12 text-center text-white sm:px-12 shadow-xl space-y-6">
-                        <h2 className="text-2xl sm:text-4xl font-extrabold max-w-2xl mx-auto leading-tight">
-                            Ready to Get More Local Calls from Google Maps?
+                {/* CALL TO ACTION */}
+                <section className="max-w-7xl mx-auto px-6 py-12 pb-20">
+                    <div className="bg-[#0F172A] rounded-2xl p-8 sm:p-12 text-center text-white space-y-6">
+                        <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+                            Ready to Get More Local Calls?
                         </h2>
-                        <p className="text-slate-300 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-                            Let us audit your Google Business Profile and create an actionable optimization plan tailored to your business in Ujjain or Indore.
+                        <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
+                            Let us optimize your Google Business Profile so customers find you first.
                         </p>
-                        <div className="pt-2 flex flex-wrap justify-center gap-4">
-                            <a
-                                href="https://wa.me/919202668977"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center h-12 px-7 rounded-lg bg-[#D9531E] text-white font-semibold text-sm hover:bg-[#c44718] transition-colors"
-                            >
-                                <MessageCircle className="mr-2 size-4" /> WhatsApp Us Now
-                            </a>
+                        <div className="bg-white/10 p-6 rounded-2xl max-w-lg mx-auto text-sm text-slate-200 space-y-1 border border-white/10 mt-8">
+                            <p className="font-semibold text-white">Pragati Ujjayini</p>
+                            <p>
+                                Address: C - 1/2 1st Floor, Mahakal Vanijya Kendra, Nanakheda, Ujjain, MP 456010
+                            </p>
+                            <p className="text-brand-orange font-bold">Phone: +91-9202668977</p>
+                        </div>
+                        <div>
                             <a
                                 href="/contact"
-                                className="inline-flex items-center justify-center h-12 px-7 rounded-lg border border-slate-700 text-white bg-slate-800/80 font-semibold text-sm hover:bg-slate-800 transition-colors"
+                                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-[#D9531E] hover:bg-[#c44718] text-white font-semibold text-sm transition-colors shadow-sm"
                             >
-                                Get a Free Audit →
+                                Get Started Today <ArrowRight className="size-4" />
                             </a>
                         </div>
+
                     </div>
                 </section>
 

@@ -61,7 +61,6 @@ export function Carousel() {
                     })}
                 </div>
             </div>
-
             {/* Required Tailwind Global CSS Injection for the Infinite Marquee Animation */}
             <style jsx global>{`
                 @keyframes infiniteScroll {
