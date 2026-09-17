@@ -1,43 +1,168 @@
 import Blog from "@/models/Blog";
 import connectDB from "@/lib/db";
+import mongoose from "mongoose";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { getSanityBlogBySlug } from "@/lib/sanity.client";
+
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.pragatiujjayini.com";
+
+function stripHtml(html) {
+    if (!html) return '';
+    return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+async function getBlogPost(id) {
+    // 1. Fetch from Sanity CMS
+    try {
+        const sanityBlog = await getSanityBlogBySlug(id);
+        if (sanityBlog) {
+            return {
+                _id: sanityBlog._id,
+                title: sanityBlog.title,
+                slug: sanityBlog.slug || id,
+                author: sanityBlog.author || "Pragati Ujjayini Team",
+                image: sanityBlog.imageUrl || (typeof sanityBlog.mainImage === 'string' ? sanityBlog.mainImage : null),
+                content: typeof sanityBlog.content === 'string' ? sanityBlog.content : '',
+                createdAt: sanityBlog.publishedAt || sanityBlog._createdAt,
+                seoTitle: sanityBlog.seoTitle,
+                seoDescription: sanityBlog.seoDescription,
+                canonicalUrl: sanityBlog.canonicalUrl || `${BASE_URL}/blog/${sanityBlog.slug || id}`,
+                schemaType: sanityBlog.schemaType || "BlogPosting",
+                customSchemaJson: sanityBlog.customSchemaJson,
+            };
+        }
+    } catch (err) {
+        console.warn("Sanity fetch blog detail notice:", err.message);
+    }
+
+    // 2. Fallback to MongoDB
+    try {
+        await connectDB();
+        let mongoBlog = await Blog.findOne({ slug: id }).lean().catch(() => null);
+
+        if (!mongoBlog && mongoose.isValidObjectId(id)) {
+            mongoBlog = await Blog.findById(id).lean().catch(() => null);
+        }
+
+        if (mongoBlog) {
+            const rawSlug = mongoBlog.slug || mongoBlog._id.toString();
+            return {
+                _id: mongoBlog._id.toString(),
+                title: mongoBlog.title,
+                slug: rawSlug,
+                author: mongoBlog.author || "Admin",
+                image: mongoBlog.image,
+                content: mongoBlog.content || '',
+                createdAt: mongoBlog.createdAt,
+                canonicalUrl: `${BASE_URL}/blog/${rawSlug}`,
+                schemaType: "BlogPosting",
+            };
+        }
+    } catch (err) {
+        console.error("MongoDB fetch blog detail error:", err.message);
+    }
+
+    return null;
+}
 
 export async function generateMetadata({ params }) {
     const { id } = await params;
-    await connectDB();
-    const blog = await Blog.findOne({ slug: id }).lean().catch(() => null)
-        ?? await Blog.findById(id).lean().catch(() => null);
-    if (!blog) return { title: "Blog Not Found" };
+    const blog = await getBlogPost(id);
+
+    if (!blog) {
+        return { title: "Blog Post Not Found | Pragati Ujjayini" };
+    }
+
+    const title = blog.seoTitle || `${blog.title} | Pragati Ujjayini`;
+    const description = blog.seoDescription || stripHtml(blog.content).slice(0, 160);
+    const canonical = blog.canonicalUrl || `${BASE_URL}/blog/${blog.slug}`;
+
     return {
-        title: blog.title,
-        description: blog.content?.replace(/<[^>]*>/g, " ").slice(0, 155),
+        title,
+        description,
+        alternates: {
+            canonical,
+        },
+        openGraph: {
+            title,
+            description,
+            url: canonical,
+            type: "article",
+            images: blog.image ? [{ url: blog.image }] : [],
+        },
     };
 }
 
 export default async function BlogPage({ params }) {
     const { id } = await params;
-
-    await connectDB();
-    // Support both slug-based URLs and legacy _id URLs
-    let blog = await Blog.findOne({ slug: id }).lean().catch(() => null);
-    if (!blog) {
-        blog = await Blog.findById(id).lean().catch(() => null);
-    }
+    const blog = await getBlogPost(id);
 
     if (!blog) {
         notFound();
     }
 
-    const formattedDate = new Date(blog.createdAt).toLocaleDateString("en-IN", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-    });
+    const formattedDate = blog.createdAt
+        ? new Date(blog.createdAt).toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+        })
+        : "Recently Published";
+
+    const canonicalUrl = blog.canonicalUrl || `${BASE_URL}/blog/${blog.slug}`;
+
+    // Construct Dynamic JSON-LD Schema
+    let jsonLdSchema = null;
+    if (blog.customSchemaJson) {
+        try {
+            jsonLdSchema = JSON.parse(blog.customSchemaJson);
+        } catch (e) {
+            console.error("Failed to parse custom JSON-LD schema:", e);
+        }
+    }
+
+    if (!jsonLdSchema) {
+        jsonLdSchema = {
+            "@context": "https://schema.org",
+            "@type": blog.schemaType || "BlogPosting",
+            "headline": blog.title,
+            "description": blog.seoDescription || stripHtml(blog.content).slice(0, 160),
+            "url": canonicalUrl,
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": canonicalUrl,
+            },
+            "datePublished": blog.createdAt ? new Date(blog.createdAt).toISOString() : new Date().toISOString(),
+            "author": {
+                "@type": "Person",
+                "name": blog.author || "Pragati Ujjayini Team",
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Pragati Ujjayini",
+                "url": BASE_URL,
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": `${BASE_URL}/favicon.ico`,
+                },
+            },
+            ...(blog.image ? { "image": blog.image } : {}),
+        };
+    }
 
     return (
         <>
-            {/* Inject scoped styles via a style tag */}
+            {/* Dynamic Canonical Tag */}
+            <link rel="canonical" href={canonicalUrl} />
+
+            {/* Dynamic JSON-LD Structured Data Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
+            />
+
+            {/* Injected Scoped Styles */}
             <style>{`
                 .blog-hero {
                     background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #fef3c7 100%);

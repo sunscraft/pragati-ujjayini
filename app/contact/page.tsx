@@ -52,10 +52,11 @@ export default function ContactPage() {
             servicesNeeded: selectedHelp
         }
 
-        console.log("Sending data to backend:", payload)
+        console.log("Sending data to Sanity & Backend:", payload)
 
         try {
-            const response = await fetch('/api/contact', {
+            // 1. Submit to Sanity CMS Backend
+            const sanityResponse = await fetch('/api/sanity-contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -63,10 +64,21 @@ export default function ContactPage() {
                 body: JSON.stringify(payload),
             })
 
-            const data = await response.json()
+            const sanityData = await sanityResponse.json()
 
-            if (response.ok) {
-                alert('Enquiry saved successfully!')
+            // 2. Also submit to existing MongoDB / Nodemailer backend
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            }).catch((err) => console.warn('Secondary backend dispatch notice:', err));
+
+            if (sanityResponse.ok) {
+                if (sanityData.warning) {
+                    alert(`Enquiry Submitted! Note: ${sanityData.warning}`)
+                } else {
+                    alert('Enquiry saved successfully to Sanity backend!')
+                }
                 setFormData({
                     fullName: '',
                     businessName: '',
@@ -78,11 +90,11 @@ export default function ContactPage() {
                 })
                 setSelectedHelp([])
             } else {
-                alert(`Error: ${data.message || 'Something went wrong'}`)
+                alert(`Error: ${sanityData.error || 'Something went wrong submitting to Sanity backend'}`)
             }
         } catch (error) {
             console.error('Network Error:', error)
-            alert('Failed to connect to the server.')
+            alert('Failed to connect to the form backend server.')
         }
     }
 

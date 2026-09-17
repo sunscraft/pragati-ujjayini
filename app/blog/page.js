@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Blog from "@/models/Blog";
 import connectDB from "@/lib/db";
+import { getSanityBlogs } from "@/lib/sanity.client";
 
 function stripHtml(html) {
     if (!html) return '';
@@ -9,11 +10,37 @@ function stripHtml(html) {
 
 export const revalidate = 0;
 
-export default async function BlogListPage() {
-    await connectDB();
+async function fetchAllBlogs() {
+    // 1. Primary: Fetch from Sanity CMS
+    try {
+        const sanityBlogs = await getSanityBlogs();
+        if (sanityBlogs && sanityBlogs.length > 0) {
+            return sanityBlogs.map((b) => ({
+                _id: b._id,
+                slug: b.slug || b._id,
+                title: b.title,
+                image: b.imageUrl || (typeof b.mainImage === 'string' ? b.mainImage : null),
+                content: typeof b.content === 'string' ? b.content : (b.seoDescription || ''),
+                createdAt: b.publishedAt || b._createdAt,
+            }));
+        }
+    } catch (err) {
+        console.warn('Sanity blogs fetch notice:', err.message);
+    }
 
-    const rawBlogs = await Blog.find({}).sort({ createdAt: -1 }).lean();
-    const blogs = JSON.parse(JSON.stringify(rawBlogs));
+    // 2. Fallback: Fetch from MongoDB database
+    try {
+        await connectDB();
+        const rawBlogs = await Blog.find({}).sort({ createdAt: -1 }).lean();
+        return JSON.parse(JSON.stringify(rawBlogs));
+    } catch (err) {
+        console.error('MongoDB blogs fetch error:', err.message);
+        return [];
+    }
+}
+
+export default async function BlogListPage() {
+    const blogs = await fetchAllBlogs();
 
     return (
         <div className="bg-brand-cream/40 min-h-screen">
@@ -61,11 +88,11 @@ export default async function BlogListPage() {
 
                                 <div className="flex flex-1 flex-col p-6">
                                     <p className="text-xs font-medium text-brand-blue">
-                                        {new Date(post.createdAt).toLocaleDateString("en-IN", {
+                                        {post.createdAt ? new Date(post.createdAt).toLocaleDateString("en-IN", {
                                             day: "numeric",
                                             month: "long",
                                             year: "numeric",
-                                        })}
+                                        }) : 'Recently Published'}
                                     </p>
                                     <h2 className="mt-2 font-heading text-lg font-bold text-brand-navy leading-snug line-clamp-2 group-hover:text-brand-orange transition-colors">
                                         {post.title}

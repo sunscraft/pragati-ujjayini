@@ -313,23 +313,44 @@ export default function DashboardLayout({ initialLeads = [], initialBlogs = [] }
                         </p>
                     </div>
 
-                    {activeTab === 'blogs' && (
-                        <button
-                            onClick={() => (showBlogForm ? closeBlogForm() : openNewBlogForm())}
+                    <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                        <a
+                            href="/admin/studio"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             style={{
-                                backgroundColor: showBlogForm ? '#f1f5f9' : '#0f172a',
-                                color: showBlogForm ? '#0f172a' : '#ffffff',
-                                border: 'none',
+                                backgroundColor: '#ea580c',
+                                color: '#ffffff',
                                 padding: '10px 18px',
                                 borderRadius: '8px',
                                 fontSize: '14px',
                                 fontWeight: '600',
-                                cursor: 'pointer'
+                                textDecoration: 'none',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '6px'
                             }}
                         >
-                            {showBlogForm ? 'Cancel' : '+ New Blog Post'}
-                        </button>
-                    )}
+                            ⚡ Open Sanity Studio CMS
+                        </a>
+                        {activeTab === 'blogs' && (
+                            <button
+                                onClick={() => (showBlogForm ? closeBlogForm() : openNewBlogForm())}
+                                style={{
+                                    backgroundColor: showBlogForm ? '#f1f5f9' : '#0f172a',
+                                    color: showBlogForm ? '#0f172a' : '#ffffff',
+                                    border: 'none',
+                                    padding: '10px 18px',
+                                    borderRadius: '8px',
+                                    fontSize: '14px',
+                                    fontWeight: '600',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                {showBlogForm ? 'Cancel' : '+ New Blog Post'}
+                            </button>
+                        )}
+                    </div>
                 </header>
 
                 {/* DYNAMIC VIEW SWITCHER PANEL */}
