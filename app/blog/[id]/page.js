@@ -5,13 +5,20 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getSanityBlogBySlug, getSanityBlogs, urlFor } from "@/lib/sanity.client";
 import { PortableText } from "@portabletext/react";
-import { Phone, Mail, ChevronRight, BookOpen, MessageSquare, ArrowLeft, Tag, Calendar, User, CheckCircle2, HelpCircle } from "lucide-react";
+import { Phone, Mail, ChevronRight, BookOpen, MessageSquare, ArrowLeft, Tag, Calendar, User, Clock, HelpCircle, Share2, Sparkles } from "lucide-react";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.pragatiujjayini.com";
 
 function stripHtml(html) {
     if (!html) return '';
     return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function calculateReadingTime(blog) {
+    const textSnippet = (blog.excerpt || '') + ' ' + (blog.content || '') + ' ' + JSON.stringify(blog.body || '');
+    const words = stripHtml(textSnippet).split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(1, Math.ceil(words / 200));
+    return `${minutes} min read`;
 }
 
 async function getBlogPostData(id) {
@@ -31,7 +38,7 @@ async function getBlogPostData(id) {
                 authorRole: sanityBlog.authorRole || "Digital Marketing Expert",
                 image: sanityBlog.imageUrl || (typeof sanityBlog.mainImage === 'string' ? sanityBlog.mainImage : null),
                 altText: sanityBlog.altText || sanityBlog.title,
-                category: sanityBlog.category || "Blog",
+                category: sanityBlog.category || "Digital Marketing",
                 tags: Array.isArray(sanityBlog.tags) ? sanityBlog.tags : [],
                 body: Array.isArray(sanityBlog.body) ? sanityBlog.body : null,
                 content: typeof sanityBlog.content === 'string' ? sanityBlog.content : '',
@@ -50,7 +57,7 @@ async function getBlogPostData(id) {
         if (allSanityBlogs && allSanityBlogs.length > 0) {
             otherArticles = allSanityBlogs
                 .filter(b => b._id !== currentBlog?._id && (b.slug || b._id) !== id)
-                .slice(0, 5)
+                .slice(0, 6)
                 .map(b => ({
                     _id: b._id,
                     title: b.title,
@@ -98,10 +105,10 @@ async function getBlogPostData(id) {
 
             // Fetch MongoDB fallback recent articles
             if (otherArticles.length === 0) {
-                const mongoBlogs = await Blog.find({}).sort({ createdAt: -1 }).limit(6).lean();
+                const mongoBlogs = await Blog.find({}).sort({ createdAt: -1 }).limit(7).lean();
                 otherArticles = mongoBlogs
                     .filter(b => b._id.toString() !== currentBlog?._id && (b.slug || b._id.toString()) !== id)
-                    .slice(0, 5)
+                    .slice(0, 6)
                     .map(b => ({
                         _id: b._id.toString(),
                         title: b.title,
@@ -199,22 +206,22 @@ const portableTextComponents = {
     },
     block: {
         h1: ({ children }) => (
-            <h1 className="text-3xl sm:text-4xl font-black text-brand-navy mt-10 mb-4 tracking-tight leading-snug">
+            <h1 className="text-2xl sm:text-3xl font-black text-brand-navy mt-10 mb-4 tracking-tight leading-snug">
                 {children}
             </h1>
         ),
         h2: ({ children }) => (
-            <h2 className="text-2xl sm:text-3xl font-bold text-brand-navy mt-8 mb-3 tracking-tight leading-snug border-b border-zinc-100 pb-2">
+            <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mt-8 mb-3 tracking-tight leading-snug border-b border-zinc-100 pb-2">
                 {children}
             </h2>
         ),
         h3: ({ children }) => (
-            <h3 className="text-xl sm:text-2xl font-bold text-brand-navy mt-6 mb-2.5 leading-snug">
+            <h3 className="text-lg sm:text-xl font-bold text-brand-navy mt-6 mb-2.5 leading-snug">
                 {children}
             </h3>
         ),
         h4: ({ children }) => (
-            <h4 className="text-lg font-semibold text-brand-navy mt-5 mb-2">
+            <h4 className="text-base font-semibold text-brand-navy mt-5 mb-2">
                 {children}
             </h4>
         ),
@@ -274,6 +281,7 @@ export default async function BlogPage({ params }) {
         })
         : "Recently Published";
 
+    const readingTime = calculateReadingTime(blog);
     const canonicalUrl = blog.canonicalUrl || `${BASE_URL}/blog/${blog.slug}`;
 
     // Construct Dynamic JSON-LD Schemas (Article + FAQ Page + Custom)
@@ -338,7 +346,7 @@ export default async function BlogPage({ params }) {
     }
 
     return (
-        <div className="bg-brand-cream/30 min-h-screen py-8 sm:py-12">
+        <div className="bg-brand-cream/30 min-h-screen py-6 sm:py-10">
             {/* Dynamic Canonical Tag */}
             <link rel="canonical" href={canonicalUrl} />
 
@@ -352,185 +360,192 @@ export default async function BlogPage({ params }) {
             ))}
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Top breadcrumb & back link */}
-                <div className="mb-6 flex items-center justify-between">
-                    <Link
-                        href="/blog"
-                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-brand-orange hover:text-brand-orange/80 transition-colors"
-                    >
-                        <ArrowLeft className="w-4 h-4" />
-                        Back to all articles
-                    </Link>
-                    <span className="text-xs font-medium text-zinc-500 bg-white px-3 py-1 rounded-full border border-border/60">
-                        {blog.category}
-                    </span>
-                </div>
+                
+                {/* 1. PROFESSIONAL TOP HEADER BANNER & BLOG INFO */}
+                <header className="mb-8 rounded-3xl border border-border/70 bg-white p-6 sm:p-10 shadow-sm relative overflow-hidden">
+                    {/* Subtle aesthetic gradient background orb */}
+                    <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-brand-orange/10 via-amber-100/30 to-transparent rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
 
-                {/* 2-Column Responsive Layout */}
+                    {/* Top Navigation & Category Pill */}
+                    <div className="flex flex-wrap items-center justify-between gap-3 mb-6 relative z-10">
+                        <Link
+                            href="/blog"
+                            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-brand-orange hover:text-brand-orange/80 transition-colors"
+                        >
+                            <ArrowLeft className="w-4 h-4" />
+                            Back to all articles
+                        </Link>
+                        <div className="flex items-center gap-2">
+                            <span className="bg-brand-navy text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                                {blog.category}
+                            </span>
+                            {blog.tags && blog.tags.slice(0, 3).map((tag, i) => (
+                                <span key={i} className="hidden sm:inline-flex items-center gap-1 bg-zinc-100 text-zinc-600 text-xs px-2.5 py-0.5 rounded-full font-medium">
+                                    <Tag className="w-3 h-3 text-zinc-400" />
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Main H1 Title */}
+                    <h1 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-black text-brand-navy tracking-tight leading-tight mb-6 relative z-10">
+                        {blog.title}
+                    </h1>
+
+                    {/* Author, Date, Reading Time & Role Info Bar */}
+                    <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-zinc-100 text-xs sm:text-sm text-zinc-600 relative z-10">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-orange to-amber-500 text-white font-bold flex items-center justify-center text-sm shadow-sm flex-shrink-0">
+                                {(blog.author || "G")[0].toUpperCase()}
+                            </div>
+                            <div>
+                                <p className="font-bold text-brand-navy text-sm leading-none">{blog.author}</p>
+                                <p className="text-xs text-zinc-400 mt-0.5">{blog.authorRole}</p>
+                            </div>
+                        </div>
+
+                        <span className="hidden sm:inline text-zinc-300">•</span>
+
+                        <div className="flex items-center gap-1.5 font-medium">
+                            <Calendar className="w-4 h-4 text-brand-orange" />
+                            <span>{formattedDate}</span>
+                        </div>
+
+                        <span className="text-zinc-300">•</span>
+
+                        <div className="flex items-center gap-1.5 font-medium">
+                            <Clock className="w-4 h-4 text-brand-blue" />
+                            <span>{readingTime}</span>
+                        </div>
+                    </div>
+
+                    {/* Excerpt Lead Summary Box */}
+                    {blog.excerpt && (
+                        <div className="mt-6 p-4.5 sm:p-5 rounded-2xl bg-amber-50/70 border-l-4 border-brand-orange text-zinc-800 text-sm sm:text-base font-medium leading-relaxed italic relative z-10">
+                            {blog.excerpt}
+                        </div>
+                    )}
+                </header>
+
+                {/* 2. 2-COLUMN LAYOUT: COMPACT STICKY LEFT SIDEBAR (25%) + SCROLLABLE MAIN CONTENT (75%) */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     
-                    {/* LEFT SIDEBAR (Sticky on desktop) */}
-                    <aside className="lg:col-span-4 lg:sticky lg:top-24 space-y-6 self-start order-2 lg:order-1">
+                    {/* LEFT SIDEBAR (Compact 3/12 cols ~25% width, Sticky on desktop) */}
+                    <aside className="lg:col-span-3 lg:sticky lg:top-24 space-y-5 self-start order-2 lg:order-1">
                         
                         {/* WIDGET 1: Article Navigation Div */}
-                        <div className="rounded-2xl border border-border/70 bg-white p-5 shadow-sm">
-                            <div className="flex items-center gap-2 pb-3 mb-4 border-b border-border/60">
+                        <div className="rounded-2xl border border-border/70 bg-white p-4 shadow-sm">
+                            <div className="flex items-center gap-2 pb-2.5 mb-3 border-b border-border/60">
                                 <BookOpen className="w-4 h-4 text-brand-orange" />
-                                <h3 className="font-heading font-bold text-sm text-brand-navy uppercase tracking-wider">
+                                <h3 className="font-heading font-bold text-xs text-brand-navy uppercase tracking-wider">
                                     Navigate Articles
                                 </h3>
                             </div>
 
                             {otherArticles.length === 0 ? (
-                                <p className="text-xs text-zinc-500 py-2">No other articles available.</p>
+                                <p className="text-[11px] text-zinc-500 py-2">No other articles available.</p>
                             ) : (
-                                <div className="space-y-3">
+                                <div className="space-y-2">
                                     {otherArticles.map((art) => (
                                         <Link
                                             key={art._id}
                                             href={`/blog/${art.slug}`}
-                                            className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-brand-cream/50 transition-all duration-200 border border-transparent hover:border-border/40"
+                                            className="group flex items-center gap-2.5 p-2 rounded-xl hover:bg-brand-cream/60 transition-all duration-200 border border-transparent hover:border-border/40"
                                         >
                                             {art.image ? (
                                                 <img
                                                     src={art.image}
                                                     alt={art.title}
-                                                    className="w-12 h-12 rounded-lg object-cover flex-shrink-0 mt-0.5 border border-zinc-100"
+                                                    className="w-9 h-9 rounded-lg object-cover flex-shrink-0 border border-zinc-100"
                                                 />
                                             ) : (
-                                                <div className="w-12 h-12 rounded-lg bg-brand-orange/10 flex items-center justify-center flex-shrink-0 text-brand-orange font-bold text-xs">
+                                                <div className="w-9 h-9 rounded-lg bg-brand-orange/10 flex items-center justify-center flex-shrink-0 text-brand-orange font-bold text-[10px]">
                                                     Blog
                                                 </div>
                                             )}
                                             <div className="flex-1 min-w-0">
-                                                <span className="inline-block text-[10px] font-semibold text-brand-orange uppercase tracking-wider mb-0.5">
-                                                    {art.category}
-                                                </span>
-                                                <h4 className="text-xs font-bold text-brand-navy leading-snug line-clamp-2 group-hover:text-brand-orange transition-colors">
+                                                <h4 className="text-[11px] font-bold text-brand-navy leading-snug line-clamp-2 group-hover:text-brand-orange transition-colors">
                                                     {art.title}
                                                 </h4>
                                             </div>
-                                            <ChevronRight className="w-4 h-4 text-zinc-400 group-hover:text-brand-orange group-hover:translate-x-0.5 transition-all mt-1 flex-shrink-0" />
+                                            <ChevronRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-brand-orange group-hover:translate-x-0.5 transition-all flex-shrink-0" />
                                         </Link>
                                     ))}
                                 </div>
                             )}
 
-                            <div className="mt-4 pt-3 border-t border-border/50 text-center">
+                            <div className="mt-3 pt-2.5 border-t border-border/50 text-center">
                                 <Link
                                     href="/blog"
-                                    className="text-xs font-bold text-brand-navy hover:text-brand-orange transition-colors inline-flex items-center gap-1"
+                                    className="text-[11px] font-bold text-brand-navy hover:text-brand-orange transition-colors inline-flex items-center gap-1"
                                 >
                                     View All Articles →
                                 </Link>
                             </div>
                         </div>
 
-                        {/* WIDGET 2: Contact Div (Sticky CTA) */}
-                        <div className="rounded-2xl border border-brand-orange/30 bg-gradient-to-br from-white via-orange-50/30 to-brand-cream/40 p-5 shadow-sm relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-24 h-24 bg-brand-orange/10 rounded-full blur-2xl -mr-6 -mt-6 pointer-events-none" />
+                        {/* WIDGET 2: Contact Div (Compact Sticky CTA) */}
+                        <div className="rounded-2xl border border-brand-orange/30 bg-gradient-to-br from-white via-orange-50/20 to-brand-cream/30 p-4 shadow-sm relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-brand-orange/10 rounded-full blur-xl -mr-4 -mt-4 pointer-events-none" />
                             
-                            <div className="flex items-center gap-2 pb-3 mb-3 border-b border-brand-orange/20">
+                            <div className="flex items-center gap-2 pb-2.5 mb-2.5 border-b border-brand-orange/20">
                                 <MessageSquare className="w-4 h-4 text-brand-orange" />
-                                <h3 className="font-heading font-bold text-sm text-brand-navy uppercase tracking-wider">
-                                    Need Business Growth?
+                                <h3 className="font-heading font-bold text-xs text-brand-navy uppercase tracking-wider">
+                                    Need Marketing?
                                 </h3>
                             </div>
 
-                            <p className="text-xs text-zinc-600 leading-relaxed mb-4">
-                                Partner with Pragati Ujjayini to accelerate your digital presence and local market authority.
+                            <p className="text-[11px] text-zinc-600 leading-relaxed mb-3">
+                                Partner with Pragati Ujjayini for local business growth.
                             </p>
 
-                            <div className="space-y-2.5 mb-5 text-xs text-zinc-700">
+                            <div className="space-y-2 mb-4 text-[11px] text-zinc-700">
                                 <a
                                     href="tel:+919179062235"
-                                    className="flex items-center gap-2.5 p-2 rounded-lg bg-white border border-border/60 hover:border-brand-orange/40 hover:text-brand-orange transition-all"
+                                    className="flex items-center gap-2 p-1.5 rounded-lg bg-white border border-border/60 hover:border-brand-orange/40 hover:text-brand-orange transition-all"
                                 >
-                                    <div className="w-6 h-6 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange">
-                                        <Phone className="w-3.5 h-3.5" />
+                                    <div className="w-5 h-5 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange flex-shrink-0">
+                                        <Phone className="w-3 h-3" />
                                     </div>
-                                    <span className="font-semibold text-zinc-800">+91 91790 62235</span>
+                                    <span className="font-semibold text-zinc-800 truncate">+91 91790 62235</span>
                                 </a>
                                 <a
                                     href="mailto:info@grownfoster.com"
-                                    className="flex items-center gap-2.5 p-2 rounded-lg bg-white border border-border/60 hover:border-brand-orange/40 hover:text-brand-orange transition-all"
+                                    className="flex items-center gap-2 p-1.5 rounded-lg bg-white border border-border/60 hover:border-brand-orange/40 hover:text-brand-orange transition-all"
                                 >
-                                    <div className="w-6 h-6 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue">
-                                        <Mail className="w-3.5 h-3.5" />
+                                    <div className="w-5 h-5 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue flex-shrink-0">
+                                        <Mail className="w-3 h-3" />
                                     </div>
-                                    <span className="font-semibold text-zinc-800">info@grownfoster.com</span>
+                                    <span className="font-semibold text-zinc-800 truncate">info@grownfoster.com</span>
                                 </a>
                             </div>
 
                             <Link
                                 href="/contact"
-                                className="block w-full text-center py-2.5 px-4 rounded-xl bg-gradient-to-r from-brand-orange to-amber-600 text-white font-bold text-xs shadow-md shadow-brand-orange/20 hover:shadow-lg hover:scale-[1.02] transition-all"
+                                className="block w-full text-center py-2 px-3 rounded-xl bg-gradient-to-r from-brand-orange to-amber-600 text-white font-bold text-[11px] shadow-sm shadow-brand-orange/20 hover:shadow-md hover:scale-[1.02] transition-all"
                             >
-                                Get Free Consultation
+                                Free Consultation
                             </Link>
                         </div>
                     </aside>
 
-                    {/* RIGHT COLUMN (Scrollable Main Content Area) */}
-                    <main className="lg:col-span-8 bg-white border border-border/70 rounded-3xl p-6 sm:p-10 shadow-sm order-1 lg:order-2">
+                    {/* RIGHT COLUMN (Main Content Area 9/12 cols ~75% width, Scrollable) */}
+                    <main className="lg:col-span-9 bg-white border border-border/70 rounded-3xl p-6 sm:p-10 shadow-sm order-1 lg:order-2">
                         
-                        {/* Article Header Metadata */}
-                        <div className="space-y-4">
-                            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
-                                <span className="bg-brand-orange/10 text-brand-orange px-3 py-1 rounded-full uppercase tracking-wider">
-                                    {blog.category}
-                                </span>
-                                {blog.tags && blog.tags.map((tag, i) => (
-                                    <span key={i} className="inline-flex items-center gap-1 bg-zinc-100 text-zinc-600 px-2.5 py-1 rounded-md">
-                                        <Tag className="w-3 h-3 text-zinc-400" />
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-
-                            <h1 className="font-heading text-2xl sm:text-4xl font-black text-brand-navy tracking-tight leading-tight">
-                                {blog.title}
-                            </h1>
-
-                            {/* Author & Published Info */}
-                            <div className="flex items-center gap-3 pt-2 pb-4 border-b border-zinc-100 text-xs sm:text-sm text-zinc-500 flex-wrap">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand-orange to-amber-500 text-white font-bold flex items-center justify-center text-sm shadow-sm">
-                                        {(blog.author || "G")[0].toUpperCase()}
-                                    </div>
-                                    <div>
-                                        <p className="font-bold text-brand-navy leading-none">{blog.author}</p>
-                                        <p className="text-[11px] text-zinc-400 mt-0.5">{blog.authorRole}</p>
-                                    </div>
-                                </div>
-                                <span className="text-zinc-300">•</span>
-                                <div className="flex items-center gap-1.5">
-                                    <Calendar className="w-3.5 h-3.5 text-brand-orange" />
-                                    <span>{formattedDate}</span>
-                                </div>
-                            </div>
-                        </div>
-
                         {/* Main Cover Image */}
                         {blog.image && (
-                            <div className="my-6 overflow-hidden rounded-2xl border border-zinc-100 shadow-md">
+                            <div className="mb-8 overflow-hidden rounded-2xl border border-zinc-100 shadow-sm">
                                 <img
                                     src={blog.image}
                                     alt={blog.altText || blog.title}
-                                    className="w-full h-auto max-h-[480px] object-cover"
+                                    className="w-full h-auto max-h-[500px] object-cover"
                                 />
                             </div>
                         )}
 
-                        {/* Optional Excerpt Highlight */}
-                        {blog.excerpt && (
-                            <div className="my-6 p-4 sm:p-5 rounded-2xl bg-amber-50/60 border-l-4 border-brand-orange text-zinc-800 text-base sm:text-lg font-medium leading-relaxed italic">
-                                {blog.excerpt}
-                            </div>
-                        )}
-
                         {/* Article Main Body (Rich Portable Text or Legacy HTML) */}
-                        <article className="mt-6 text-zinc-800 leading-relaxed">
+                        <article className="text-zinc-800 leading-relaxed">
                             {blog.body && blog.body.length > 0 ? (
                                 <PortableText value={blog.body} components={portableTextComponents} />
                             ) : (
