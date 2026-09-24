@@ -12,10 +12,13 @@ const quickLinks = [
 ]
 
 const serviceLinks = [
-  { label: 'Google Business Profile', href: '/services' },
-  { label: 'WhatsApp Marketing', href: '/services' },
-  { label: 'Local SEO', href: '/services' },
-  { label: 'Web Development', href: '/services' },
+  { label: 'Google Business Profile', href: '/services/gmb-service' },
+  { label: 'Social Media Marketing', href: '/services/social-media-marketing-services' },
+  { label: 'LinkedIn Outreach', href: '/services/linkedin-outreach-services' },
+  { label: 'WhatsApp Marketing', href: '/services/whatsapp-business-marketing' },
+  { label: 'Local SEO', href: '/services/local-seo-services' },
+  { label: 'Web Development', href: '/services/website-development-services' },
+  { label: 'Graphic Design', href: '/services/graphic-design-services' },
 ]
 
 const socialLinks = [

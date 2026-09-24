@@ -14,6 +14,7 @@ import {
   ListChecks,
   Check,
   ArrowRight,
+  Users,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
@@ -45,6 +46,7 @@ const services: Service[] = [
     tone: 'orange',
     image: '/images/google-buisness-profile-image.png',
     alt: 'Local business map pin location showing top ranking on a mobile screen',
+    href: '/services/gmb-service',
   },
   {
     icon: Search,
@@ -62,6 +64,7 @@ const services: Service[] = [
     tone: 'blue',
     image: '/images/local-seo.png',
     alt: 'Organic search query showing local business results near the user location',
+    href: '/services/local-seo-services',
   },
   {
     icon: Globe,
@@ -78,6 +81,7 @@ const services: Service[] = [
     tone: 'orange',
     image: '/images/website-and-development.png',
     alt: 'Clean responsive storefront website layout displaying perfectly on a phone mockup',
+    href: '/services/website-development-services',
   },
   {
     icon: Share2,
@@ -94,6 +98,7 @@ const services: Service[] = [
     tone: 'blue',
     image: '/images/social-media-marketing.png',
     alt: 'Local community engagement interface on Instagram with target demographics',
+    href: '/services/social-media-marketing-services',
   },
   {
     icon: PenTool,
@@ -110,6 +115,7 @@ const services: Service[] = [
     tone: 'orange',
     image: '/images/graphic-designing.png',
     alt: 'Premium local promotional festival offer banner and graphic assets layout',
+    href: '/services/graphic-design-services',
   },
   {
     icon: Megaphone,
@@ -143,6 +149,7 @@ const services: Service[] = [
     tone: 'orange',
     image: '/images/whatsapp-marketing.png',
     alt: 'Interactive customer conversation utilizing a business custom automation catalog setup',
+    href: '/services/whatsapp-business-marketing',
   },
   {
     icon: ListChecks,
@@ -159,6 +166,24 @@ const services: Service[] = [
     tone: 'blue',
     image: '/images/local-listings.png',
     alt: 'Verified marketplace business catalog listings exhibiting precise contact details data profiles',
+  },
+  {
+    icon: Users,
+    title: 'LinkedIn Outreach Services for B2B Lead Generation',
+    description:
+      'Connect with the right decision makers, start meaningful conversations, and create qualified sales opportunities with personalized B2B LinkedIn outreach and appointment setting.',
+    includes: [
+      'B2B LinkedIn lead generation',
+      'Prospect list building',
+      'Sales Navigator outreach',
+      'Cold message strategy',
+      'Lead qualification',
+      'B2B appointment setting',
+    ],
+    tone: 'orange',
+    image: '/images/Corporate Image 1 (1).png',
+    alt: 'Professional B2B LinkedIn outreach lead generation and decision maker appointment setting dashboard',
+    href: '/services/linkedin-outreach-services',
   },
 ]
 
@@ -211,7 +236,7 @@ export function ServicesList() {
             What We Offer
           </p>
           <h2 className="mt-3 text-2xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-            Eight services, one growth engine
+            Nine services, one growth engine
           </h2>
           <p className="mt-3 leading-relaxed text-zinc-500 text-xs sm:text-base">
             Pick what you need today, or let us build a complete local marketing system around your business.
@@ -253,8 +278,8 @@ export function ServicesList() {
                     <div className="flex items-center gap-3 sm:gap-4">
                       <span
                         className={`flex size-10 sm:size-12 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl text-white ${isOrange
-                            ? 'bg-orange-500 shadow-sm shadow-orange-500/10'
-                            : 'bg-blue-500 shadow-sm shadow-blue-500/10'
+                          ? 'bg-orange-500 shadow-sm shadow-orange-500/10'
+                          : 'bg-blue-500 shadow-sm shadow-blue-500/10'
                           }`}
                       >
                         <Icon className="size-5 sm:size-6 stroke-[2.25]" />
@@ -302,10 +327,10 @@ export function ServicesList() {
                   {/* CTA Button Block */}
                   <div className="flex justify-end pt-1">
                     <Link
-                      href={service.href || '#contact'}
+                      href={service.href || '/services/linkedin-outreach'}
                       className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all duration-200 shadow-sm ${isOrange
-                          ? 'bg-orange-500 hover:bg-orange-600 shadow-orange-500/20'
-                          : 'bg-blue-500 hover:bg-blue-600 shadow-blue-500/20'
+                        ? 'bg-orange-500 hover:bg-orange-600 shadow-orange-500/20'
+                        : 'bg-blue-500 hover:bg-blue-600 shadow-blue-500/20'
                         }`}
                     >
                       <span>Explore this service</span>
