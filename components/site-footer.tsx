@@ -17,6 +17,7 @@ const serviceLinks = [
   { label: 'LinkedIn Outreach', href: '/services/linkedin-outreach-services' },
   { label: 'WhatsApp Marketing', href: '/services/whatsapp-business-marketing' },
   { label: 'Local SEO', href: '/services/local-seo-services' },
+  { label: 'Local Business Listings', href: '/services/local-business-listing' },
   { label: 'Web Development', href: '/services/website-development-services' },
   { label: 'Graphic Design', href: '/services/graphic-design-services' },
 ]

@@ -167,24 +167,7 @@ const services: Service[] = [
     image: '/images/local-listings.png',
     alt: 'Verified marketplace business catalog listings exhibiting precise contact details data profiles',
   },
-  {
-    icon: Users,
-    title: 'LinkedIn Outreach Services for B2B Lead Generation',
-    description:
-      'Connect with the right decision makers, start meaningful conversations, and create qualified sales opportunities with personalized B2B LinkedIn outreach and appointment setting.',
-    includes: [
-      'B2B LinkedIn lead generation',
-      'Prospect list building',
-      'Sales Navigator outreach',
-      'Cold message strategy',
-      'Lead qualification',
-      'B2B appointment setting',
-    ],
-    tone: 'orange',
-    image: '/images/Corporate Image 1 (1).png',
-    alt: 'Professional B2B LinkedIn outreach lead generation and decision maker appointment setting dashboard',
-    href: '/services/linkedin-outreach-services',
-  },
+
 ]
 
 function ScrollReveal({ children }: { children: React.ReactNode }) {

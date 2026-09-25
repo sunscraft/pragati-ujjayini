@@ -37,7 +37,7 @@ const services = [
   },
   {
     label: 'Local Business Listings & Directories',
-    href: '/services',
+    href: '/services/local-business-listing',
   },
   {
     label: 'LinkedIn Outreach Services',
