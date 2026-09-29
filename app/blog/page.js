@@ -9,6 +9,21 @@ function stripHtml(html) {
 
 export const revalidate = 0;
 
+export const metadata = {
+    title: "Blog & Marketing Guides | Pragati Ujjayini",
+    description: "Explore actionable digital marketing, local SEO, website development, and Google Business profile guides to grow your local business in India.",
+    alternates: {
+        canonical: "https://www.pragatiujjayini.com/blog",
+    },
+    openGraph: {
+        title: "Blog & Marketing Guides | Pragati Ujjayini",
+        description: "Explore actionable digital marketing, local SEO, website development, and Google Business profile guides to grow your local business in India.",
+        url: "https://www.pragatiujjayini.com/blog",
+        type: "website",
+    },
+};
+
+
 async function fetchAllBlogs() {
     try {
         const sanityBlogs = await getSanityBlogs();

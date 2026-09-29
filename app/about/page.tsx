@@ -12,12 +12,12 @@ export const metadata: Metadata = {
   title: 'About Us',
   description:
     'Pragati Ujjayini helps local businesses across India show up, stand out, and get chosen online. Learn our story, mission, vision, and how we work.',
-  alternates: { canonical: '/about' },
+  alternates: { canonical: 'https://www.pragatiujjayini.com/about' },
   openGraph: {
     title: 'About Pragati Ujjayini',
     description:
       'Making professional, results-driven digital marketing accessible to every local business in India.',
-    url: '/about',
+    url: 'https://www.pragatiujjayini.com/about',
     type: 'website',
   },
 }

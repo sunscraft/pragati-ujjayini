@@ -15,12 +15,12 @@ export const metadata: Metadata = {
     'business listings JustDial Sulekha IndiaMART',
     'social media marketing for local business',
   ],
-  alternates: { canonical: '/services' },
+  alternates: { canonical: 'https://www.pragatiujjayini.com/services' },
   openGraph: {
     title: 'Services — Pragati Ujjayini',
     description:
       'Local marketing services built for local discovery and growth — for retail, healthcare, food, services, and every other local business category.',
-    url: '/services',
+    url: 'https://www.pragatiujjayini.com/services',
     type: 'website',
   },
 }

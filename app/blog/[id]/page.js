@@ -9,6 +9,34 @@ import { Phone, Mail, ChevronRight, BookOpen, MessageSquare, ArrowLeft, Tag, Cal
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.pragatiujjayini.com";
 
+function formatCanonicalUrl(rawUrl, fallbackSlug = '') {
+    const siteUrl = "https://www.pragatiujjayini.com";
+    let input = (rawUrl || (fallbackSlug ? `${siteUrl}/blog/${fallbackSlug}` : siteUrl)).trim();
+
+    // Replace legacy domain or non-www variants if present
+    input = input.replace(/https?:\/\/(www\.)?grownfoster\.com/gi, siteUrl);
+    input = input.replace(/https?:\/\/pragatiujjayini\.com/gi, siteUrl);
+
+    if (input.startsWith('/')) {
+        input = `${siteUrl}${input}`;
+    }
+
+    try {
+        const u = new URL(input);
+        let path = u.pathname;
+        if (path.length > 1 && path.endsWith('/')) {
+            path = path.slice(0, -1);
+        }
+        return `${siteUrl}${path}${u.search}`;
+    } catch {
+        if (input.length > 1 && input.endsWith('/')) {
+            input = input.slice(0, -1);
+        }
+        return input;
+    }
+}
+
+
 function stripHtml(html) {
     if (!html) return '';
     return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -45,7 +73,7 @@ async function getBlogPostData(id) {
                 createdAt: sanityBlog.publishedAt || sanityBlog._createdAt,
                 seoTitle: sanityBlog.seoTitle,
                 seoDescription: sanityBlog.seoDescription,
-                canonicalUrl: sanityBlog.canonicalUrl || `${BASE_URL}/blog/${sanityBlog.slug || id}`,
+                canonicalUrl: formatCanonicalUrl(sanityBlog.canonicalUrl, sanityBlog.slug || id),
                 schemaType: sanityBlog.schemaType || "BlogPosting",
                 faqSchema: Array.isArray(sanityBlog.faqSchema) ? sanityBlog.faqSchema : [],
                 customSchemaJson: sanityBlog.customSchemaJson,
@@ -97,7 +125,7 @@ async function getBlogPostData(id) {
                     body: null,
                     content: mongoBlog.content || '',
                     createdAt: mongoBlog.createdAt,
-                    canonicalUrl: `${BASE_URL}/blog/${rawSlug}`,
+                    canonicalUrl: formatCanonicalUrl(mongoBlog.canonicalUrl, rawSlug),
                     schemaType: "BlogPosting",
                     faqSchema: [],
                 };
@@ -136,7 +164,7 @@ export async function generateMetadata({ params }) {
 
     const title = blog.seoTitle || `${blog.title} | Pragati Ujjayini`;
     const description = blog.seoDescription || blog.excerpt || stripHtml(blog.content).slice(0, 160);
-    const canonical = blog.canonicalUrl || `${BASE_URL}/blog/${blog.slug}`;
+    const canonical = formatCanonicalUrl(blog.canonicalUrl, blog.slug);
 
     return {
         title,
@@ -282,7 +310,7 @@ export default async function BlogPage({ params }) {
         : "Recently Published";
 
     const readingTime = calculateReadingTime(blog);
-    const canonicalUrl = blog.canonicalUrl || `${BASE_URL}/blog/${blog.slug}`;
+    const canonicalUrl = formatCanonicalUrl(blog.canonicalUrl, blog.slug);
 
     // Construct Dynamic JSON-LD Schemas (Article + FAQ Page + Custom)
     let jsonLdSchemas = [];
@@ -347,8 +375,6 @@ export default async function BlogPage({ params }) {
 
     return (
         <div className="bg-brand-cream/30 min-h-screen py-6 sm:py-10">
-            {/* Dynamic Canonical Tag */}
-            <link rel="canonical" href={canonicalUrl} />
 
             {/* Dynamic JSON-LD Structured Data Schema(s) */}
             {jsonLdSchemas.map((schema, idx) => (

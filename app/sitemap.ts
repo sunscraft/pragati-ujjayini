@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next'
+import { getSanityBlogs } from '@/lib/sanity.client'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://www.pragatiujjayini.com'
 
-    return [
+    const staticRoutes: MetadataRoute.Sitemap = [
         {
             url: baseUrl,
             lastModified: new Date(),
@@ -20,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${baseUrl}/services`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/blog`,
+            lastModified: new Date(),
+            changeFrequency: 'daily',
             priority: 0.8,
         },
         {
@@ -77,4 +84,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.5,
         },
     ]
-}
+
+    let blogRoutes: MetadataRoute.Sitemap = []
+    try {
+        const blogs = await getSanityBlogs()
+        if (Array.isArray(blogs)) {
+            blogRoutes = blogs.map((b: any) => ({
+                url: `${baseUrl}/blog/${b.slug || b._id}`,
+                lastModified: b.publishedAt || b._createdAt ? new Date(b.publishedAt || b._createdAt) : new Date(),
+                changeFrequency: 'weekly' as const,
+                priority: 0.7,
+            }))
+        }
+    } catch (e) {
+        console.error('Failed to fetch blog posts for sitemap:', e)
+    }
+
+    return [...staticRoutes, ...blogRoutes]
+}

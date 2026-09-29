@@ -45,13 +45,13 @@ export const metadata: Metadata = {
   description:
     'Professional website development services in Ujjain & Indore. Upgrade your outdated site into a modern, mobile-friendly sales machine.',
   alternates: {
-    canonical: 'https://www.pragatiujjayini.com/services/website-development-services/',
+    canonical: 'https://www.pragatiujjayini.com/services/website-development-services',
   },
   openGraph: {
     title: 'Top Website Development Services in Ujjain & Indore',
     description:
       'Professional website development services in Ujjain & Indore. Upgrade your outdated site into a modern, mobile-friendly sales machine.',
-    url: 'https://www.pragatiujjayini.com/services/website-development-services/',
+    url: 'https://www.pragatiujjayini.com/services/website-development-services',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Pragati Ujjayini',

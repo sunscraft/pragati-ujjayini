@@ -49,13 +49,13 @@ export const metadata: Metadata = {
   description:
     'Fix inconsistent business details and rank higher locally. Discover how professional local business listing services drive daily calls and customer trust',
   alternates: {
-    canonical: 'https://pragatiujjayini.com/services/local-business-listing',
+    canonical: 'https://www.pragatiujjayini.com/services/local-business-listing',
   },
   openGraph: {
     title: 'Local Business Listing Services: Complete Growth Guide',
     description:
       'Fix inconsistent business details and rank higher locally. Discover how professional local business listing services drive daily calls and customer trust',
-    url: 'https://pragatiujjayini.com/services/local-business-listing',
+    url: 'https://www.pragatiujjayini.com/services/local-business-listing',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Pragati Ujjayini',

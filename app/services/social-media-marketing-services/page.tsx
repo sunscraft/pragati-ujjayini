@@ -66,13 +66,13 @@ export const metadata: Metadata = {
   description:
     'Turn your social media pages into a steady source of leads and sales. Discover how professional social media marketing services drive real growth and ROI!',
   alternates: {
-    canonical: 'https://www.pragatiujjayini.com/services/social-media-marketing-services/',
+    canonical: 'https://www.pragatiujjayini.com/services/social-media-marketing-services',
   },
   openGraph: {
     title: 'Social Media Marketing Services: Turn Followers to Sales',
     description:
       'Turn your social media pages into a steady source of leads and sales. Discover how professional social media marketing services drive real growth and ROI!',
-    url: 'https://www.pragatiujjayini.com/services/social-media-marketing-services/',
+    url: 'https://www.pragatiujjayini.com/services/social-media-marketing-services',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Pragati Ujjayini',

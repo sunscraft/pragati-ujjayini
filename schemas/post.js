@@ -214,7 +214,7 @@ export default {
       name: 'canonicalUrl',
       title: 'Canonical URL',
       type: 'url',
-      description: 'Custom canonical URL if syndicated or originally published elsewhere. Leave blank to default to https://grownfoster.com/blog/[slug]',
+      description: 'Custom canonical URL if syndicated or originally published elsewhere. Leave blank to default to https://www.pragatiujjayini.com/blog/[slug]',
     },
     {
       name: 'schemaType',

@@ -40,13 +40,13 @@ export const metadata: Metadata = {
   description:
     'Automate customer chats, show product catalogs, and boost sales. Discover how WhatsApp Business Marketing helps local businesses drive instant leads!',
   alternates: {
-    canonical: 'https://www.pragatiujjayini.com/whatsapp-business-marketing-services/',
+    canonical: 'https://www.pragatiujjayini.com/services/whatsapp-business-marketing',
   },
   openGraph: {
     title: 'WhatsApp Business Marketing: Turn Chats into Sales',
     description:
       'Automate customer chats, show product catalogs, and boost sales. Discover how WhatsApp Business Marketing helps local businesses drive instant leads!',
-    url: 'https://www.pragatiujjayini.com/whatsapp-business-marketing-services/',
+    url: 'https://www.pragatiujjayini.com/services/whatsapp-business-marketing',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Pragati Ujjayini',

@@ -44,13 +44,13 @@ export const metadata: Metadata = {
   description:
     'Get more local leads and rank #1 on Google Maps. Professional Local SEO services in Ujjain & Indore to grow your business fast. Get a free audit today!',
   alternates: {
-    canonical: 'https://www.pragatiujjayini.com/services/local-seo-services/',
+    canonical: 'https://www.pragatiujjayini.com/services/local-seo-services',
   },
   openGraph: {
     title: 'Local SEO Services in Ujjain & Indore | Rank #1 on Google',
     description:
       'Get more local leads and rank #1 on Google Maps. Professional Local SEO services in Ujjain & Indore to grow your business fast. Get a free audit today!',
-    url: 'https://www.pragatiujjayini.com/services/local-seo-services/',
+    url: 'https://www.pragatiujjayini.com/services/local-seo-services',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Pragati Ujjayini',

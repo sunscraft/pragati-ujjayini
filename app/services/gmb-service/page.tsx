@@ -35,13 +35,13 @@ export const metadata: Metadata = {
   description:
     'Boost your Google Business Profile with expert GMB service. Get more local calls, reviews, and map rankings. Optimize your GMB profile today!',
   alternates: {
-    canonical: 'https://www.pragatiujjayini.com/services/gmb-service/',
+    canonical: 'https://www.pragatiujjayini.com/services/gmb-service',
   },
   openGraph: {
     title: 'GMB Service | Rank #1 on Google Maps & Get Daily Calls',
     description:
       'Boost your Google Business Profile with expert GMB service. Get more local calls, reviews, and map rankings. Optimize your GMB profile today!',
-    url: 'https://www.pragatiujjayini.com/services/gmb-service/',
+    url: 'https://www.pragatiujjayini.com/services/gmb-service',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Pragati Ujjayini',

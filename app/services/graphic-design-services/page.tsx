@@ -46,13 +46,13 @@ export const metadata: Metadata = {
   description:
     'Build a strong brand identity with professional graphic design services. Create high-converting logos, social media posts, and marketing materials today',
   alternates: {
-    canonical: 'https://www.pragatiujjayini.com/services/graphic-design-services/',
+    canonical: 'https://www.pragatiujjayini.com/services/graphic-design-services',
   },
   openGraph: {
     title: 'Graphic Design Services: Turn Visuals into Sales',
     description:
       'Build a strong brand identity with professional graphic design services. Create high-converting logos, social media posts, and marketing materials today',
-    url: 'https://www.pragatiujjayini.com/services/graphic-design-services/',
+    url: 'https://www.pragatiujjayini.com/services/graphic-design-services',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Pragati Ujjayini',
