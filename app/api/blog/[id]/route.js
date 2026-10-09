@@ -1,19 +1,36 @@
 import { NextResponse } from "next/server";
 import Blog from "@/models/Blog";
 import connectDB from "@/lib/db";
+import { deleteSanityBlog, getSanityBlogBySlug } from "@/lib/sanity.client";
 
 // GET /api/blog/[id] - fetch single blog post by id or slug
 export async function GET(request, { params }) {
     try {
-        await connectDB();
         const { id } = await params;
-        // Support both MongoDB _id and slug lookups
-        const blog = await Blog.findById(id).lean().catch(() => null)
-            ?? await Blog.findOne({ slug: id }).lean();
-        if (!blog) {
-            return NextResponse.json({ error: "Blog not found" }, { status: 404 });
+
+        // Try MongoDB first
+        try {
+            await connectDB();
+            const blog = await Blog.findById(id).lean().catch(() => null)
+                ?? await Blog.findOne({ slug: id }).lean();
+            if (blog) {
+                return NextResponse.json(blog);
+            }
+        } catch (mErr) {
+            // Non-fatal, try Sanity
         }
-        return NextResponse.json(blog);
+
+        // Try Sanity
+        try {
+            const sanityBlog = await getSanityBlogBySlug(id);
+            if (sanityBlog) {
+                return NextResponse.json(sanityBlog);
+            }
+        } catch (sErr) {
+            // Sanity error
+        }
+
+        return NextResponse.json({ error: "Blog not found" }, { status: 404 });
     } catch (error) {
         console.error("Error fetching blog:", error);
         return NextResponse.json({ error: "Failed to fetch blog" }, { status: 500 });
@@ -69,18 +86,42 @@ export async function PUT(request, { params }) {
     }
 }
 
-// DELETE /api/blog/[id] - delete a blog post
+// DELETE /api/blog/[id] - delete a blog post from Sanity and/or MongoDB
 export async function DELETE(request, { params }) {
     try {
-        await connectDB();
         const { id } = await params;
-        const deleted = await Blog.findByIdAndDelete(id);
-        if (!deleted) {
-            return NextResponse.json({ error: "Blog not found" }, { status: 404 });
+        let deletedFromSanity = false;
+        let deletedFromMongo = false;
+
+        // Try deleting from Sanity if ID belongs to Sanity or token is configured
+        try {
+            await deleteSanityBlog(id);
+            deletedFromSanity = true;
+        } catch (sanityErr) {
+            // Not in Sanity or write token not provided
+            console.warn("Sanity blog deletion info:", sanityErr.message);
         }
-        return NextResponse.json({ success: true });
+
+        // Try deleting from MongoDB
+        try {
+            await connectDB();
+            const deleted = await Blog.findByIdAndDelete(id);
+            if (deleted) {
+                deletedFromMongo = true;
+            }
+        } catch (mongoErr) {
+            // Not in Mongo or invalid ObjectId
+            console.warn("MongoDB blog deletion info:", mongoErr.message);
+        }
+
+        if (deletedFromSanity || deletedFromMongo) {
+            return NextResponse.json({ success: true, message: "Blog deleted successfully." });
+        }
+
+        return NextResponse.json({ error: "Blog post not found in Sanity or Database" }, { status: 404 });
     } catch (error) {
         console.error("Error deleting blog:", error);
-        return NextResponse.json({ error: "Failed to delete blog" }, { status: 500 });
+        return NextResponse.json({ error: error.message || "Failed to delete blog" }, { status: 500 });
     }
 }
+

@@ -12,8 +12,8 @@ export default async function proxy(request) {
         return NextResponse.next();
     }
 
-    // 2. If the user is already going to the login page, let them through.
-    if (pathname === '/admin/login') {
+    // 2. If the user is going to the login page or Sanity Studio, let them through.
+    if (pathname === '/admin/login' || pathname.startsWith('/admin/studio')) {
         return NextResponse.next();
     }
 
