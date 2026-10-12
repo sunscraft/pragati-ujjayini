@@ -4,6 +4,7 @@ import { Inter, Poppins } from 'next/font/google'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import WhatsAppButton from '@/components/whatsAppButton'
+import Script from 'next/script'
 import './globals.css'
 
 const inter = Inter({
@@ -148,6 +149,23 @@ export default function RootLayout({
       className={`${inter.variable} ${poppins.variable} bg-background light`}
       style={{ colorScheme: 'light' }}
     >
+      <head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-JDS2FYP343"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-JDS2FYP343');
+          `}
+        </Script>
+      </head>
       <body className="font-sans antialiased">
         {/* Professional Service Mapping */}
         <script
