@@ -274,7 +274,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Location</p>
-                                    <p className="text-sm font-semibold text-brand-navy">1st Floor, Mahakal Vanijya Kendra, Nanakheda, Ujjain.</p>
+                                    <p className="text-sm font-semibold text-brand-navy">C - 1/2 1st Floor, Mahakal Vanijya Kendra, Nanakheda, Ujjain, Madhya Pradesh 456010</p>
                                 </div>
                             </div>
                         </div>
