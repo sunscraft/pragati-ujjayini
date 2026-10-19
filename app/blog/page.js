@@ -27,18 +27,26 @@ export const metadata = {
 async function fetchAllBlogs() {
     try {
         const sanityBlogs = await getSanityBlogs();
-        return (sanityBlogs || []).map((b) => ({
-            _id: b._id,
-            slug: b.slug || b._id,
-            title: b.title,
-            excerpt: b.excerpt || '',
-            category: b.category || 'Blog',
-            tags: Array.isArray(b.tags) ? b.tags : [],
-            image: b.imageUrl || (typeof b.mainImage === 'string' ? b.mainImage : null),
-            altText: b.altText || b.title,
-            content: typeof b.content === 'string' ? b.content : (b.seoDescription || ''),
-            createdAt: b.publishedAt || b._createdAt,
-        }));
+        const seen = new Set();
+        return (sanityBlogs || [])
+            .filter((b) => {
+                const key = b.slug || b._id;
+                if (!key || seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            })
+            .map((b) => ({
+                _id: b._id,
+                slug: b.slug || b._id,
+                title: b.title,
+                excerpt: b.excerpt || '',
+                category: b.category || 'Blog',
+                tags: Array.isArray(b.tags) ? b.tags : [],
+                image: b.imageUrl || (typeof b.mainImage === 'string' ? b.mainImage : null),
+                altText: b.altText || b.title,
+                content: typeof b.content === 'string' ? b.content : (b.seoDescription || ''),
+                createdAt: b.publishedAt || b._createdAt,
+            }));
     } catch (err) {
         console.error('Sanity blogs fetch error:', err.message);
         return [];
