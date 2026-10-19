@@ -61,8 +61,8 @@ const jsonLd = {
     },
     {
       "@type": "WebPage",
-      "@id": "https://www.pragatiujjayini.com/indore-digital-marketing/",
-      url: "https://www.pragatiujjayini.com/indore-digital-marketing/",
+      "@id": "https://www.pragatiujjayini.com/digital-marketing-agency-indore/",
+      url: "https://www.pragatiujjayini.com/digital-marketing-agency-indore/",
       name: "Digital Marketing Agency in Indore | Pragati Ujjayini",
       description:
         "Pragati Ujjayini provides digital marketing services in Indore including SEO, Local SEO, Google Ads, social media marketing, website designing and content marketing.",
@@ -74,13 +74,13 @@ const jsonLd = {
       },
       breadcrumb: {
         "@id":
-          "https://www.pragatiujjayini.com/indore-digital-marketing/#" + "breadcrumb",
+          "https://www.pragatiujjayini.com/digital-marketing-agency-indore/#" + "breadcrumb",
       },
     },
     {
       "@type": "BreadcrumbList",
       "@id":
-        "https://www.pragatiujjayini.com/indore-digital-marketing/#" + "breadcrumb",
+        "https://www.pragatiujjayini.com/digital-marketing-agency-indore/#" + "breadcrumb",
       itemListElement: [
         {
           "@type": "ListItem",
@@ -100,14 +100,14 @@ const jsonLd = {
           position: 3,
           name: "Digital Marketing Agency in Indore",
           item:
-            "https://www.pragatiujjayini.com/indore-digital-marketing/",
+            "https://www.pragatiujjayini.com/digital-marketing-agency-indore/",
         },
       ],
     },
     {
       "@type": "Service",
       "@id":
-        "https://www.pragatiujjayini.com/indore-digital-marketing/#" + "service",
+        "https://www.pragatiujjayini.com/digital-marketing-agency-indore/#" + "service",
       name: "Digital Marketing Services in Indore",
       serviceType: "Digital Marketing",
       provider: {
@@ -120,7 +120,7 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.pragatiujjayini.com/indore-digital-marketing/#" + "faq",
+      "@id": "https://www.pragatiujjayini.com/digital-marketing-agency-indore/#" + "faq",
       mainEntity: [
         {
           "@type": "Question",

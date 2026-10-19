@@ -1,9 +1,13 @@
 import Script from "next/script";
+import Link from "next/link";
 
 export const metadata = {
     title: "Digital Marketing Agency | Get a Free Growth Audit & Custom Quote",
     description:
         "Hire a full-service digital marketing agency for SEO, Google Ads, Social Media & Web Design. Transparent pricing, free consultation. Get your custom plan today.",
+    alternates: {
+        canonical: "https://www.pragatiujjayini.com/digital-marketing-agency-near-me",
+    },
 };
 
 const jsonLd = {
@@ -426,23 +430,23 @@ export default function DigitalMarketingAgencyNearMePage() {
                             Pragati Ujjayini's team is based in Indore, working directly with local businesses across retail, healthcare, education, and professional services, in addition to clients outside the region — experience that shapes how we build campaigns for competitive markets everywhere.
                         </p>
                         <div className="pt-1">
-                            <a
-                                href="/indore-digital-marketing/"
+                            <Link
+                                href="/digital-marketing-agency-indore/"
                                 className="inline-block text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-4"
                             >
                                 Digital Marketing Agency in Indore →
-                            </a>
+                            </Link>
                         </div>
                         <p className="text-slate-600 leading-relaxed pt-2">
                             We also serve businesses in Ujjain, where demand is shaped by a mix of steady local commerce and seasonal footfall tied to religious tourism — a pattern that informs how we plan campaigns for any seasonal or footfall-driven business, not just those based there.
                         </p>
                         <div className="pt-1">
-                            <a
-                                href="/ujjain-digital-marketing/"
+                            <Link
+                                href="/digital-marketing-agency-ujjain/"
                                 className="inline-block text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-4"
                             >
                                 Digital Marketing Agency in Ujjain →
-                            </a>
+                            </Link>
                         </div>
                     </section>
 

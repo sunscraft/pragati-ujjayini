@@ -54,8 +54,8 @@ const jsonLd = {
         },
         {
             "@type": "WebPage",
-            "@id": "https://www.pragatiujjayini.com/ujjain-digital-marketing/",
-            url: "https://www.pragatiujjayini.com/ujjain-digital-marketing/",
+            "@id": "https://www.pragatiujjayini.com/digital-marketing-agency-ujjain/",
+            url: "https://www.pragatiujjayini.com/digital-marketing-agency-ujjain/",
             name: "Digital Marketing Agency in Ujjain | Pragati Ujjayini",
             description:
                 "Pragati Ujjayini provides digital marketing services in Ujjain including SEO, Local SEO, Google Ads, social media marketing, website designing and content marketing.",
@@ -67,13 +67,13 @@ const jsonLd = {
             },
             breadcrumb: {
                 "@id":
-                    "https://www.pragatiujjayini.com/ujjain-digital-marketing/#breadcrumb",
+                    "https://www.pragatiujjayini.com/digital-marketing-agency-ujjain/#breadcrumb",
             },
         },
         {
             "@type": "BreadcrumbList",
             "@id":
-                "https://www.pragatiujjayini.com/ujjain-digital-marketing/#breadcrumb",
+                "https://www.pragatiujjayini.com/digital-marketing-agency-ujjain/#breadcrumb",
             itemListElement: [
                 {
                     "@type": "ListItem",
@@ -92,14 +92,14 @@ const jsonLd = {
                     "@type": "ListItem",
                     position: 3,
                     name: "Digital Marketing Agency in Ujjain",
-                    item: "https://www.pragatiujjayini.com/ujjain-digital-marketing/",
+                    item: "https://www.pragatiujjayini.com/digital-marketing-agency-ujjain/",
                 },
             ],
         },
         {
             "@type": "Service",
             "@id":
-                "https://www.pragatiujjayini.com/ujjain-digital-marketing/#service",
+                "https://www.pragatiujjayini.com/digital-marketing-agency-ujjain/#service",
             name: "Digital Marketing Agency in Ujjain",
             serviceType: "Digital Marketing Services",
             provider: {
@@ -112,7 +112,7 @@ const jsonLd = {
         },
         {
             "@type": "FAQPage",
-            "@id": "https://www.pragatiujjayini.com/ujjain-digital-marketing/#faq",
+            "@id": "https://www.pragatiujjayini.com/digital-marketing-agency-ujjain/#faq",
             mainEntity: [
                 {
                     "@type": "Question",
@@ -454,7 +454,7 @@ export default function DigitalMarketingUjjainPage() {
                             <a href="/portfolio/" className="text-brand-orange hover:underline">
                                 View Client Work & Portfolio →
                             </a>
-                            <a href="/indore-digital-marketing/" className="text-brand-orange hover:underline">
+                            <a href="/digital-marketing-agency-indore/" className="text-brand-orange hover:underline">
                                 Digital Marketing Agency in Indore →
                             </a>
                         </div>
