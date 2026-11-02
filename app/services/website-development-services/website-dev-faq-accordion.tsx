@@ -93,7 +93,7 @@ export function WebsiteDevFaqAccordion() {
                   {faq.q}
                 </span>
               </div>
-              <div
+              <div                                         
                 className={`size-7 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
                   isOpen
                     ? 'bg-orange-600 text-white rotate-180'

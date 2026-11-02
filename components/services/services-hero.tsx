@@ -44,7 +44,7 @@ export function ServicesHero() {
           discovery and growth — for retail, healthcare, food, services, and
           every other local business category.
         </p>
-
+                                                                                                                 
         {/* Tags Section */}
         <div className="mt-8 flex flex-wrap justify-center gap-2">
           {tags.map((tag) => (
@@ -56,12 +56,12 @@ export function ServicesHero() {
               {tag}
             </span>
           ))}
-        </div>
-
+        </div>                                                       
+                                                  
         {/* Call to Actions */}
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
+        <div className="mt-10 flex flex-wrap justify-center gap-3">                    
           <Button
-            nativeButton={false}
+            nativeButton={false}                                                                
             render={<a href="#services-list" />}
             className="h-11 rounded-full bg-brand-orange px-6 text-sm font-semibold text-brand-orange-foreground [a]:hover:bg-brand-orange/90"
           >

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   PenTool,
   MapPin,
@@ -28,6 +29,14 @@ import {
   Palette,
   ShieldCheck,
   BarChart3,
+  ShoppingBag,
+  Stethoscope,
+  UtensilsCrossed,
+  Hotel,
+  Home,
+  ShoppingCart,
+  Rocket,
+  TrendingUp,
 } from 'lucide-react'
 import { GraphicDesignFaqAccordion } from './graphic-design-faq-accordion'
 
@@ -400,39 +409,156 @@ export default function GraphicDesignPage() {
           </div>
           <div className="mt-12 space-y-6">
             {[
-              { num: '01', title: 'Logo Design', desc: 'We design new logos or redesign existing ones, delivered in the file formats you need for both digital and print use.', items: ['New logo creation', 'Logo redesign', 'Multiple format delivery', 'Digital & print ready files'] },
-              { num: '02', title: 'Brand Identity Design', desc: 'We build your complete visual identity with a consistent look and feel across every channel.', items: ['Brand colors', 'Typography selection', 'Visual style guide', 'Brand guidelines document'] },
-              { num: '03', title: 'Social Media Design', desc: 'We create graphics built for how people actually use social media — scroll-stopping and on-brand.', items: ['Instagram posts & carousels', 'Facebook creatives', 'WhatsApp status designs', 'Festival & offer creatives'] },
-              { num: '04', title: 'Marketing & Promotional Design', desc: 'We design materials for your offline and online marketing campaigns.', items: ['Flyers & pamphlets', 'Posters & banners', 'Offer creatives', 'Event promotional materials'] },
-              { num: '05', title: 'Website Graphics', desc: 'We create the visual assets your website needs to look professional and convert visitors.', items: ['Website banners', 'Icons & section graphics', 'Promotional visuals', 'Other website design assets'] },
-              { num: '06', title: 'Print Design', desc: 'We prepare print-ready designs for real-world use, ensuring quality at any size.', items: ['Business cards', 'Menus & brochures', 'Signboards', 'Print-ready artwork'] },
-              { num: '07', title: 'Packaging Design', desc: "We design packaging that reflects your product's visual identity and stands out.", items: ['Product packaging', 'Labels & boxes', 'Product visual identity', 'Packaging mockups'] },
-              { num: '08', title: 'Google Business Profile Graphics', desc: 'We design graphics specifically for your Google Business Profile to keep your branding consistent.', items: ['Business profile photos', 'Promotional graphics', 'Offer visuals', 'Consistent branding across profile'] },
-              { num: '09', title: 'Custom Graphic Design', desc: "For requirements that don't fit a standard category, we design custom visuals for events, campaigns, and business-specific materials.", items: ['Event creatives', 'Campaign materials', 'Business-specific designs', 'One-off custom projects'] },
-            ].map((part) => (
-              <div key={part.num} className="rounded-3xl border border-orange-200/80 bg-white overflow-hidden shadow-xs grid grid-cols-1 lg:grid-cols-12">
-                <div className="lg:col-span-5 bg-[#FFF4ED] p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-orange-200/60">
-                  <div>
-                    <span className="inline-block px-3 py-1 rounded-full bg-orange-600 text-white text-xs font-black uppercase tracking-wider mb-3">Part {part.num}</span>
-                    <h3 className="text-xl font-extrabold text-zinc-900 leading-snug">{part.title}</h3>
-                    <p className="mt-3 text-xs sm:text-sm text-zinc-600 leading-relaxed">{part.desc}</p>
+              {
+                num: '01',
+                title: 'Logo Design',
+                desc: 'We design new logos or redesign existing ones, delivered in the file formats you need for both digital and print use.',
+                image: '/images/Logo Design.png',
+                imageAlt: 'Logo Design and Brand Mark Services',
+                icon: PenTool,
+                items: ['New logo creation', 'Logo redesign', 'Multiple format delivery', 'Digital & print ready files'],
+              },
+              {
+                num: '02',
+                title: 'Brand Identity Design',
+                desc: 'We build your complete visual identity with a consistent look and feel across every channel.',
+                image: '/images/Brand Identity Design.png',
+                imageAlt: 'Complete Brand Identity and Style Guidelines',
+                icon: Palette,
+                items: ['Brand colors', 'Typography selection', 'Visual style guide', 'Brand guidelines document'],
+              },
+              {
+                num: '03',
+                title: 'Social Media Design',
+                desc: 'We create graphics built for how people actually use social media — scroll-stopping and on-brand.',
+                image: '/images/Social Media Design.png',
+                imageAlt: 'Social Media Posts and Carousel Creatives',
+                icon: Smartphone,
+                items: ['Instagram posts & carousels', 'Facebook creatives', 'WhatsApp status designs', 'Festival & offer creatives'],
+              },
+              {
+                num: '04',
+                title: 'Marketing & Promotional Design',
+                desc: 'We design materials for your offline and online marketing campaigns.',
+                image: '/images/Marketing & Promotional Design.png',
+                imageAlt: 'Promotional Marketing Flyers and Posters',
+                icon: Sparkles,
+                items: ['Flyers & pamphlets', 'Posters & banners', 'Offer creatives', 'Event promotional materials'],
+              },
+              {
+                num: '05',
+                title: 'Website Graphics',
+                desc: 'We create the visual assets your website needs to look professional and convert visitors.',
+                image: '/images/Website Graphics.png',
+                imageAlt: 'Website Banners, Section Graphics and Web Visuals',
+                icon: Layout,
+                items: ['Website banners', 'Icons & section graphics', 'Promotional visuals', 'Other website design assets'],
+              },
+              {
+                num: '06',
+                title: 'Print Design',
+                desc: 'We prepare print-ready designs for real-world use, ensuring quality at any size.',
+                image: '/images/Print Design.png',
+                imageAlt: 'Print Ready Visiting Cards, Brochures and Menus',
+                icon: Printer,
+                items: ['Business cards', 'Menus & brochures', 'Signboards', 'Print-ready artwork'],
+              },
+              {
+                num: '07',
+                title: 'Packaging Design',
+                desc: "We design packaging that reflects your product's visual identity and stands out.",
+                image: '/images/Packaging Design.png',
+                imageAlt: 'Product Packaging, Boxes and Label Designs',
+                icon: Package,
+                items: ['Product packaging', 'Labels & boxes', 'Product visual identity', 'Packaging mockups'],
+              },
+              {
+                num: '08',
+                title: 'Google Business Profile Graphics',
+                desc: 'We design graphics specifically for your Google Business Profile to keep your branding consistent.',
+                image: '/images/Google Business Profile Graphics.png',
+                imageAlt: 'Google Business Profile Photos and Promotional Graphics',
+                icon: Building2,
+                items: ['Business profile photos', 'Promotional graphics', 'Offer visuals', 'Consistent branding across profile'],
+              },
+              {
+                num: '09',
+                title: 'Custom Graphic Design',
+                desc: "For requirements that don't fit a standard category, we design custom visuals for events, campaigns, and business-specific materials.",
+                image: '/images/Custom Graphic Design.png',
+                imageAlt: 'Custom Visuals and Bespoke Campaign Designs',
+                icon: Wrench,
+                items: ['Event creatives', 'Campaign materials', 'Business-specific designs', 'One-off custom projects'],
+              },
+            ].map((part) => {
+              const ServiceIcon = part.icon
+              return (
+                <div key={part.num} className="group rounded-3xl border border-orange-200/80 bg-white overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 grid grid-cols-1 lg:grid-cols-12">
+                  {/* Left: Info */}
+                  <div className="lg:col-span-4 bg-[#FFF4ED] p-6 sm:p-7 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-orange-200/60">
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="inline-block px-3 py-1 rounded-full bg-orange-600 text-white text-xs font-black uppercase tracking-wider">
+                          Part {part.num}
+                        </span>
+                        <span className="text-[11px] font-bold text-orange-700 bg-orange-100/90 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                          <ServiceIcon className="size-3" />
+                          Service
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-extrabold text-zinc-900 leading-snug">{part.title}</h3>
+                      <p className="mt-3 text-xs sm:text-sm text-zinc-600 leading-relaxed">{part.desc}</p>
+                    </div>
+                  </div>
+
+                  {/* Middle: Features */}
+                  <div className="lg:col-span-4 p-6 sm:p-7 flex flex-col justify-center bg-white border-b lg:border-b-0 lg:border-r border-orange-200/60">
+                    <p className="text-xs font-extrabold uppercase tracking-widest text-zinc-400 mb-4">Key Features Included:</p>
+                    <ul className="space-y-3">
+                      {part.items.map((item) => (
+                        <li key={item} className="flex items-center gap-2.5 text-xs sm:text-sm text-zinc-800 font-semibold">
+                          <span className="size-5 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
+                            <Check className="size-3.5 stroke-[3]" />
+                          </span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Right: Image / Placeholder Showcase */}
+                  <div className="lg:col-span-4 p-5 sm:p-6 bg-gradient-to-br from-orange-50/40 via-white to-amber-50/30 flex items-center justify-center">
+                    <div className="w-full h-full min-h-[220px] rounded-2xl overflow-hidden relative border border-orange-200/80 bg-white shadow-2xs group/img flex flex-col justify-center items-center">
+                      {part.image ? (
+                        <div className="relative w-full h-56 sm:h-64 lg:h-full min-h-[220px]">
+                          <Image
+                            src={part.image}
+                            alt={part.imageAlt || `${part.title} Services in Ujjain & Indore`}
+                            fill
+                            className="object-cover group-hover/img:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-full h-full p-5 flex flex-col items-center justify-center text-center bg-gradient-to-b from-white via-orange-50/40 to-orange-50/80 border-2 border-dashed border-orange-300/80 rounded-2xl hover:border-orange-400 transition-colors">
+                          <div className="size-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center mb-2.5 shadow-xs group-hover/img:scale-110 transition-transform">
+                            <ServiceIcon className="size-6" />
+                          </div>
+                          <p className="text-xs font-bold text-zinc-900 tracking-wide">
+                            {part.title} Visual Sample
+                          </p>
+                          <span className="mt-1 text-[10px] font-semibold text-orange-700 bg-orange-100/90 px-2 py-0.5 rounded-full">
+                            Image Placeholder
+                          </span>
+                          <span className="mt-1.5 text-[10px] text-zinc-400 font-medium">
+                            Recommended: 800 × 600 px
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-center bg-white">
-                  <p className="text-xs font-extrabold uppercase tracking-widest text-zinc-400 mb-4">Key Features Included:</p>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {part.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2.5 text-xs sm:text-sm text-zinc-800 font-semibold">
-                        <span className="size-5 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
-                          <Check className="size-3.5 stroke-[3]" />
-                        </span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
@@ -550,16 +676,129 @@ export default function GraphicDesignPage() {
           <div className="mx-auto max-w-2xl text-center">
             <span className="inline-block px-3.5 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-bold uppercase tracking-wider mb-2">Target Industries</span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 tracking-tight">Who Can Benefit From Graphic Design Services?</h2>
+            <p className="mt-3 text-sm sm:text-base text-zinc-600">Tailored visual design and branding solutions for businesses of every scale across Ujjain, Indore, and Central India.</p>
           </div>
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-6 gap-4">
-            {['Local shops', 'Clinics & doctors', 'Restaurants & cafes', 'Salons', 'Hotels', 'Real estate businesses', 'E-commerce businesses', 'Service businesses', 'Professional businesses', 'Startups', 'Growing local brands', 'Product businesses'].map((who, i) => (
-              <div key={i} className="rounded-2xl border border-orange-200/80 bg-white p-4 text-center shadow-2xs hover:shadow-xs transition-shadow flex flex-col items-center justify-center">
-                <div className="size-9 rounded-xl bg-orange-50 flex items-center justify-center mb-2">
-                  <Building2 className="size-4 text-orange-600" />
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {[
+              {
+                title: 'Local shops',
+                desc: 'Signboards, promotional flyers, banner stands, and WhatsApp sale creatives.',
+                icon: ShoppingBag,
+                image: '/images/Local Shop.png',
+              },
+              {
+                title: 'Clinics & doctors',
+                desc: 'Prescription branding, patient awareness flyers, OPD banners, and health camp creatives.',
+                icon: Stethoscope,
+                image: '/images/Doctor & Clinic.png',
+              },
+              {
+                title: 'Restaurants & cafes',
+                desc: 'Appetizing food menus, table tent cards, promotional posters, and social food creatives.',
+                icon: UtensilsCrossed,
+                image: '/images/Restaurant & Cafe.png',
+              },
+              {
+                title: 'Salons & spas',
+                desc: 'Service rate cards, seasonal combo banners, Instagram reels covers, and gift vouchers.',
+                icon: Sparkles,
+                image: '/images/Salon.png',
+              },
+              {
+                title: 'Hotels & resorts',
+                desc: 'Welcome brochures, room collaterals, banquet event invitations, and outdoor signages.',
+                icon: Hotel,
+                image: '/images/Hotel.png',
+              },
+              {
+                title: 'Real estate businesses',
+                desc: 'Project hoardings, site walk-through flyers, floor plan brochures, and lead ads.',
+                icon: Home,
+                image: '/images/Real Estate.png',
+              },
+              {
+                title: 'E-commerce businesses',
+                desc: 'High-converting product listing banners, social carousels, and unboxing flyers.',
+                icon: ShoppingCart,
+                image: '/images/E - Commerce.png',
+              },
+              {
+                title: 'Service businesses',
+                desc: 'Visiting cards, professional estimate sheets, vehicle branding, and service vouchers.',
+                icon: Wrench,
+                image: '/images/Service Businesses.png',
+              },
+              {
+                title: 'Professional businesses',
+                desc: 'Corporate pitch decks, branded letterheads, ID badges, and executive profiles.',
+                icon: Briefcase,
+                image: '/images/Professional Businesses.png',
+              },
+              {
+                title: 'Startups',
+                desc: 'Complete brand guidelines, investor pitch decks, launch banners, and digital graphics.',
+                icon: Rocket,
+                image: '/images/Startups.png',
+              },
+              {
+                title: 'Growing local brands',
+                desc: 'Consistent multi-channel identity, festive campaign creatives, and local brand ads.',
+                icon: TrendingUp,
+                image: '/images/Growing Local Brands.png',
+              },
+              {
+                title: 'Product businesses',
+                desc: 'Label designs, packaging box mockups, pouch designs, and retail shelf display graphics.',
+                icon: Package,
+                image: '/images/Product Businesses.png',
+              },
+            ].map((item, i) => {
+              const Icon = item.icon
+              return (
+                <div key={i} className="group rounded-2xl border border-orange-200/80 bg-white overflow-hidden shadow-2xs hover:shadow-md hover:border-orange-300 transition-all duration-300 flex flex-col">
+                  {/* Image / Placeholder Top Container */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-50 border-b border-orange-200/60">
+                    {item.image ? (
+                      <Image
+                        src={item.image}
+                        alt={`${item.title} Graphic Design Services`}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-orange-50/70 via-white to-amber-50/50 p-4 flex flex-col items-center justify-center text-center border-2 border-dashed border-orange-200/90 m-1.5 rounded-xl group-hover:border-orange-400 group-hover:bg-orange-50/60 transition-colors">
+                        <div className="size-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-1.5 shadow-2xs group-hover:scale-110 transition-transform">
+                          <Icon className="size-5" />
+                        </div>
+                        <span className="text-[11px] font-bold text-zinc-800 tracking-tight">
+                          {item.title}
+                        </span>
+                        <span className="mt-0.5 text-[9px] font-semibold text-orange-600 bg-orange-100/90 px-2 py-0.5 rounded-full">
+                          Creative Branding
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Content Area */}
+                  <div className="p-4 flex-1 flex flex-col justify-between bg-white">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="size-6 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center shrink-0">
+                          <Icon className="size-3.5" />
+                        </span>
+                        <h4 className="text-sm font-extrabold text-zinc-900 group-hover:text-orange-600 transition-colors">
+                          {item.title}
+                        </h4>
+                      </div>
+                      <p className="mt-2 text-xs text-zinc-600 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <h4 className="text-xs font-extrabold text-zinc-900">{who}</h4>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
