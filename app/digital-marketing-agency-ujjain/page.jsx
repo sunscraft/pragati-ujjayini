@@ -1,6 +1,8 @@
 import Script from "next/script";
 import { MessageCircle, ArrowRight, CheckCircle2, BarChart2, Rocket, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getSanityBlogs } from "@/lib/sanity.client";
+import { RecentBlogsCarousel } from "@/components/recent-blogs-carousel";
 
 export const metadata = {
     title: "Digital Marketing Agency in Ujjain | Pragati Ujjayini",
@@ -225,7 +227,36 @@ const faqs = [
     },
 ];
 
-export default function DigitalMarketingUjjainPage() {
+async function fetchRecentBlogs() {
+    try {
+        const blogs = await getSanityBlogs();
+        const seen = new Set();
+        return (blogs || [])
+            .filter((b) => {
+                const key = b.slug || b._id;
+                if (!key || seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            })
+            .map((b) => ({
+                _id: b._id,
+                slug: b.slug || b._id,
+                title: b.title,
+                excerpt: b.excerpt || '',
+                content: typeof b.content === 'string' ? b.content : (b.seoDescription || ''),
+                category: b.category || 'Digital Marketing',
+                image: b.imageUrl || (typeof b.mainImage === 'string' ? b.mainImage : null),
+                altText: b.altText || b.title,
+                publishedAt: b.publishedAt || b._createdAt,
+            }));
+    } catch (err) {
+        console.error("Failed to fetch blogs for digital-marketing-agency-ujjain page:", err);
+        return [];
+    }
+}
+
+export default async function DigitalMarketingUjjainPage() {
+    const recentBlogs = await fetchRecentBlogs();
     return (
         <>
             <script
@@ -477,6 +508,9 @@ export default function DigitalMarketingUjjainPage() {
                             ))}
                         </div>
                     </section>
+
+                    {/* Recent Blogs Carousel Slider */}
+                    <RecentBlogsCarousel blogs={recentBlogs} />
 
                     {/* Bottom CTA Section */}
                     <section id="contact" className="mx-auto max-w-6xl py-4">
