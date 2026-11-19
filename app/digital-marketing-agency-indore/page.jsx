@@ -4,6 +4,16 @@ export const metadata = {
   title: "Digital Marketing Agency in Indore | Pragati Ujjayini",
   description:
     "Looking for a digital marketing agency in Indore? Pragati Ujjayini offers SEO, Google Ads, Social Media and Web Design with proven local results. Get a free quote.",
+  alternates: {
+    canonical: "https://www.pragatiujjayini.com/digital-marketing-agency-indore",
+  },
+  openGraph: {
+    title: "Digital Marketing Agency in Indore | Pragati Ujjayini",
+    description:
+      "Looking for a digital marketing agency in Indore? Pragati Ujjayini offers SEO, Google Ads, Social Media and Web Design with proven local results. Get a free quote.",
+    url: "https://www.pragatiujjayini.com/digital-marketing-agency-indore",
+    type: "website",
+  },
 };
 
 const jsonLd = {
@@ -61,8 +71,8 @@ const jsonLd = {
     },
     {
       "@type": "WebPage",
-      "@id": "https://www.pragatiujjayini.com/digital-marketing-agency-indore/",
-      url: "https://www.pragatiujjayini.com/digital-marketing-agency-indore/",
+      "@id": "https://www.pragatiujjayini.com/digital-marketing-agency-indore",
+      url: "https://www.pragatiujjayini.com/digital-marketing-agency-indore",
       name: "Digital Marketing Agency in Indore | Pragati Ujjayini",
       description:
         "Pragati Ujjayini provides digital marketing services in Indore including SEO, Local SEO, Google Ads, social media marketing, website designing and content marketing.",
@@ -74,40 +84,40 @@ const jsonLd = {
       },
       breadcrumb: {
         "@id":
-          "https://www.pragatiujjayini.com/digital-marketing-agency-indore/#" + "breadcrumb",
+          "https://www.pragatiujjayini.com/digital-marketing-agency-indore#" + "breadcrumb",
       },
     },
     {
       "@type": "BreadcrumbList",
       "@id":
-        "https://www.pragatiujjayini.com/digital-marketing-agency-indore/#" + "breadcrumb",
+        "https://www.pragatiujjayini.com/digital-marketing-agency-indore#" + "breadcrumb",
       itemListElement: [
         {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: "https://www.pragatiujjayini.com/",
+          item: "https://www.pragatiujjayini.com",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Digital Marketing Agency Near Me",
           item:
-            "https://www.pragatiujjayini.com/digital-marketing-agency-near-me/",
+            "https://www.pragatiujjayini.com/digital-marketing-agency-near-me",
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "Digital Marketing Agency in Indore",
           item:
-            "https://www.pragatiujjayini.com/digital-marketing-agency-indore/",
+            "https://www.pragatiujjayini.com/digital-marketing-agency-indore",
         },
       ],
     },
     {
       "@type": "Service",
       "@id":
-        "https://www.pragatiujjayini.com/digital-marketing-agency-indore/#" + "service",
+        "https://www.pragatiujjayini.com/digital-marketing-agency-indore#" + "service",
       name: "Digital Marketing Services in Indore",
       serviceType: "Digital Marketing",
       provider: {
@@ -120,7 +130,7 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.pragatiujjayini.com/digital-marketing-agency-indore/#" + "faq",
+      "@id": "https://www.pragatiujjayini.com/digital-marketing-agency-indore#" + "faq",
       mainEntity: [
         {
           "@type": "Question",

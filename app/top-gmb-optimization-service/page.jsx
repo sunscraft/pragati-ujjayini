@@ -22,6 +22,16 @@ export const metadata = {
     title: "GMB Optimization Service: Get More Daily Local Calls | Pragati Ujjayini",
     description:
         "Boost your local ranking on Google Maps with our GMB optimization service. Get more profile views, customer calls, and walk-ins. Optimize your GBP now!",
+    alternates: {
+        canonical: "https://www.pragatiujjayini.com/top-gmb-optimization-service",
+    },
+    openGraph: {
+        title: "GMB Optimization Service: Get More Daily Local Calls | Pragati Ujjayini",
+        description:
+            "Boost your local ranking on Google Maps with our GMB optimization service. Get more profile views, customer calls, and walk-ins. Optimize your GBP now!",
+        url: "https://www.pragatiujjayini.com/top-gmb-optimization-service",
+        type: "website",
+    },
 };
 
 const jsonLd = {
