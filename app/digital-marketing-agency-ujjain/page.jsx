@@ -1,4 +1,5 @@
 import Script from "next/script";
+import Link from "next/link";
 import { MessageCircle, ArrowRight, CheckCircle2, BarChart2, Rocket, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getSanityBlogs } from "@/lib/sanity.client";
@@ -310,7 +311,14 @@ export default async function DigitalMarketingUjjainPage() {
                             What This Agency Offers Businesses in Ujjain
                         </h2>
                         <p className="text-slate-600 leading-relaxed">
-                            As a full-service digital marketing company in Ujjain, we manage the channels that determine whether local customers find your business online: search rankings, Google Business Profile visibility, paid ads, social media presence, and your website itself.
+                            As a full-service{" "}
+                            <Link
+                                href="/"
+                                className="font-semibold text-brand-orange hover:underline decoration-brand-orange/60 underline-offset-2 transition-colors"
+                            >
+                                digital marketing company in Ujjain
+                            </Link>
+                            , we manage the channels that determine whether local customers find your business online: search rankings, Google Business Profile visibility, paid ads, social media presence, and your website itself.
                         </p>
                         <p className="text-slate-600 leading-relaxed">
                             Rather than treating each channel separately, campaigns are planned together so your SEO, ads, and content support one goal: more qualified inquiries for your business. We work directly with business owners in Ujjain rather than through an outsourced account manager, so decisions and changes to a campaign happen quickly.

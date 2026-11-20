@@ -1,4 +1,5 @@
 import Script from "next/script";
+import Link from "next/link";
 
 export const metadata = {
   title: "Digital Marketing Agency in Indore | Pragati Ujjayini",
@@ -246,7 +247,14 @@ export default function DigitalMarketingIndorePage() {
               Digital Marketing Agency in Indore
             </h1>
             <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
-              Looking for a digital marketing agency in Indore that can actually be held accountable for results, not just activity? Pragati Ujjayini works with businesses across Indore to plan, execute, and manage digital marketing built around real customer acquisition.
+              Looking for a{" "}
+              <Link
+                href="/"
+                className="text-white underline underline-offset-4 decoration-blue-300 hover:text-blue-200 hover:decoration-white font-semibold transition-colors"
+              >
+                digital marketing agency in Indore
+              </Link>{" "}
+              that can actually be held accountable for results, not just activity? Pragati Ujjayini works with businesses across Indore to plan, execute, and manage digital marketing built around real customer acquisition.
             </p>
             <div className="pt-4">
               <a
