@@ -440,6 +440,34 @@ export default async function DigitalMarketingUjjainPage() {
                         </div>
                     </section>
 
+                    {/* Hinglish Mid-Page CTA: Under Working Process, Above FAQ */}
+                    <section className="rounded-2xl md:rounded-3xl bg-gradient-to-r from-brand-navy via-slate-900 to-brand-navy p-6 sm:p-8 md:p-10 text-white shadow-lg border border-brand-navy/60 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-72 h-72 bg-brand-orange/15 rounded-full blur-3xl pointer-events-none" />
+                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                            <div className="space-y-2 max-w-2xl">
+                                <span className="inline-block bg-brand-orange/20 text-brand-orange border border-brand-orange/30 text-[11px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full">
+                                    Seedha Growth Plan
+                                </span>
+                                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight leading-snug">
+                                    Ujjain me zyada leads chahiye?{" "}
+                                    <span className="text-brand-orange">Ek seedha growth plan shuru karein.</span>
+                                </h3>
+                                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                                    Hamari team aapke business ke liye targeted marketing aur local SEO strategy banayegi — seedha result aur clear reporting ke saath.
+                                </p>
+                            </div>
+                            <div className="shrink-0">
+                                <Button
+                                    nativeButton={false}
+                                    render={<a href="/contact" />}
+                                    className="h-12 rounded-full bg-brand-orange px-8 text-sm sm:text-base font-bold text-brand-orange-foreground [a]:hover:bg-brand-orange/90 shadow-lg shadow-brand-orange/25 transition-transform hover:scale-105"
+                                >
+                                    Get Free Consultation
+                                </Button>
+                            </div>
+                        </div>
+                    </section>
+
                     {/* Service Selection & Deliverables */}
                     <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
