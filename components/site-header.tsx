@@ -29,7 +29,7 @@ const services = [
   },
   {
     label: 'Local Google & Meta Ads',
-    href: '/services',
+    href: '/services/local-google-meta-ads',
   },
   {
     label: 'WhatsApp Business Marketing',

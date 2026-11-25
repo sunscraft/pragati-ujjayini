@@ -13,6 +13,25 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/services/google-meta-ads',
+        destination: '/services/local-google-meta-ads',
+        permanent: true,
+      },
+      {
+        source: '/services/google-ads-services',
+        destination: '/services/local-google-meta-ads',
+        permanent: true,
+      },
+      {
+        source: '/google-ads-services',
+        destination: '/services/local-google-meta-ads',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig

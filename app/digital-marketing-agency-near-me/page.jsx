@@ -151,13 +151,13 @@ const services = [
         title: "Local SEO",
         desc: "If customers near you are searching and not finding you, this is usually why. Local SEO gets your Google Business Profile, citations, and reviews working together so you show up in the map pack for 'near me' searches — often the fastest local SEO win available.",
         linkText: "Get a Local SEO quote →",
-        href: "/local-seo-services/",
+        href: "/services/local-seo-services",
     },
     {
         title: "Google Ads / PPC Management",
         desc: "Need leads this month, not in six? PPC management puts you at the top of Google search results immediately, with campaigns built around cost-per-lead — not just clicks — so your ad spend turns into actual inquiries.",
         linkText: "Request a PPC campaign proposal →",
-        href: "/google-ads-services/",
+        href: "/services/local-google-meta-ads",
     },
     {
         title: "Social Media Marketing",

@@ -132,6 +132,7 @@ const services: Service[] = [
     tone: 'blue',
     image: '/images/Local-Google-Meta-Ads.png',
     alt: 'Sponsored target advertisements layout tracking high physical shop footfall clicks',
+    href: '/services/local-google-meta-ads',
   },
   {
     icon: MessageCircle,
